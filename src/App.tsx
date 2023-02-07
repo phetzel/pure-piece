@@ -1,24 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import Grid from "@mui/material/Grid";
+import { ThemeProvider } from "@mui/material/styles";
+import { Provider } from "react-redux";
+
+// redux
+import store from "./redux/store";
+
+// Components
+import Header from "./components/Header/Header";
+import Navbar from "./components/Navbar/Navbar";
+
+// Pages
+import Checkout from "./pages/Checkout/Checkout";
+import Dashboard from "./pages/Dashboard/Dashboard";
+
+// styles
+import { globalTheme } from "./util/globalTheme";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Provider store={store}>
+        <ThemeProvider theme={globalTheme}>
+          <Header />
+          <Navbar />
+
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="checkout" element={<Checkout />} />
+          </Routes>
+        </ThemeProvider>
+      </Provider>
     </div>
   );
 }
