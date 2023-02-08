@@ -10,7 +10,7 @@ interface Props {}
 
 const DashboardProducts = ({}: Props) => {
   return (
-    <Box>
+    <Grid item xs={12}>
       <Typography variant="h3">Products</Typography>
 
       <Grid container spacing={2}>
@@ -20,7 +20,7 @@ const DashboardProducts = ({}: Props) => {
           </Grid>
         ))}
       </Grid>
-    </Box>
+    </Grid>
   );
 };
 

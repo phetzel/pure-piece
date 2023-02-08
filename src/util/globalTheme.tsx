@@ -83,12 +83,18 @@ export const globalTheme: Theme = createTheme({
     },
   },
   typography: {
-    h5: {
-      //   fontSize: "1.6rem",
-      //   fontWeight: 600,
+    // dash title
+    h3: {
+      marginBottom: "10px",
+    },
+    // nav logo
+    h4: {
       color: "white",
-      //   letterSpacing: "0.5px",
-      //   textTransform: "capitalize",
+    },
+    // dash sub title
+    h5: {
+      marginBottom: "20px",
+      textAlign: "center",
     },
   },
 });

@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Container } from "@mui/material";
+import { Box, Container, Grid } from "@mui/material";
 
 // components
 import DashboardAbout from "./DashboardAbout";
@@ -13,10 +13,10 @@ interface Props {}
 const Dashboard = ({}: Props) => {
   return (
     <GridWrapper>
-      <Box>
+      <Grid container rowSpacing={3}>
         <DashboardProducts />
         <DashboardAbout />
-      </Box>
+      </Grid>
     </GridWrapper>
   );
 };

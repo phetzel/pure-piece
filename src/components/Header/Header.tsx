@@ -53,7 +53,7 @@ const Header = ({}: Props) => {
               display: { xs: "flex" },
             }}
           >
-            <Typography variant="h5" color="pallete.white">
+            <Typography variant="h4" color="pallete.white">
               Logo
             </Typography>
 
