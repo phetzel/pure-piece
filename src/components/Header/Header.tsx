@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { AppBar, Box, Container, Toolbar, Typography } from "@mui/material";
+import {
+  AppBar,
+  Box,
+  Button,
+  Container,
+  Toolbar,
+  Typography,
+} from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import MenuIcon from "@mui/icons-material/Menu";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -32,14 +39,6 @@ const Header = ({}: Props) => {
     <AppBar color="black">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          {/* <Box
-            sx={{
-              display: { xs: "flex" },
-              flexGrow: 1,
-              alignItems: "center",
-              mr: 1,
-            }}
-          > */}
           {/* dropdown */}
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <CommonIconButton onClick={() => dispatch(openDrawer("left"))}>
@@ -48,12 +47,27 @@ const Header = ({}: Props) => {
           </Box>
 
           {/* Title / Logo */}
-          <Typography
-            sx={{ flexGrow: 1, mr: 2, display: { xs: "flex", md: "flex" } }}
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: "flex" },
+            }}
           >
-            Logo
-          </Typography>
-          {/* </Box> */}
+            <Typography variant="h5" color="pallete.white">
+              Logo
+            </Typography>
+
+            <Box
+              sx={{
+                display: { xs: "none", md: "flex" },
+                ml: 3,
+              }}
+            >
+              {NAV_MENU_ITEMS.map((item) => (
+                <Button color="white">{item.label}</Button>
+              ))}
+            </Box>
+          </Box>
 
           {/* cart */}
           <Box sx={{ flexGrow: 0 }}>

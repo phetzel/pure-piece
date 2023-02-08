@@ -28,12 +28,18 @@ declare module "@mui/material/IconButton" {
   }
 }
 
-declare module "@mui/material/Typography" {
-  export interface TypographyPropsColorOverrides {
-    black: true;
+declare module "@mui/material/Button" {
+  export interface ButtonPropsColorOverrides {
     white: true;
   }
 }
+
+// declare module "@mui/material/Typography" {
+//   export interface TypographyPropsColorOverrides {
+//     black: true;
+//     white: true;
+//   }
+// }
 
 export const globalTheme: Theme = createTheme({
   components: {
@@ -77,12 +83,12 @@ export const globalTheme: Theme = createTheme({
     },
   },
   typography: {
-    // h1: {
-    //   fontSize: "1.6rem",
-    //   fontWeight: 600,
-    //   color: "#fff",
-    //   letterSpacing: "0.5px",
-    //   textTransform: "capitalize",
-    // },
+    h5: {
+      //   fontSize: "1.6rem",
+      //   fontWeight: 600,
+      color: "white",
+      //   letterSpacing: "0.5px",
+      //   textTransform: "capitalize",
+    },
   },
 });

@@ -1,13 +1,16 @@
 import React from "react";
 import Grid from "@mui/material/Grid";
 
+// components
+import GridWrapper from "../../components/common/GridWrapper/GridWrapper";
+
 interface Props {}
 
 const Checkout = ({}: Props) => {
   return (
-    <Grid item xs={12}>
-      Checkout
-    </Grid>
+    <GridWrapper>
+      <div></div>
+    </GridWrapper>
   );
 };
 
