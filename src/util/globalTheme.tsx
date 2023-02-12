@@ -85,7 +85,7 @@ export const globalTheme: Theme = createTheme({
   typography: {
     // dash title
     h3: {
-      marginBottom: "10px",
+      // marginBottom: "10px",
     },
     // nav logo
     h4: {

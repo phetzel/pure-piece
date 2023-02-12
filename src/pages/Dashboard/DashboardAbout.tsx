@@ -9,7 +9,7 @@ interface Props {}
 
 const DashboardAbout = ({}: Props) => {
   return (
-    <Grid item xs={12}>
+    <Grid item xs={12} id="dashboardAbout">
       <Typography variant="h3">About</Typography>
 
       {/* About us */}

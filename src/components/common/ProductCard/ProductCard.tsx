@@ -1,19 +1,22 @@
 import * as React from "react";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
-import { CardActionArea } from "@mui/material";
+import {
+  Card,
+  CardActionArea,
+  CardContent,
+  CardMedia,
+  Typography,
+} from "@mui/material";
 
 import { ProductType } from "../../../types/productTypes";
 
 interface Props {
   product: ProductType;
+  onClick: () => void;
 }
 
-const ProductCard = ({ product }: Props) => {
+const ProductCard = ({ onClick, product }: Props) => {
   return (
-    <Card>
+    <Card onClick={onClick}>
       <CardActionArea>
         <CardMedia
           component="img"

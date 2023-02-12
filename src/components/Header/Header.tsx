@@ -28,6 +28,10 @@ interface Props {}
 
 const Header = ({}: Props) => {
   const dispatch = useDispatch();
+  const cartState = useSelector((state: RootState) => state.product.cart);
+  const cartCount = cartState.length
+    ? cartState.map((product) => product.count).reduce((a, b) => a + b)
+    : 0;
 
   const headerStyles = {
     wrapper: {
@@ -72,7 +76,7 @@ const Header = ({}: Props) => {
           {/* cart */}
           <Box sx={{ flexGrow: 0 }}>
             <CommonIconButton
-              badgeContent={3}
+              badgeContent={cartCount}
               onClick={() => dispatch(openDrawer("right"))}
             >
               <ShoppingCartIcon />

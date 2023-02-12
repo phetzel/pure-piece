@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Button, Drawer } from "@mui/material";
+import { Box, Button, Divider, Drawer, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -32,8 +32,23 @@ const Navbar = ({}: Props) => {
             onClose={() => dispatch(closeDrawer(item))}
             sx={navbarStyles.drawer}
           >
-            <NavbarMenu />
-            {/* {list(anchor)} */}
+            <Box
+              sx={{
+                alignItems: "center",
+                display: "flex",
+                flexDirection: "column",
+                paddingTop: "50px",
+                paddingBottom: "50Px",
+              }}
+            >
+              <Typography variant="h4" color="common.black">
+                Logo
+              </Typography>
+              <Typography variant="body1">Pure Piece</Typography>
+            </Box>
+            <Divider />
+
+            {item === "left" ? <NavbarMenu /> : <NavbarCart />}
           </Drawer>
         </React.Fragment>
       ))}

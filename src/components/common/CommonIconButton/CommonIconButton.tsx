@@ -6,6 +6,17 @@ interface Props {
   badgeContent?: number;
   children: JSX.Element;
   onClick: () => void;
+  iconColor?:
+    | "inherit"
+    | "white"
+    | "default"
+    | "primary"
+    | "secondary"
+    | "error"
+    | "info"
+    | "success"
+    | "warning"
+    | undefined;
   sx?: SxProps;
   title?: string;
 }
@@ -14,12 +25,13 @@ const CommonIconButton = ({
   badgeContent,
   children,
   onClick,
+  iconColor,
   sx,
   title,
 }: Props) => {
   return (
     <Tooltip title={title} sx={sx}>
-      <IconButton color={"white"} onClick={onClick}>
+      <IconButton color={iconColor ? iconColor : "white"} onClick={onClick}>
         <Badge badgeContent={badgeContent} color="error">
           {children}
         </Badge>

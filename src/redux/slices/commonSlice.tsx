@@ -19,6 +19,9 @@ export const commonSlice = createSlice({
     closeDrawer: (state, action: PayloadAction<AnchorType>) => {
       state.drawerState[action.payload] = false;
     },
+    default: (state) => {
+      return state;
+    },
   },
 });
 
