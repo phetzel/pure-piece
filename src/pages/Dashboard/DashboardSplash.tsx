@@ -22,9 +22,8 @@ const DashboardSplash = ({}: Props) => {
         backgroundPosition: "center",
         backgroundImage: `url(${splashBackground})`,
         height: "100vh",
-        // filter: "blur(1px)",
-        // "-webkit-filter": "blur(1px)",
       }}
+      id="dashboardSplash"
     >
       {/* Increase the priority of the hero background image */}
       {
@@ -66,25 +65,6 @@ const DashboardSplash = ({}: Props) => {
       </Grid>
     </Paper>
   );
-
-  /* Increase the priority of the hero background image
-  {<img style={{ display: 'none' }} src={post.image} alt={post.imageText} />}
-
-
-
-        <Typography component="h1" variant="h3" color="inherit" gutterBottom>
-          {post.title}
-        </Typography>
-        <Typography variant="h5" color="inherit" paragraph>
-          {post.description}
-        </Typography>
-        <Link variant="subtitle1" href="#">
-          {post.linkText}
-        </Link>
-      </Box>
-    </Grid>
-  </Grid>
-</Paper> */
 };
 
 export default DashboardSplash;
