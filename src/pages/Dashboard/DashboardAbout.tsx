@@ -2,14 +2,14 @@ import React from "react";
 import { Box, Divider, Grid, Typography } from "@mui/material";
 
 import EndorsementCard from "../../components/common/EndorsementCard/EndorsementCard";
-import dgSmall from "../../assets/images/dg-small.png";
 import ryan from "../../assets/images/ryan.png";
 import { ENDORSEMENTS } from "../../constants/aboutConstants";
+import dashboardStyles from "./styles/dashboardStyles";
 interface Props {}
 
 const DashboardAbout = ({}: Props) => {
   return (
-    <Grid item xs={12} id="dashboardAbout">
+    <Grid item xs={12} sx={dashboardStyles.section} id="dashboardAbout">
       <Typography variant="h3">About</Typography>
 
       {/* About us */}
@@ -80,8 +80,10 @@ const DashboardAbout = ({}: Props) => {
 
       {/* endorsements */}
       <Typography variant="h5">What others are saying</Typography>
-      {ENDORSEMENTS.map((endorsement) => (
-        <EndorsementCard endorsement={endorsement} />
+      {ENDORSEMENTS.map((endorsement, idx) => (
+        <Box key={idx}>
+          <EndorsementCard endorsement={endorsement} />
+        </Box>
       ))}
     </Grid>
   );

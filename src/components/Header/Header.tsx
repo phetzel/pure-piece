@@ -14,30 +14,28 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 // redux
 import { RootState } from "../../redux/store";
 import { openDrawer } from "../../redux/slices/commonSlice";
-// types
-import { ProductType } from "../../types/productTypes";
 // constants
 import { NAV_MENU_ITEMS } from "../../constants/commonConstants";
 // component
 import CommonIconButton from "../common/CommonIconButton/CommonIconButton";
+// hooks
+import useAppNavigation from "../../hooks/useAppNavigation";
 
-// types
-
-type Anchor = "left" | "right";
 interface Props {}
 
 const Header = ({}: Props) => {
+  const appNavigate = useAppNavigation();
   const dispatch = useDispatch();
-  const cartState = useSelector((state: RootState) => state.product.cart);
+
+  const tabState = useSelector((state: RootState) => state.common.tabState);
+  const cartState = useSelector((state: RootState) => state.product.cartState);
   const cartCount = cartState.length
     ? cartState.map((product) => product.count).reduce((a, b) => a + b)
     : 0;
 
-  const headerStyles = {
-    wrapper: {
-      backgroundColor: "pallete.black",
-    },
-  };
+  const filteredNavMenu = NAV_MENU_ITEMS.filter(
+    (menuItem) => menuItem.label !== "Home"
+  );
 
   return (
     <AppBar color="black">
@@ -57,7 +55,11 @@ const Header = ({}: Props) => {
               display: { xs: "flex" },
             }}
           >
-            <Typography variant="h4" color="pallete.white">
+            <Typography
+              variant="h4"
+              color="pallete.white"
+              onClick={() => appNavigate("Home")}
+            >
               Logo
             </Typography>
 
@@ -67,8 +69,16 @@ const Header = ({}: Props) => {
                 ml: 3,
               }}
             >
-              {NAV_MENU_ITEMS.map((item) => (
-                <Button color="white">{item.label}</Button>
+              {filteredNavMenu.map((item) => (
+                <Button
+                  key={item.id.toString()}
+                  color={
+                    tabState.activeTab === item.label ? "primary" : "white"
+                  }
+                  onClick={() => appNavigate(item.label)}
+                >
+                  {item.label}
+                </Button>
               ))}
             </Box>
           </Box>

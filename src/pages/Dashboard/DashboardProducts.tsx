@@ -3,10 +3,9 @@ import { Box, Container, Grid, Typography } from "@mui/material";
 
 // constants
 import { PRODUCTS } from "../../constants/productConstants";
-// component
 import ProductCard from "../../components/common/ProductCard/ProductCard";
 import ProductModal from "../../components/common/ProductModal/ProductModal";
-
+import dashboardStyles from "./styles/dashboardStyles";
 import { ProductType } from "../../types/productTypes";
 
 interface Props {}
@@ -14,13 +13,13 @@ interface Props {}
 const DashboardProducts = ({}: Props) => {
   const [focusedProduct, setFocusedProduct] = useState<ProductType>();
   return (
-    <Box>
+    <Box sx={dashboardStyles.section} id="dashboardProduct">
       <ProductModal
         isOpen={focusedProduct ? true : false}
         handleClose={() => setFocusedProduct(undefined)}
         product={focusedProduct}
       />
-      <Grid item xs={12} id="dashboardProduct">
+      <Grid item xs={12}>
         <Typography variant="h3">Products</Typography>
         <Typography variant="body1" sx={{ marginBottom: "15px" }}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec posuere

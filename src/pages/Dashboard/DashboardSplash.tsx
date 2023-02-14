@@ -11,59 +11,58 @@ const DashboardSplash = ({}: Props) => {
   };
 
   return (
-    <Paper
+    <Box
       sx={{
-        position: "relative",
-        backgroundColor: "grey.800",
-        color: "#fff",
-        mb: 4,
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "center",
-        backgroundImage: `url(${splashBackground})`,
         height: "100vh",
       }}
-      id="dashboardSplash"
     >
-      {/* Increase the priority of the hero background image */}
-      {
-        <img
-          style={{ display: "none" }}
-          src={splashBackground}
-          alt={"splash image"}
-        />
-      }
-      {/* <Box
+      <Paper
         sx={{
+          backgroundColor: "grey.800",
+          color: "#fff",
+          mb: 4,
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+          backgroundImage: `url(${splashBackground})`,
           position: "absolute",
-          top: 0,
-          bottom: 0,
-          right: 0,
           left: 0,
-          backgroundColor: "rgba(0,0,0,.3)",
+          right: 0,
+          top: 0,
         }}
-      /> */}
-      <Grid container>
-        <Grid item xs={12} md={6}>
-          <Box
-            sx={{
-              alignItems: "center",
-              display: "flex",
-              justifyContent: "center",
-              flexDirection: "column",
-              height: "100vh",
-            }}
-          >
-            <Typography variant="h4" color="pallete.white">
-              Logo
-            </Typography>
-            <Typography variant="h2" color="primary">
-              Pure Piece Treats
-            </Typography>
-          </Box>
+        id="dashboardSplash"
+      >
+        {/* Increase the priority of the hero background image */}
+        {
+          <img
+            style={{ display: "none" }}
+            src={splashBackground}
+            alt={"splash image"}
+          />
+        }
+
+        <Grid container>
+          <Grid item xs={12} md={6}>
+            <Box
+              sx={{
+                alignItems: "center",
+                display: "flex",
+                justifyContent: "center",
+                flexDirection: "column",
+                height: "100vh",
+              }}
+            >
+              <Typography variant="h4" color="pallete.white">
+                Logo
+              </Typography>
+              <Typography variant="h2" color="primary">
+                Pure Piece Treats
+              </Typography>
+            </Box>
+          </Grid>
         </Grid>
-      </Grid>
-    </Paper>
+      </Paper>
+    </Box>
   );
 };
 

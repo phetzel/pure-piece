@@ -1,9 +1,10 @@
 export type AnchorType = "left" | "right";
+export type TabType = "Home" | "Products" | "About" | "Contact";
 
 export interface MenuItemType {
   id: number;
   icon: JSX.Element;
-  label: string;
+  label: TabType;
   route: string;
 }
 
@@ -13,6 +14,16 @@ interface DrawerStateType {
   right: boolean;
 }
 
+interface DashboardStateType {
+  isScrollActive: boolean;
+}
+
+interface TabStateType {
+  activeTab: TabType;
+}
+
 export interface CommonStateType {
   drawerState: DrawerStateType;
+  dashboardState: DashboardStateType;
+  tabState: TabStateType;
 }

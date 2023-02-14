@@ -10,24 +10,24 @@ export const NAV_MENU_ITEMS: MenuItemType[] = [
     id: 0,
     icon: <HomeIcon />,
     label: "Home",
-    route: "",
+    route: "/",
   },
   {
     id: 1,
     icon: <PetsIcon />,
     label: "Products",
-    route: "",
+    route: "/",
   },
   {
     id: 2,
     icon: <InfoIcon />,
     label: "About",
-    route: "",
+    route: "/",
   },
   {
     id: 3,
     icon: <MailOutlineIcon />,
     label: "Contact",
-    route: "",
+    route: "/",
   },
 ];

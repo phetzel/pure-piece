@@ -7,7 +7,7 @@ import {
 } from "../../types/productTypes";
 
 const initialProductState: ProductStateType = {
-  cart: [],
+  cartState: [],
 };
 
 export const productSlice = createSlice({
@@ -16,7 +16,7 @@ export const productSlice = createSlice({
   reducers: {
     updateCart: (state, action: PayloadAction<CartChangeType>) => {
       const { count, product } = action.payload;
-      const filteredCart = state.cart.filter((p) => p.id === product.id);
+      const filteredCart = state.cartState.filter((p) => p.id === product.id);
 
       if (filteredCart.length) {
         console.log("length");
@@ -24,17 +24,17 @@ export const productSlice = createSlice({
         if (newCartCount > 0) {
           filteredCart[0].count = newCartCount;
         } else {
-          state.cart = state.cart.filter(
+          state.cartState = state.cartState.filter(
             (selectedProduct) => selectedProduct.id != product.id
           );
         }
       } else {
         console.log("no length");
-        state.cart.push({ ...product, count: count });
+        state.cartState.push({ ...product, count: count });
       }
     },
     emptyCart: (state) => {
-      state.cart = [];
+      state.cartState = [];
     },
     default: (state) => {
       return state;

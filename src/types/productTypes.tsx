@@ -12,7 +12,7 @@ export interface CartItem extends ProductType {
 }
 
 export interface ProductStateType {
-  cart: CartItem[];
+  cartState: CartItem[];
 }
 
 export interface CartChangeType {

@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Box, Button, Grid, Modal, Typography } from "@mui/material";
 
@@ -25,9 +26,16 @@ const style = {
 
 const ProductModal = ({ isOpen, handleClose, product }: Props) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleAddToCart = () => {
     product && dispatch(updateCart({ count: 1, product: product }));
+  };
+
+  const handleCheckout = () => {
+    handleAddToCart();
+    handleClose();
+    navigate("/checkout");
   };
 
   return (
@@ -86,6 +94,7 @@ const ProductModal = ({ isOpen, handleClose, product }: Props) => {
                   fontSize: "12px",
                 }}
                 color="secondary"
+                onClick={handleCheckout}
               >
                 Buy Now
               </Button>

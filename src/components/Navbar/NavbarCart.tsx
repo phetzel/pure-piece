@@ -1,4 +1,6 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Box,
   Button,
@@ -10,10 +12,7 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
-
 import TableContainer from "@mui/material/TableContainer";
-
-import { useDispatch, useSelector } from "react-redux";
 
 import { updateCart, emptyCart } from "../../redux/slices/productSlice";
 
@@ -27,20 +26,36 @@ import { NAV_MENU_ITEMS } from "../../constants/commonConstants";
 import NavbarCartItem from "./NavbarCartItem";
 // style
 import { navbarStyles } from "./styles";
+// hooks
+import useAppNavigation from "../../hooks/useAppNavigation";
 
-interface Props {}
+interface Props {
+  handleClose: () => void;
+}
 
-const NavbarCart = () => {
-  const cartState = useSelector((state: RootState) => state.product.cart);
+const NavbarCart = ({ handleClose }: Props) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const appNavigate = useAppNavigation();
+
+  const cartState = useSelector((state: RootState) => state.product.cartState);
 
   const handleUpdateCart = (cartItem: CartItem, count: number) => {
-    console.log("handleUpdateCart");
     dispatch(updateCart({ count: count, product: cartItem }));
   };
 
   const handleClearCart = () => {
     dispatch(emptyCart());
+  };
+
+  const handleCheckout = () => {
+    handleClose();
+    navigate("/checkout");
+  };
+
+  const handleShop = () => {
+    handleClose();
+    appNavigate("Products");
   };
 
   return (
@@ -66,16 +81,21 @@ const NavbarCart = () => {
               ))}
             </TableBody>
           </Table>
-          <Button variant="text" onClick={handleClearCart}>
-            Clear
-          </Button>
+          <Box sx={{ display: "flex" }}>
+            <Button variant="text" onClick={handleClearCart}>
+              Clear
+            </Button>
+            <Button variant="contained" onClick={handleCheckout}>
+              Checkout
+            </Button>
+          </Box>
         </Box>
       ) : (
         <Box sx={{ display: "flex", flexDirection: "column" }}>
           <Typography variant="body2" sx={{ textAlign: "center" }}>
-            No Products in list
+            There are no products in your cart
           </Typography>
-          <Button variant="text" onClick={handleClearCart}>
+          <Button variant="text" onClick={handleShop}>
             Shop Products
           </Button>
         </Box>
