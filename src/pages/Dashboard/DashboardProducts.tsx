@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Box, Container, Grid, Typography } from "@mui/material";
+import { Box, Container, Grid, Snackbar, Typography } from "@mui/material";
+import Slide, { SlideProps } from "@mui/material/Slide";
 
 // constants
 import { PRODUCTS } from "../../constants/productConstants";
@@ -12,13 +13,29 @@ interface Props {}
 
 const DashboardProducts = ({}: Props) => {
   const [focusedProduct, setFocusedProduct] = useState<ProductType>();
+  const [addedProductCount, setAddedProductCount] = useState<number>(0);
+
+  function SlideTransition(props: SlideProps) {
+    return <Slide {...props} direction="up" />;
+  }
   return (
     <Box sx={dashboardStyles.section} id="dashboardProduct">
       <ProductModal
         isOpen={focusedProduct ? true : false}
         handleClose={() => setFocusedProduct(undefined)}
         product={focusedProduct}
+        setAddedProductCount={setAddedProductCount}
       />
+      <Snackbar
+        open={addedProductCount > 0 ? true : false}
+        onClose={() => setAddedProductCount(0)}
+        // TransitionComponent={SlideTransition()}
+        message={`${addedProductCount} product${
+          addedProductCount > 1 ? "s" : ""
+        } added to cart`}
+        key={"productSnackbar"}
+      />
+
       <Grid item xs={12}>
         <Typography variant="h3">Products</Typography>
         <Typography variant="body1" sx={{ marginBottom: "15px" }}>
@@ -29,7 +46,14 @@ const DashboardProducts = ({}: Props) => {
 
         <Grid container spacing={2}>
           {PRODUCTS.map((product, idx) => (
-            <Grid item key={product.id} xs={12} sm={6} md={4}>
+            <Grid
+              item
+              key={product.id}
+              xs={12}
+              sm={6}
+              md={4}
+              sx={{ display: "flex", justifyContent: "center" }}
+            >
               <ProductCard
                 product={product}
                 onClick={() => setFocusedProduct(product)}

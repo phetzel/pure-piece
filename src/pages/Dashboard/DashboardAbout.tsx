@@ -3,6 +3,7 @@ import { Box, Divider, Grid, Typography } from "@mui/material";
 
 import EndorsementCard from "../../components/common/EndorsementCard/EndorsementCard";
 import ryan from "../../assets/images/ryan.png";
+import about from "../../assets/images/about.jpg";
 import { ENDORSEMENTS } from "../../constants/aboutConstants";
 import dashboardStyles from "./styles/dashboardStyles";
 interface Props {}
@@ -24,13 +25,13 @@ const DashboardAbout = ({}: Props) => {
           sx={{
             justifyContent: "center",
             display: "flex",
-            height: "400px",
+            height: "500px",
           }}
         >
           <Box
             component="img"
             alt="ryan"
-            src={ryan}
+            src={about}
             sx={{
               objectFit: "cover",
               height: "100%",
@@ -43,6 +44,7 @@ const DashboardAbout = ({}: Props) => {
           xs={12}
           md={6}
           sx={{
+            alignItems: "center",
             justifyContent: "center",
             display: "flex",
           }}
@@ -51,8 +53,8 @@ const DashboardAbout = ({}: Props) => {
             variant="body2"
             sx={{
               textAlign: "center",
-              marginLeft: "50px",
-              marginRight: "50px",
+              marginLeft: "70px",
+              marginRight: "70px",
               lineHeight: "1.5rem",
             }}
           >

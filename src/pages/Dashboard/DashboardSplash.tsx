@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Container, Grid, Paper, Typography } from "@mui/material";
 
 import splashBackground from "../../assets/images/dog.jpeg";
+import treats2 from "../../assets/images/treats.png";
 
 interface Props {}
 
@@ -26,6 +27,7 @@ const DashboardSplash = ({}: Props) => {
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
             backgroundImage: `url(${splashBackground})`,
+            // backgroundImage: `url(${treats2})`,
 
             position: "absolute",
             top: 0,
@@ -39,6 +41,7 @@ const DashboardSplash = ({}: Props) => {
             <img
               style={{ display: "none" }}
               src={splashBackground}
+              // src={treats2}
               alt={"splash image"}
             />
           }

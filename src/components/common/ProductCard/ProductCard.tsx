@@ -16,13 +16,14 @@ interface Props {
 
 const ProductCard = ({ onClick, product }: Props) => {
   return (
-    <Card onClick={onClick}>
+    <Card onClick={onClick} sx={{ paddingTop: "16px", width: "300px" }}>
       <CardActionArea>
         <CardMedia
           component="img"
-          height="140"
+          height="280"
           image={product.imageUrl}
           alt={product.name}
+          sx={{ objectFit: "contain" }}
         />
         <CardContent>
           <Typography

@@ -3,3 +3,6 @@ export const CHECKOUT_STEPS: string[] = [
   "Payment details",
   "Review your order",
 ];
+
+export const EMAIL = "pure-piece-treats@gmail.com";
+export const MOTTO = "Human Grade dog Food";
