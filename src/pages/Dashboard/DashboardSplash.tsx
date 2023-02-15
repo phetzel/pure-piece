@@ -11,37 +11,38 @@ const DashboardSplash = ({}: Props) => {
   };
 
   return (
-    <Box
-      sx={{
-        height: "100vh",
-      }}
-    >
-      <Paper
+    <Grid container>
+      <Box
         sx={{
-          backgroundColor: "grey.800",
-          color: "#fff",
-          mb: 4,
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center",
-          backgroundImage: `url(${splashBackground})`,
-          position: "absolute",
-          left: 0,
-          right: 0,
-          top: 0,
+          height: "100vh",
         }}
-        id="dashboardSplash"
       >
-        {/* Increase the priority of the hero background image */}
-        {
-          <img
-            style={{ display: "none" }}
-            src={splashBackground}
-            alt={"splash image"}
-          />
-        }
+        <Paper
+          sx={{
+            backgroundColor: "grey.800",
+            color: "#fff",
+            mb: 4,
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            backgroundImage: `url(${splashBackground})`,
 
-        <Grid container>
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+          }}
+          id="dashboardSplash"
+        >
+          {/* Increase the priority of the hero background image */}
+          {
+            <img
+              style={{ display: "none" }}
+              src={splashBackground}
+              alt={"splash image"}
+            />
+          }
+
           <Grid item xs={12} md={6}>
             <Box
               sx={{
@@ -60,9 +61,9 @@ const DashboardSplash = ({}: Props) => {
               </Typography>
             </Box>
           </Grid>
-        </Grid>
-      </Paper>
-    </Box>
+        </Paper>
+      </Box>
+    </Grid>
   );
 };
 
