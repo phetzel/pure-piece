@@ -12,7 +12,7 @@ import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 
 // Pages
-import Authentication from "./pages/Authentication/Authentication";
+import Admin from "./pages/Admin/Admin";
 import Checkout from "./pages/Checkout/Checkout";
 import Dashboard from "./pages/Dashboard/Dashboard";
 
@@ -29,7 +29,7 @@ function App() {
 
           <Routes>
             <Route path="/" element={<Dashboard />} />
-            <Route path="auth" element={<Authentication />} />
+            <Route path="admin" element={<Admin />} />
             <Route path="checkout" element={<Checkout />} />
           </Routes>
         </ThemeProvider>

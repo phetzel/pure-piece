@@ -18,6 +18,7 @@ interface Props {
     | "warning"
     | undefined;
   sx?: SxProps;
+  size?: "small" | "medium" | "large";
   title?: string;
 }
 
@@ -27,11 +28,16 @@ const CommonIconButton = ({
   onClick,
   iconColor,
   sx,
+  size,
   title,
 }: Props) => {
   return (
     <Tooltip title={title} sx={sx}>
-      <IconButton color={iconColor ? iconColor : "white"} onClick={onClick}>
+      <IconButton
+        color={iconColor ? iconColor : "white"}
+        onClick={onClick}
+        size={size}
+      >
         <Badge badgeContent={badgeContent} color="error">
           {children}
         </Badge>

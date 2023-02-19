@@ -81,7 +81,13 @@ const NavbarCart = ({ handleClose }: Props) => {
               ))}
             </TableBody>
           </Table>
-          <Box sx={{ display: "flex" }}>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              marginTop: "15px",
+            }}
+          >
             <Button variant="text" onClick={handleClearCart}>
               Clear
             </Button>

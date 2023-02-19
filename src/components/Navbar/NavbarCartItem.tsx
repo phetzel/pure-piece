@@ -24,29 +24,32 @@ const NavbarCartItem = ({ cartItem, handleUpdateCart }: Props) => {
       </TableCell>
       <TableCell align="right">
         ${cartItem.price} * {cartItem.count} = $
-        {(cartItem.price * cartItem.count).toFixed(2)}
+        {cartItem.price * cartItem.count}
       </TableCell>
+
       <TableCell align="right" sx={{ display: "flex" }}>
         <CommonIconButton
           iconColor={"primary"}
           onClick={() => handleUpdateCart(cartItem, 1)}
         >
-          <AddIcon />
+          <AddIcon sx={{ fontSize: 18 }} />
         </CommonIconButton>
-        {cartItem.count > 1 && (
-          <CommonIconButton
-            iconColor={"warning"}
-            onClick={() => handleUpdateCart(cartItem, -1)}
-          >
-            <RemoveIcon />
-          </CommonIconButton>
-        )}
+
         <CommonIconButton
+          iconColor={"warning"}
+          onClick={() => handleUpdateCart(cartItem, -1)}
+          size={"small"}
+        >
+          <RemoveIcon sx={{ fontSize: 18 }} />
+        </CommonIconButton>
+
+        {/* <CommonIconButton
           iconColor={"error"}
           onClick={() => handleUpdateCart(cartItem, -cartItem.count)}
+          size={"small"}
         >
-          <DeleteIcon />
-        </CommonIconButton>
+          <DeleteIcon sx={{ fontSize: 15 }} />
+        </CommonIconButton> */}
       </TableCell>
     </TableRow>
   );

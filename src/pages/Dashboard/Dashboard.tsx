@@ -9,6 +9,7 @@ import { toggleDashboardScroll } from "../../redux/slices/commonSlice";
 import { TabType } from "../../types/commonTypes";
 // components
 import DashboardAbout from "./DashboardAbout";
+import DashboardContact from "./DashboardContact";
 import DashboardProducts from "./DashboardProducts";
 import DashboardSplash from "./DashboardSplash";
 import GridWrapper from "../../components/common/GridWrapper/GridWrapper";
@@ -32,7 +33,7 @@ const Dashboard = ({}: Props) => {
       Home: "#dashboardSplash",
       Products: "#dashboardProduct",
       About: "#dashboardAbout",
-      Contact: "#dashboardAbout",
+      Contact: "#dashboardContact",
     };
 
     const section = document.querySelector(targetIdObj[target]);
@@ -50,6 +51,7 @@ const Dashboard = ({}: Props) => {
         <DashboardSplash />
         <DashboardProducts />
         <DashboardAbout />
+        <DashboardContact />
       </Grid>
     </GridWrapper>
   );

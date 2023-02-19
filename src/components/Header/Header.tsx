@@ -20,6 +20,8 @@ import { NAV_MENU_ITEMS } from "../../constants/commonConstants";
 import CommonIconButton from "../common/CommonIconButton/CommonIconButton";
 // hooks
 import useAppNavigation from "../../hooks/useAppNavigation";
+// asstes
+import logoLight from "../../assets/images/logoLight.png";
 
 interface Props {}
 
@@ -55,13 +57,20 @@ const Header = ({}: Props) => {
               display: { xs: "flex" },
             }}
           >
-            <Typography
-              variant="h4"
-              color="pallete.white"
+            <Box
+              component="img"
+              alt={"Logo"}
+              src={logoLight}
+              sx={{
+                objectFit: "cover",
+                height: "60px",
+                maxWidth: "100%",
+                marginTop: "10px",
+                marginBottom: "10px",
+                cursor: "pointer",
+              }}
               onClick={() => appNavigate("Home")}
-            >
-              Logo
-            </Typography>
+            />
 
             <Box
               sx={{

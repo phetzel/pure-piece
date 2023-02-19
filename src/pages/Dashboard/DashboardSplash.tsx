@@ -15,55 +15,64 @@ const DashboardSplash = ({}: Props) => {
     <Grid container>
       <Box
         sx={{
+          backgroundColor: "#212121",
           height: "100vh",
         }}
       >
         <Paper
           sx={{
-            backgroundColor: "grey.800",
+            backgroundColor: "#212121",
             color: "#fff",
-            mb: 4,
+            // mb: 4,
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
             backgroundImage: `url(${splashBackground})`,
-            // backgroundImage: `url(${treats2})`,
+            backgroundAttachment: "fixed",
 
+            height: "100vh",
             position: "absolute",
             top: 0,
             left: 0,
             right: 0,
+
+            zIndex: -5,
           }}
           id="dashboardSplash"
         >
-          {/* Increase the priority of the hero background image */}
-          {
-            <img
-              style={{ display: "none" }}
-              src={splashBackground}
-              // src={treats2}
-              alt={"splash image"}
-            />
-          }
+          <Box
+            sx={{
+              borderTop: "100vh solid #212121",
+              borderRight: "100vw solid transparent",
+              position: "absolute",
+              top: 0,
+              zIndex: -4,
+            }}
+          />
 
-          <Grid item xs={12} md={6}>
-            <Box
-              sx={{
-                alignItems: "center",
-                display: "flex",
-                justifyContent: "center",
-                flexDirection: "column",
-                height: "100vh",
-              }}
-            >
-              <Typography variant="h4" color="pallete.white">
-                Logo
-              </Typography>
-              <Typography variant="h2" color="primary">
-                Pure Piece Treats
-              </Typography>
-            </Box>
-          </Grid>
+          {/* <Box
+            sx={{
+              borderBottom: "80vh solid #fff",
+              borderLeft: "100vw solid transparent",
+              position: "absolute",
+              bottom: -250,
+              zIndex: -4,
+            }}
+          /> */}
+
+          <Box
+            sx={{
+              position: "absolute",
+              zIndex: 1,
+              paddingTop: "100px",
+              left: 100,
+            }}
+          >
+            <Typography variant="h4" color="primary">
+              Human Grade Dog Food
+            </Typography>
+          </Box>
+          {/* </Grid> */}
         </Paper>
       </Box>
     </Grid>
