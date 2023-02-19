@@ -12,6 +12,9 @@ import {
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
 // import { handleLogin, handleRegister } from "../../services/userServices";
+import GridWrapper from "../../components/common/GridWrapper/GridWrapper";
+import adminStyles from "./styles/adminStyles";
+
 interface Props {}
 
 const Admin = ({}: Props) => {
@@ -36,62 +39,57 @@ const Admin = ({}: Props) => {
   // };
 
   return (
-    <Container component="main" maxWidth="xs">
-      <Box
-        sx={{
-          marginTop: 8,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Admin Sign in
-        </Typography>
-        <Box
-          component="form"
-          onSubmit={() => console.log("submit")}
-          noValidate
-          sx={{ mt: 1 }}
-        >
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
-            autoComplete="email"
-            autoFocus
-          />
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-          />
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
-          />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}
+    <GridWrapper>
+      <Container component="main" maxWidth="xs">
+        <Box sx={adminStyles.loginContainer}>
+          <Avatar sx={{ m: 1, bgcolor: "primary.main" }}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Admin Sign in
+          </Typography>
+          <Box
+            component="form"
+            onSubmit={() => console.log("submit")}
+            noValidate
+            sx={{ mt: 1 }}
           >
-            Sign In
-          </Button>
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Email Address"
+              name="email"
+              autoComplete="email"
+              autoFocus
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+            />
+            <FormControlLabel
+              control={<Checkbox value="remember" color="primary" />}
+              label="Remember me"
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Sign In
+            </Button>
+          </Box>
         </Box>
-      </Box>
-    </Container>
+      </Container>
+    </GridWrapper>
   );
 };
 

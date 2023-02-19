@@ -12,6 +12,7 @@ import NavbarCart from "./NavbarCart";
 
 // styles
 import { navbarStyles } from "./styles";
+import logoDark from "../../assets/images/logoDark.png";
 
 export interface Props {}
 
@@ -41,9 +42,17 @@ const Navbar = ({}: Props) => {
                 paddingBottom: "50Px",
               }}
             >
-              <Typography variant="h4" color="common.black">
-                Logo
-              </Typography>
+              <Box
+                component="img"
+                alt={"Logo"}
+                src={logoDark}
+                sx={{
+                  objectFit: "cover",
+                  height: "80px",
+                  maxWidth: "100%",
+                  cursor: "pointer",
+                }}
+              />
               <Typography variant="body1">Pure Piece</Typography>
             </Box>
             <Divider />

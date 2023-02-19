@@ -11,12 +11,12 @@ interface Props {}
 const DashboardAbout = ({}: Props) => {
   return (
     <Grid item xs={12} sx={dashboardStyles.section} id="dashboardAbout">
-      <Typography variant="h3">About</Typography>
+      <Typography variant="h3">About us</Typography>
 
       {/* About us */}
       <Grid container spacing={1}>
         <Grid item xs={12}>
-          <Typography variant="h5">A little about us</Typography>
+          <Typography variant="h5">Our philosophy</Typography>
         </Grid>
         <Grid
           item

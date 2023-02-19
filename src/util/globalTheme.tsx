@@ -75,6 +75,15 @@ export const globalTheme: Theme = createTheme({
     },
   },
   palette: {
+    primary: {
+      main: "#73271a",
+    },
+    secondary: {
+      main: "#fef204",
+    },
+    error: {
+      main: "#d2232a",
+    },
     black: {
       main: "#212121",
     },
@@ -98,3 +107,21 @@ export const globalTheme: Theme = createTheme({
     },
   },
 });
+
+// colors (over)
+// -------------
+// primary - used to represent primary interface elements for a user. It's the color displayed most frequently across your app's screens and components.
+// chocolate #73271a
+// secondary - used to represent secondary interface elements for a user. It provides more ways to accent and distinguish your product. Having it is optional.
+// gold #fef204
+// error - used to represent interface elements that the user should be made aware of.
+// red #d2232a
+// black
+// black #212121
+
+// white - not being used
+// off-white #e6e6e6
+
+// warning - used to represent potentially dangerous actions or important messages.
+// info - used to present information to the user that is neutral and not necessarily important.
+// success - used to indicate the successful completion of an action that user triggered.

@@ -10,6 +10,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import MenuIcon from "@mui/icons-material/Menu";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import useTheme from "@mui/material/styles/useTheme";
 
 // redux
 import { RootState } from "../../redux/store";
@@ -28,6 +29,7 @@ interface Props {}
 const Header = ({}: Props) => {
   const appNavigate = useAppNavigation();
   const dispatch = useDispatch();
+  const theme = useTheme();
 
   const tabState = useSelector((state: RootState) => state.common.tabState);
   const cartState = useSelector((state: RootState) => state.product.cartState);
@@ -63,10 +65,8 @@ const Header = ({}: Props) => {
               src={logoLight}
               sx={{
                 objectFit: "cover",
-                height: "60px",
+                height: "80px",
                 maxWidth: "100%",
-                marginTop: "10px",
-                marginBottom: "10px",
                 cursor: "pointer",
               }}
               onClick={() => appNavigate("Home")}
@@ -82,7 +82,7 @@ const Header = ({}: Props) => {
                 <Button
                   key={item.id.toString()}
                   color={
-                    tabState.activeTab === item.label ? "primary" : "white"
+                    tabState.activeTab === item.label ? "secondary" : "white"
                   }
                   onClick={() => appNavigate(item.label)}
                 >

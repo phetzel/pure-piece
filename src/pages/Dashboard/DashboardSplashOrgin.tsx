@@ -20,8 +20,7 @@ const DashboardSplash = ({}: Props) => {
       >
         <Paper
           sx={{
-            backgroundColor: "grey.800",
-            color: "#fff",
+            backgroundColor: "black",
             mb: 4,
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",

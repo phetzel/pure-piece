@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import Grid from "@mui/material/Grid";
+import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
 import { Provider } from "react-redux";
 
@@ -10,6 +10,7 @@ import store from "./redux/store";
 // Components
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
 
 // Pages
 import Admin from "./pages/Admin/Admin";
@@ -24,6 +25,8 @@ function App() {
     <div className="App">
       <Provider store={store}>
         <ThemeProvider theme={globalTheme}>
+          <CssBaseline />
+
           <Header />
           <Navbar />
 
@@ -32,6 +35,8 @@ function App() {
             <Route path="admin" element={<Admin />} />
             <Route path="checkout" element={<Checkout />} />
           </Routes>
+
+          <Footer />
         </ThemeProvider>
       </Provider>
     </div>

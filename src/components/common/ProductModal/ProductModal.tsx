@@ -138,13 +138,14 @@ const ProductModal = ({
                   fontSize: "12px",
                   marginRight: "10px",
                 }}
-                color="secondary"
+                color="info"
                 onClick={handleAddToCart}
               >
                 Add to Cart
               </Button>
               <Button
                 variant="contained"
+                color="primary"
                 sx={{
                   fontSize: "12px",
                 }}

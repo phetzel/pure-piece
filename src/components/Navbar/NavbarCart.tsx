@@ -88,10 +88,19 @@ const NavbarCart = ({ handleClose }: Props) => {
               marginTop: "15px",
             }}
           >
-            <Button variant="text" onClick={handleClearCart}>
+            <Button
+              variant="text"
+              onClick={handleClearCart}
+              color="error"
+              sx={{ marginRight: "5px" }}
+            >
               Clear
             </Button>
-            <Button variant="contained" onClick={handleCheckout}>
+            <Button
+              variant="contained"
+              onClick={handleCheckout}
+              sx={{ marginLeft: "5px" }}
+            >
               Checkout
             </Button>
           </Box>

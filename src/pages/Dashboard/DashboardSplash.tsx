@@ -15,14 +15,14 @@ const DashboardSplash = ({}: Props) => {
     <Grid container>
       <Box
         sx={{
-          backgroundColor: "#212121",
+          backgroundColor: "black",
           height: "100vh",
         }}
       >
         <Paper
           sx={{
             backgroundColor: "#212121",
-            color: "#fff",
+            // color: "#fff",
             // mb: 4,
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
@@ -50,16 +50,6 @@ const DashboardSplash = ({}: Props) => {
             }}
           />
 
-          {/* <Box
-            sx={{
-              borderBottom: "80vh solid #fff",
-              borderLeft: "100vw solid transparent",
-              position: "absolute",
-              bottom: -250,
-              zIndex: -4,
-            }}
-          /> */}
-
           <Box
             sx={{
               position: "absolute",
@@ -72,7 +62,6 @@ const DashboardSplash = ({}: Props) => {
               Human Grade Dog Food
             </Typography>
           </Box>
-          {/* </Grid> */}
         </Paper>
       </Box>
     </Grid>

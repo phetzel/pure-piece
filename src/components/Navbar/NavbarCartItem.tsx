@@ -1,6 +1,6 @@
 import React from "react";
 
-import { TableCell, TableRow } from "@mui/material";
+import { Box, TableCell, TableRow } from "@mui/material";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -17,7 +17,7 @@ const NavbarCartItem = ({ cartItem, handleUpdateCart }: Props) => {
   return (
     <TableRow
       key={cartItem.name}
-      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+      // sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
     >
       <TableCell component="th" scope="row">
         {cartItem.name}
@@ -27,29 +27,22 @@ const NavbarCartItem = ({ cartItem, handleUpdateCart }: Props) => {
         {cartItem.price * cartItem.count}
       </TableCell>
 
-      <TableCell align="right" sx={{ display: "flex" }}>
-        <CommonIconButton
-          iconColor={"primary"}
-          onClick={() => handleUpdateCart(cartItem, 1)}
-        >
-          <AddIcon sx={{ fontSize: 18 }} />
-        </CommonIconButton>
+      <TableCell align="right">
+        <Box sx={{ display: "flex" }}>
+          <CommonIconButton
+            iconColor={"error"}
+            onClick={() => handleUpdateCart(cartItem, -1)}
+          >
+            <RemoveIcon sx={{ fontSize: 18 }} />
+          </CommonIconButton>
 
-        <CommonIconButton
-          iconColor={"warning"}
-          onClick={() => handleUpdateCart(cartItem, -1)}
-          size={"small"}
-        >
-          <RemoveIcon sx={{ fontSize: 18 }} />
-        </CommonIconButton>
-
-        {/* <CommonIconButton
-          iconColor={"error"}
-          onClick={() => handleUpdateCart(cartItem, -cartItem.count)}
-          size={"small"}
-        >
-          <DeleteIcon sx={{ fontSize: 15 }} />
-        </CommonIconButton> */}
+          <CommonIconButton
+            iconColor={"success"}
+            onClick={() => handleUpdateCart(cartItem, 1)}
+          >
+            <AddIcon sx={{ fontSize: 18 }} />
+          </CommonIconButton>
+        </Box>
       </TableCell>
     </TableRow>
   );
