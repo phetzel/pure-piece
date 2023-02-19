@@ -39,7 +39,6 @@ const Navbar = ({}: Props) => {
                 display: "flex",
                 flexDirection: "column",
                 paddingTop: "50px",
-                paddingBottom: "50Px",
               }}
             >
               <Box
@@ -48,14 +47,17 @@ const Navbar = ({}: Props) => {
                 src={logoDark}
                 sx={{
                   objectFit: "cover",
-                  height: "80px",
+                  height: "90px",
                   maxWidth: "100%",
                   cursor: "pointer",
                 }}
               />
-              <Typography variant="body1">Pure Piece</Typography>
+              <Typography sx={{ marginTop: "20px" }} color="error" variant="h6">
+                Human Grade Dog Food
+              </Typography>
             </Box>
-            <Divider />
+
+            <Divider sx={{ marginTop: "25px", marginBottom: "25px" }} />
 
             {item === "left" ? (
               <NavbarMenu handleClose={() => dispatch(closeDrawer("left"))} />

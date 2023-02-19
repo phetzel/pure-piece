@@ -65,8 +65,10 @@ const Header = ({}: Props) => {
               src={logoLight}
               sx={{
                 objectFit: "cover",
-                height: "80px",
+                height: "60px",
                 maxWidth: "100%",
+                marginTop: "10px",
+                marginBottom: "10px",
                 cursor: "pointer",
               }}
               onClick={() => appNavigate("Home")}
