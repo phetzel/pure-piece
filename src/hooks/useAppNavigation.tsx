@@ -11,17 +11,18 @@ import {
 //  constants
 import { NAV_MENU_ITEMS } from "../constants/commonConstants";
 // types
-import { MenuItemType, TabType } from "../types/commonTypes";
+import { MenuItemType, LocationType, TabType } from "../types/commonTypes";
 
 interface Props {
-  target: TabType;
+  // target: TabType;
+  target: LocationType;
 }
 
 const useAppNavigation = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const handleUseAppNavigation = (target: TabType) => {
+  const handleUseAppNavigation = (target: LocationType) => {
     const targetItem: MenuItemType | undefined = NAV_MENU_ITEMS.find(
       (item) => item.label === target
     );
@@ -33,6 +34,9 @@ const useAppNavigation = () => {
       if (targetItem.route === "/") {
         dispatch(toggleDashboardScroll(true));
       }
+    } else {
+      navigate(`/${target}`);
+      dispatch(setActiveTab(null));
     }
   };
 

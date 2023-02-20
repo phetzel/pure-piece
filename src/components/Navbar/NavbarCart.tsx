@@ -1,5 +1,4 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Box,
@@ -35,7 +34,6 @@ interface Props {
 
 const NavbarCart = ({ handleClose }: Props) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const appNavigate = useAppNavigation();
 
   const cartState = useSelector((state: RootState) => state.product.cartState);
@@ -50,7 +48,7 @@ const NavbarCart = ({ handleClose }: Props) => {
 
   const handleCheckout = () => {
     handleClose();
-    navigate("/checkout");
+    appNavigate("checkout");
   };
 
   const handleShop = () => {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { cloneElement } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   List,
@@ -6,6 +6,7 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  Typography,
 } from "@mui/material";
 
 // types
@@ -36,19 +37,43 @@ const NavbarMenu = ({ handleClose }: Props) => {
 
   return (
     <List>
-      {NAV_MENU_ITEMS.map((item) => (
-        <ListItem key={item.id} disablePadding>
-          <ListItemButton onClick={() => handleNavigate(item.label)}>
-            <ListItemIcon
-              color={tabState.activeTab === item.label ? "primary" : "inheirit"}
-              sx={navbarStyles.icons}
-            >
-              {item.icon}
-            </ListItemIcon>
-            <ListItemText sx={navbarStyles.text} primary={item.label} />
-          </ListItemButton>
-        </ListItem>
-      ))}
+      {NAV_MENU_ITEMS.map((item) => {
+        console.log(tabState.activeTab === item.label);
+        // console.log(item.label);
+        return (
+          <ListItem key={item.id} disablePadding>
+            <ListItemButton onClick={() => handleNavigate(item.label)}>
+              <ListItemIcon
+                color={
+                  tabState.activeTab === item.label ? "primary" : "inheirit"
+                }
+                sx={navbarStyles.icons}
+              >
+                {cloneElement(item.icon, {
+                  color:
+                    tabState.activeTab === item.label ? "primary" : "inheirit",
+                })}
+              </ListItemIcon>
+              <ListItemText
+                sx={navbarStyles.text}
+                disableTypography
+                primary={
+                  <Typography
+                    variant="h6"
+                    // sx={{
+                    color={
+                      tabState.activeTab === item.label ? "primary" : "inheirit"
+                    }
+                    // }}
+                  >
+                    {item.label}
+                  </Typography>
+                }
+              />
+            </ListItemButton>
+          </ListItem>
+        );
+      })}
     </List>
   );
 };

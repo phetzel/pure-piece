@@ -1,5 +1,6 @@
 export type AnchorType = "left" | "right";
 export type TabType = "Home" | "Products" | "About" | "Contact";
+export type LocationType = TabType | "checkout" | "admin";
 
 export interface MenuItemType {
   id: number;
@@ -19,7 +20,7 @@ interface DashboardStateType {
 }
 
 interface TabStateType {
-  activeTab: TabType;
+  activeTab: TabType | null;
 }
 
 export interface CommonStateType {

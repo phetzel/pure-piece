@@ -24,7 +24,9 @@ const Dashboard = ({}: Props) => {
   );
 
   useEffect(() => {
-    dashboardState.isScrollActive && handleScrollTo(tabState.activeTab);
+    dashboardState.isScrollActive &&
+      tabState.activeTab &&
+      handleScrollTo(tabState.activeTab);
     dispatch(toggleDashboardScroll(false));
   }, [dashboardState.isScrollActive]);
 

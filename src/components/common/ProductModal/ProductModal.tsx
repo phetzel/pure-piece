@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Box,
@@ -11,11 +10,11 @@ import {
   Modal,
   Typography,
 } from "@mui/material";
-
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 
 import { updateCart } from "../../../redux/slices/productSlice";
 import { ProductType } from "../../../types/productTypes";
+import useAppNavigation from "../../../hooks/useAppNavigation";
 
 export type Props = {
   isOpen: boolean;
@@ -44,13 +43,13 @@ const ProductModal = ({
 }: Props) => {
   const [quantity, setQuantity] = useState<number>(1);
   const quantityValuesArr = [Array.from({ length: 10 }, (_, i) => i + 1)];
+  const appNavigate = useAppNavigation();
 
   const handleChange = (event: SelectChangeEvent) => {
     setQuantity(+event.target.value);
   };
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleAddToCart = () => {
     product && dispatch(updateCart({ count: quantity, product: product }));
@@ -61,7 +60,7 @@ const ProductModal = ({
   const handleCheckout = () => {
     handleAddToCart();
     handleClose();
-    navigate("/checkout");
+    appNavigate("checkout");
   };
 
   return (

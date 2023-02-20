@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Box,
@@ -12,11 +11,6 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-
-import Select, { SelectChangeEvent } from "@mui/material/Select";
-
-import { updateCart } from "../../../redux/slices/productSlice";
-import { ProductType } from "../../../types/productTypes";
 
 export type Props = {
   isOpen: boolean;

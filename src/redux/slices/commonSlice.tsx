@@ -25,7 +25,7 @@ export const commonSlice = createSlice({
     closeDrawer: (state, action: PayloadAction<AnchorType>) => {
       state.drawerState[action.payload] = false;
     },
-    setActiveTab: (state, action: PayloadAction<TabType>) => {
+    setActiveTab: (state, action: PayloadAction<TabType | null>) => {
       state.tabState.activeTab = action.payload;
     },
     toggleDashboardScroll: (state, action: PayloadAction<boolean>) => {
