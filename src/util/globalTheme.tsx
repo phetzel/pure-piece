@@ -25,6 +25,7 @@ declare module "@mui/material/AppBar" {
 declare module "@mui/material/IconButton" {
   export interface IconButtonPropsColorOverrides {
     white: true;
+    black: true;
   }
 }
 
@@ -66,6 +67,13 @@ export const globalTheme: Theme = createTheme({
     //     },
     //   },
     // },
+    MuiLink: {
+      styleOverrides: {
+        root: {
+          cursor: "pointer",
+        },
+      },
+    },
     MuiSvgIcon: {
       styleOverrides: {
         root: {

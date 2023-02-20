@@ -9,6 +9,7 @@ interface Props {
   iconColor?:
     | "inherit"
     | "white"
+    | "black"
     | "default"
     | "primary"
     | "secondary"

@@ -42,7 +42,7 @@ const ProductModal = ({
   product,
   setAddedProductCount,
 }: Props) => {
-  const [quantity, setQuantity] = React.useState<number>(1);
+  const [quantity, setQuantity] = useState<number>(1);
   const quantityValuesArr = [Array.from({ length: 10 }, (_, i) => i + 1)];
 
   const handleChange = (event: SelectChangeEvent) => {

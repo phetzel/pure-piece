@@ -37,7 +37,9 @@ const DashboardProducts = ({}: Props) => {
       />
 
       <Grid item xs={12}>
-        <Typography variant="h3">Products</Typography>
+        <Typography variant="h3" sx={{ textAlign: "center" }}>
+          Products
+        </Typography>
         <Typography variant="body1" sx={{ marginBottom: "15px" }}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec posuere
           ligula ut consequat fringilla. Vivamus cursus pulvinar sapien et
