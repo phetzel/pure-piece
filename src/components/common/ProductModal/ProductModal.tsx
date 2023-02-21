@@ -60,7 +60,7 @@ const ProductModal = ({
   const handleCheckout = () => {
     handleAddToCart();
     handleClose();
-    appNavigate("checkout");
+    appNavigate("Checkout");
   };
 
   return (

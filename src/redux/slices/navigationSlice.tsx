@@ -1,8 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { AnchorType, CommonStateType, TabType } from "../../types/commonTypes";
+import {
+  DrawerAnchorType,
+  NavigationStateType,
+  LocationType,
+} from "../../types/navigationTypes";
 
-const initialCommonState: CommonStateType = {
+const initialNavigationState: NavigationStateType = {
   drawerState: {
     left: false,
     right: false,
@@ -15,17 +19,17 @@ const initialCommonState: CommonStateType = {
   },
 };
 
-export const commonSlice = createSlice({
-  name: "UpdateCommonAction",
-  initialState: initialCommonState,
+export const navigationSlice = createSlice({
+  name: "UpdateNavigationAction",
+  initialState: initialNavigationState,
   reducers: {
-    openDrawer: (state, action: PayloadAction<AnchorType>) => {
+    openDrawer: (state, action: PayloadAction<DrawerAnchorType>) => {
       state.drawerState[action.payload] = true;
     },
-    closeDrawer: (state, action: PayloadAction<AnchorType>) => {
+    closeDrawer: (state, action: PayloadAction<DrawerAnchorType>) => {
       state.drawerState[action.payload] = false;
     },
-    setActiveTab: (state, action: PayloadAction<TabType | null>) => {
+    setActiveTab: (state, action: PayloadAction<LocationType>) => {
       state.tabState.activeTab = action.payload;
     },
     toggleDashboardScroll: (state, action: PayloadAction<boolean>) => {
@@ -38,5 +42,5 @@ export const commonSlice = createSlice({
 });
 
 export const { openDrawer, closeDrawer, setActiveTab, toggleDashboardScroll } =
-  commonSlice.actions;
-export default commonSlice.reducer;
+  navigationSlice.actions;
+export default navigationSlice.reducer;

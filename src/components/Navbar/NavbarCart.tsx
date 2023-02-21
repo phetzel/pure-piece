@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   Box,
   Button,
-  Grid,
   Table,
   TableBody,
   TableCell,
@@ -19,12 +18,8 @@ import { updateCart, emptyCart } from "../../redux/slices/productSlice";
 import { RootState } from "../../redux/store";
 // types
 import { CartItem } from "../../types/productTypes";
-// constants
-import { NAV_MENU_ITEMS } from "../../constants/commonConstants";
 // component
 import NavbarCartItem from "./NavbarCartItem";
-// style
-import { navbarStyles } from "./styles";
 // hooks
 import useAppNavigation from "../../hooks/useAppNavigation";
 
@@ -48,7 +43,7 @@ const NavbarCart = ({ handleClose }: Props) => {
 
   const handleCheckout = () => {
     handleClose();
-    appNavigate("checkout");
+    appNavigate("Checkout");
   };
 
   const handleShop = () => {

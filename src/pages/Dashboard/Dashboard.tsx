@@ -4,9 +4,9 @@ import { Box, Button, Container, Grid } from "@mui/material";
 
 // redux
 import { RootState } from "../../redux/store";
-import { toggleDashboardScroll } from "../../redux/slices/commonSlice";
+import { toggleDashboardScroll } from "../../redux/slices/navigationSlice";
 // types
-import { TabType } from "../../types/commonTypes";
+import { TabType, LocationType } from "../../types/navigationTypes";
 // components
 import DashboardAbout from "./DashboardAbout";
 import DashboardContact from "./DashboardContact";
@@ -18,9 +18,9 @@ interface Props {}
 
 const Dashboard = ({}: Props) => {
   const dispatch = useDispatch();
-  const tabState = useSelector((state: RootState) => state.common.tabState);
+  const tabState = useSelector((state: RootState) => state.navigation.tabState);
   const dashboardState = useSelector(
-    (state: RootState) => state.common.dashboardState
+    (state: RootState) => state.navigation.dashboardState
   );
 
   useEffect(() => {
@@ -30,20 +30,24 @@ const Dashboard = ({}: Props) => {
     dispatch(toggleDashboardScroll(false));
   }, [dashboardState.isScrollActive]);
 
-  const handleScrollTo = (target: TabType) => {
+  const handleScrollTo = (target: LocationType) => {
     const targetIdObj = {
       Home: "#dashboardSplash",
       Products: "#dashboardProduct",
       About: "#dashboardAbout",
       Contact: "#dashboardContact",
+      Checkout: "#checkoutPage",
+      Admin: "#adminPage",
     };
 
-    const section = document.querySelector(targetIdObj[target]);
-    if (section) {
-      const scrollTop =
-        section.getBoundingClientRect().top + window.pageYOffset - 75;
+    if (targetIdObj[target]) {
+      const section = document.querySelector(targetIdObj[target]);
+      if (section) {
+        const scrollTop =
+          section.getBoundingClientRect().top + window.pageYOffset - 75;
 
-      window.scrollTo({ top: scrollTop, behavior: "smooth" });
+        window.scrollTo({ top: scrollTop, behavior: "smooth" });
+      }
     }
   };
 

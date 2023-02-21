@@ -1,11 +1,16 @@
-export type AnchorType = "left" | "right";
+export type DrawerAnchorType = "left" | "right";
 export type TabType = "Home" | "Products" | "About" | "Contact";
-export type LocationType = TabType | "checkout" | "admin";
+export type LocationType = TabType | "Checkout" | "Admin";
 
 export interface MenuItemType {
   id: number;
   icon: JSX.Element;
   label: TabType;
+  route: string;
+}
+
+export interface LocationItemType {
+  location: LocationType;
   route: string;
 }
 
@@ -20,10 +25,10 @@ interface DashboardStateType {
 }
 
 interface TabStateType {
-  activeTab: TabType | null;
+  activeTab: LocationType;
 }
 
-export interface CommonStateType {
+export interface NavigationStateType {
   drawerState: DrawerStateType;
   dashboardState: DashboardStateType;
   tabState: TabStateType;

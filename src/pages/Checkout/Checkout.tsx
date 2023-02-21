@@ -54,7 +54,12 @@ const Checkout = ({}: Props) => {
 
   return (
     <GridWrapper>
-      <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
+      <Container
+        component="main"
+        maxWidth="sm"
+        sx={{ mb: 4 }}
+        id="checkoutPage"
+      >
         <Paper
           variant="outlined"
           sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}

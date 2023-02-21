@@ -14,9 +14,9 @@ import useTheme from "@mui/material/styles/useTheme";
 
 // redux
 import { RootState } from "../../redux/store";
-import { openDrawer } from "../../redux/slices/commonSlice";
+import { openDrawer } from "../../redux/slices/navigationSlice";
 // constants
-import { NAV_MENU_ITEMS } from "../../constants/commonConstants";
+import { NAV_MENU_ITEMS } from "../../constants/navigationConstants";
 // component
 import CommonIconButton from "../common/CommonIconButton/CommonIconButton";
 // hooks
@@ -31,7 +31,7 @@ const Header = ({}: Props) => {
   const dispatch = useDispatch();
   const theme = useTheme();
 
-  const tabState = useSelector((state: RootState) => state.common.tabState);
+  const tabState = useSelector((state: RootState) => state.navigation.tabState);
   const cartState = useSelector((state: RootState) => state.product.cartState);
   const cartCount = cartState.length
     ? cartState.map((product) => product.count).reduce((a, b) => a + b)

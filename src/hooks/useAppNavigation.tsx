@@ -3,18 +3,25 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 // redux
-import { openDrawer } from "../redux/slices/commonSlice";
+import { openDrawer } from "../redux/slices/navigationSlice";
 import {
   setActiveTab,
   toggleDashboardScroll,
-} from "../redux/slices/commonSlice";
+} from "../redux/slices/navigationSlice";
 //  constants
-import { NAV_MENU_ITEMS } from "../constants/commonConstants";
+import {
+  NAV_MENU_ITEMS,
+  LOCATION_ITEMS,
+} from "../constants/navigationConstants";
 // types
-import { MenuItemType, LocationType, TabType } from "../types/commonTypes";
+import {
+  MenuItemType,
+  LocationItemType,
+  LocationType,
+  TabType,
+} from "../types/navigationTypes";
 
 interface Props {
-  // target: TabType;
   target: LocationType;
 }
 
@@ -23,20 +30,17 @@ const useAppNavigation = () => {
   const dispatch = useDispatch();
 
   const handleUseAppNavigation = (target: LocationType) => {
-    const targetItem: MenuItemType | undefined = NAV_MENU_ITEMS.find(
-      (item) => item.label === target
+    const targetItem: LocationItemType | undefined = LOCATION_ITEMS.find(
+      (item) => item.location === target
     );
 
     if (targetItem) {
-      dispatch(setActiveTab(targetItem.label));
       navigate(targetItem.route);
+      dispatch(setActiveTab(targetItem.location));
 
       if (targetItem.route === "/") {
         dispatch(toggleDashboardScroll(true));
       }
-    } else {
-      navigate(`/${target}`);
-      dispatch(setActiveTab(null));
     }
   };
 

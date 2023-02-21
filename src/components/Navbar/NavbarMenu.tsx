@@ -10,12 +10,12 @@ import {
 } from "@mui/material";
 
 // types
-import { TabType } from "../../types/commonTypes";
+import { TabType } from "../../types/navigationTypes";
 // redux
 import { RootState } from "../../redux/store";
-import { closeDrawer } from "../../redux/slices/commonSlice";
+import { closeDrawer } from "../../redux/slices/navigationSlice";
 // constants
-import { NAV_MENU_ITEMS } from "../../constants/commonConstants";
+import { NAV_MENU_ITEMS } from "../../constants/navigationConstants";
 // style
 import { navbarStyles } from "./styles";
 // hooks
@@ -28,7 +28,7 @@ interface Props {
 const NavbarMenu = ({ handleClose }: Props) => {
   const dispatch = useDispatch();
   const appNavigate = useAppNavigation();
-  const tabState = useSelector((state: RootState) => state.common.tabState);
+  const tabState = useSelector((state: RootState) => state.navigation.tabState);
 
   const handleNavigate = (target: TabType) => {
     appNavigate(target);
@@ -38,8 +38,6 @@ const NavbarMenu = ({ handleClose }: Props) => {
   return (
     <List>
       {NAV_MENU_ITEMS.map((item) => {
-        console.log(tabState.activeTab === item.label);
-        // console.log(item.label);
         return (
           <ListItem key={item.id} disablePadding>
             <ListItemButton onClick={() => handleNavigate(item.label)}>
@@ -60,11 +58,9 @@ const NavbarMenu = ({ handleClose }: Props) => {
                 primary={
                   <Typography
                     variant="h6"
-                    // sx={{
                     color={
                       tabState.activeTab === item.label ? "primary" : "inheirit"
                     }
-                    // }}
                   >
                     {item.label}
                   </Typography>

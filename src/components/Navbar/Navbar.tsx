@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 // redux
 import { RootState } from "../../redux/store";
-import { closeDrawer } from "../../redux/slices/commonSlice";
+import { closeDrawer } from "../../redux/slices/navigationSlice";
 
 // components
 import NavbarMenu from "./NavbarMenu";
@@ -17,7 +17,9 @@ import logoDark from "../../assets/images/logoDark.png";
 export interface Props {}
 
 const Navbar = ({}: Props) => {
-  const navState = useSelector((state: RootState) => state.common.drawerState);
+  const navState = useSelector(
+    (state: RootState) => state.navigation.drawerState
+  );
   const dispatch = useDispatch();
 
   const handleClose = (side: "left" | "right") => {
