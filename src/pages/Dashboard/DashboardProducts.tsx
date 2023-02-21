@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import { Box, Container, Grid, Snackbar, Typography } from "@mui/material";
-import Slide, { SlideProps } from "@mui/material/Slide";
+import { Box, Grid, Snackbar, Typography } from "@mui/material";
 
 // constants
 import { PRODUCTS } from "../../constants/productConstants";
 import ProductCard from "../../components/common/ProductCard/ProductCard";
-import ProductModal from "../../components/common/ProductModal/ProductModal";
+import ProductModal from "../../components/Modals/ProductModal/ProductModal";
 import dashboardStyles from "./styles/dashboardStyles";
 import { ProductType } from "../../types/productTypes";
 
@@ -15,9 +14,6 @@ const DashboardProducts = ({}: Props) => {
   const [focusedProduct, setFocusedProduct] = useState<ProductType>();
   const [addedProductCount, setAddedProductCount] = useState<number>(0);
 
-  function SlideTransition(props: SlideProps) {
-    return <Slide {...props} direction="up" />;
-  }
   return (
     <Box sx={dashboardStyles.section} id="dashboardProduct">
       <ProductModal
@@ -29,7 +25,6 @@ const DashboardProducts = ({}: Props) => {
       <Snackbar
         open={addedProductCount > 0 ? true : false}
         onClose={() => setAddedProductCount(0)}
-        // TransitionComponent={SlideTransition()}
         message={`${addedProductCount} product${
           addedProductCount > 1 ? "s" : ""
         } added to cart`}

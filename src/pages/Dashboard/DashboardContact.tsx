@@ -6,17 +6,26 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import dashboardStyles from "./styles/dashboardStyles";
 // compomnent
 import CommonIconButton from "../../components/common/CommonIconButton/CommonIconButton";
-import ContactModal from "../../components/common/ContactModal/ContactModal";
+import ContactModal from "../../components/Modals/ContactModal/ContactModal";
+import SubscribeModal from "../../components/Modals/SubscribeModal/SubscribeModal";
 
 interface Props {}
 
 const DashboardContact = ({}: Props) => {
   const [isContactModalOpen, setIsContactModalOpen] = useState<boolean>(false);
+  const [isSubscribeModalOpen, setIsSubscribeModalOpen] =
+    useState<boolean>(false);
+
   return (
     <Grid item xs={12} sx={dashboardStyles.section} id="dashboardContact">
+      {/* modals */}
       <ContactModal
         isOpen={isContactModalOpen ? true : false}
         handleClose={() => setIsContactModalOpen(false)}
+      />
+      <SubscribeModal
+        isOpen={isSubscribeModalOpen ? true : false}
+        handleClose={() => setIsSubscribeModalOpen(false)}
       />
 
       <Grid container spacing={1}>
@@ -76,7 +85,7 @@ const DashboardContact = ({}: Props) => {
               marginBottom: "15px",
               alignSelf: "center",
             }}
-            onClick={() => setIsContactModalOpen(true)}
+            onClick={() => setIsSubscribeModalOpen(true)}
           >
             Subscribe
           </Link>

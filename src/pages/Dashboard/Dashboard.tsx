@@ -1,12 +1,12 @@
 import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Box, Button, Container, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 
 // redux
 import { RootState } from "../../redux/store";
 import { toggleDashboardScroll } from "../../redux/slices/navigationSlice";
 // types
-import { TabType, LocationType } from "../../types/navigationTypes";
+import { LocationType } from "../../types/navigationTypes";
 // components
 import DashboardAbout from "./DashboardAbout";
 import DashboardContact from "./DashboardContact";
@@ -19,16 +19,16 @@ interface Props {}
 const Dashboard = ({}: Props) => {
   const dispatch = useDispatch();
   const tabState = useSelector((state: RootState) => state.navigation.tabState);
-  const dashboardState = useSelector(
-    (state: RootState) => state.navigation.dashboardState
+  const scrollState = useSelector(
+    (state: RootState) => state.navigation.scrollState
   );
 
   useEffect(() => {
-    dashboardState.isScrollActive &&
+    scrollState.isScrollActive &&
       tabState.activeTab &&
       handleScrollTo(tabState.activeTab);
     dispatch(toggleDashboardScroll(false));
-  }, [dashboardState.isScrollActive]);
+  }, [scrollState.isScrollActive]);
 
   const handleScrollTo = (target: LocationType) => {
     const targetIdObj = {

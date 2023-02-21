@@ -11,7 +11,7 @@ const initialNavigationState: NavigationStateType = {
     left: false,
     right: false,
   },
-  dashboardState: {
+  scrollState: {
     isScrollActive: false,
   },
   tabState: {
@@ -33,7 +33,7 @@ export const navigationSlice = createSlice({
       state.tabState.activeTab = action.payload;
     },
     toggleDashboardScroll: (state, action: PayloadAction<boolean>) => {
-      state.dashboardState.isScrollActive = action.payload;
+      state.scrollState.isScrollActive = action.payload;
     },
     default: (state) => {
       return state;

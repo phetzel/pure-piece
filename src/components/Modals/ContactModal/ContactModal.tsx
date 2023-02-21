@@ -12,21 +12,11 @@ import {
   Typography,
 } from "@mui/material";
 
+import CommonModal from "../../common/CommonModal/CommonModal";
+
 export type Props = {
   isOpen: boolean;
   handleClose: () => void;
-};
-
-const style = {
-  position: "absolute" as "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 500,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
 };
 
 const ContactModal = ({ isOpen, handleClose }: Props) => {
@@ -39,16 +29,8 @@ const ContactModal = ({ isOpen, handleClose }: Props) => {
   };
 
   return (
-    <Modal
-      open={isOpen}
-      onClose={handleClose}
-      aria-labelledby="modal-modal-title"
-      aria-describedby="modal-modal-description"
-    >
-      <Box sx={style}>
-        <Typography variant="h5" color="black">
-          Contact Us
-        </Typography>
+    <CommonModal isOpen={isOpen} handleClose={handleClose} title={"Contact Us"}>
+      <Box>
         <TextField
           margin="normal"
           required
@@ -88,7 +70,7 @@ const ContactModal = ({ isOpen, handleClose }: Props) => {
           Send
         </Button>
       </Box>
-    </Modal>
+    </CommonModal>
   );
 };
 
