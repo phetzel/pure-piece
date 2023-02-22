@@ -12,6 +12,7 @@ import {
 } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
+import { toggleLoading } from "../../redux/slices/navigationSlice";
 import { adminLoggedIn } from "../../redux/slices/adminSlice";
 import { handleLogin } from "../../services/userServices";
 import { isValidEmail } from "../../util/utilFunctions";
@@ -37,6 +38,7 @@ const Admin = ({}: Props) => {
 
     if (validForm) {
       setIsFormDisabled(true);
+      dispatch(toggleLoading(true));
 
       handleLogin({
         email: email,
@@ -44,9 +46,9 @@ const Admin = ({}: Props) => {
       })
         .then((res) => {
           setIsFormDisabled(false);
+          dispatch(toggleLoading(false));
 
           if (res.code === 200) {
-            console.log("res.status === 200", res);
             dispatch(adminLoggedIn(res.data));
             appNavigate("Console");
           } else if (typeof res === "string") {
@@ -58,6 +60,8 @@ const Admin = ({}: Props) => {
           }
         })
         .catch((err) => {
+          setIsFormDisabled(false);
+          dispatch(toggleLoading(false));
           setFormErr("Unsuccessful login request");
         });
     }

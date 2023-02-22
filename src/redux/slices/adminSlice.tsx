@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AdminStateType, UserType } from "../../types/adminTypes";
 
 const initialAdminState: AdminStateType = {
-  admin: null,
+  adminState: null,
 };
 
 export const adminSlice = createSlice({
@@ -11,10 +11,10 @@ export const adminSlice = createSlice({
   initialState: initialAdminState,
   reducers: {
     adminLoggedIn: (state, action: PayloadAction<UserType>) => {
-      state.admin = action.payload;
+      state.adminState = action.payload;
     },
     adminLoggedOut: (state, action: PayloadAction<null>) => {
-      state.admin = null;
+      state.adminState = null;
     },
     default: (state) => {
       return state;

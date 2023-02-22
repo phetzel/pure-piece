@@ -5,5 +5,5 @@ export interface UserType {
 }
 
 export interface AdminStateType {
-  admin: UserType | null;
+  adminState: UserType | null;
 }

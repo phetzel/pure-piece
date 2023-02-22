@@ -9,7 +9,7 @@ interface Props {
 }
 
 const AuthRoute = ({ children }: Props) => {
-  const adminState = useSelector((state: RootState) => state.admin.admin);
+  const adminState = useSelector((state: RootState) => state.admin.adminState);
 
   return adminState ? children : <Navigate to={{ pathname: "/admin" }} />;
 };

@@ -20,6 +20,10 @@ interface DrawerStateType {
   right: boolean;
 }
 
+interface LoadStateType {
+  isLoading: boolean;
+}
+
 interface ScrollStateType {
   isScrollActive: boolean;
 }
@@ -30,6 +34,7 @@ interface TabStateType {
 
 export interface NavigationStateType {
   drawerState: DrawerStateType;
+  loadState: LoadStateType;
   scrollState: ScrollStateType;
   tabState: TabStateType;
 }

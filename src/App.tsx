@@ -11,6 +11,7 @@ import store from "./redux/store";
 // Components
 import AuthRoute from "./components/AuthRoute/AuthRoute";
 import Header from "./components/Header/Header";
+import LoadingSpinner from "./components/LoadingSpinner/LoadingSpinner";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 
@@ -32,6 +33,7 @@ function App() {
 
           <Header />
           <Navbar />
+          <LoadingSpinner />
 
           <Routes>
             <Route path="/" element={<Dashboard />} />

@@ -11,6 +11,9 @@ const initialNavigationState: NavigationStateType = {
     left: false,
     right: false,
   },
+  loadState: {
+    isLoading: false,
+  },
   scrollState: {
     isScrollActive: false,
   },
@@ -32,6 +35,9 @@ export const navigationSlice = createSlice({
     setActiveTab: (state, action: PayloadAction<LocationType>) => {
       state.tabState.activeTab = action.payload;
     },
+    toggleLoading: (state, action: PayloadAction<boolean>) => {
+      state.loadState.isLoading = action.payload;
+    },
     toggleDashboardScroll: (state, action: PayloadAction<boolean>) => {
       state.scrollState.isScrollActive = action.payload;
     },
@@ -41,6 +47,11 @@ export const navigationSlice = createSlice({
   },
 });
 
-export const { openDrawer, closeDrawer, setActiveTab, toggleDashboardScroll } =
-  navigationSlice.actions;
+export const {
+  openDrawer,
+  closeDrawer,
+  setActiveTab,
+  toggleLoading,
+  toggleDashboardScroll,
+} = navigationSlice.actions;
 export default navigationSlice.reducer;
