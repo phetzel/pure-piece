@@ -14,16 +14,7 @@ import {
   LOCATION_ITEMS,
 } from "../constants/navigationConstants";
 // types
-import {
-  MenuItemType,
-  LocationItemType,
-  LocationType,
-  TabType,
-} from "../types/navigationTypes";
-
-interface Props {
-  target: LocationType;
-}
+import { LocationItemType, LocationType } from "../types/navigationTypes";
 
 const useAppNavigation = () => {
   const navigate = useNavigate();

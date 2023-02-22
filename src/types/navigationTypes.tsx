@@ -1,6 +1,6 @@
 export type DrawerAnchorType = "left" | "right";
 export type TabType = "Home" | "Products" | "About" | "Contact";
-export type LocationType = TabType | "Checkout" | "Admin";
+export type LocationType = TabType | "Checkout" | "Admin" | "Console";
 
 export interface MenuItemType {
   id: number;

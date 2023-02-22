@@ -38,6 +38,7 @@ const Dashboard = ({}: Props) => {
       Contact: "#dashboardContact",
       Checkout: "#checkoutPage",
       Admin: "#adminPage",
+      Console: "#consolePage",
     };
 
     if (targetIdObj[target]) {

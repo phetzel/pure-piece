@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Routes, Route } from "react-router-dom";
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
@@ -8,6 +9,7 @@ import { Provider } from "react-redux";
 import store from "./redux/store";
 
 // Components
+import AuthRoute from "./components/AuthRoute/AuthRoute";
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
@@ -15,6 +17,7 @@ import Footer from "./components/Footer/Footer";
 // Pages
 import Admin from "./pages/Admin/Admin";
 import Checkout from "./pages/Checkout/Checkout";
+import Console from "./pages/Console/Console";
 import Dashboard from "./pages/Dashboard/Dashboard";
 
 // styles
@@ -34,6 +37,14 @@ function App() {
             <Route path="/" element={<Dashboard />} />
             <Route path="admin" element={<Admin />} />
             <Route path="checkout" element={<Checkout />} />
+            <Route
+              path="console"
+              element={
+                <AuthRoute>
+                  <Console />
+                </AuthRoute>
+              }
+            />
           </Routes>
 
           {/* <Footer /> */}

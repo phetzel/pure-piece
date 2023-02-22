@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import {
   Avatar,
   Box,
@@ -11,32 +12,68 @@ import {
 } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
-// import { handleLogin, handleRegister } from "../../services/userServices";
+import { adminLoggedIn } from "../../redux/slices/adminSlice";
+import { handleLogin } from "../../services/userServices";
+import { isValidEmail } from "../../util/utilFunctions";
+import useAppNavigation from "../../hooks/useAppNavigation";
 import GridWrapper from "../../components/common/GridWrapper/GridWrapper";
 import adminStyles from "./styles/adminStyles";
 
 interface Props {}
 
 const Admin = ({}: Props) => {
-  const [userName, setUserName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [formErr, setFormErr] = useState<string>("");
+  const [isFormDisabled, setIsFormDisabled] = useState<boolean>(false);
 
-  // const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-  //   event.preventDefault();
-  //   const data = new FormData(event.currentTarget);
-  //   console.log({
-  //     email: data.get("email"),
-  //     password: data.get("password"),
-  //   });
-  //   const _email: string = `${data.get("email")}`;
-  //   const _password: string = `${data.get("password")}`;
+  const dispatch = useDispatch();
+  const appNavigate = useAppNavigation();
 
-  //   console.log(typeof _email);
-  //   handleLogin({
-  //     email: _email,
-  //     password: _password,
-  //   });
-  // };
+  const handleSubmit = () => {
+    setFormErr("");
+
+    const validForm = handleValidate();
+
+    if (validForm) {
+      setIsFormDisabled(true);
+
+      handleLogin({
+        email: email,
+        password: password,
+      })
+        .then((res) => {
+          setIsFormDisabled(false);
+
+          if (res.code === 200) {
+            console.log("res.status === 200", res);
+            dispatch(adminLoggedIn(res.data));
+            appNavigate("Console");
+          } else if (typeof res === "string") {
+            console.log("typeof res === 'string'");
+            setFormErr(res);
+          } else {
+            console.log("else");
+            setFormErr("Unsuccessful login request");
+          }
+        })
+        .catch((err) => {
+          setFormErr("Unsuccessful login request");
+        });
+    }
+  };
+
+  const handleValidate = () => {
+    if (!email || !isValidEmail(email)) {
+      setFormErr("Enter valid email");
+      return false;
+    } else if (!password) {
+      setFormErr("Enter valid password");
+      return false;
+    }
+
+    return true;
+  };
 
   return (
     <GridWrapper>
@@ -58,11 +95,12 @@ const Admin = ({}: Props) => {
               margin="normal"
               required
               fullWidth
-              id="email"
+              id="adminEmail"
               label="Email Address"
               name="email"
               autoComplete="email"
               autoFocus
+              onChange={(e) => setEmail(e.target.value)}
             />
             <TextField
               margin="normal"
@@ -71,18 +109,27 @@ const Admin = ({}: Props) => {
               name="password"
               label="Password"
               type="password"
-              id="password"
+              id="adminPasword"
               autoComplete="current-password"
+              onChange={(e) => setPassword(e.target.value)}
             />
+
+            {formErr && (
+              <Typography variant="body2" color="error">
+                {formErr}
+              </Typography>
+            )}
+
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
             <Button
-              type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              onClick={handleSubmit}
+              disabled={isFormDisabled}
             >
               Sign In
             </Button>

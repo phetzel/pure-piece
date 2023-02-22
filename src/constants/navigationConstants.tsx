@@ -51,4 +51,8 @@ export const LOCATION_ITEMS: LocationItemType[] = [
     location: "Admin",
     route: "/admin",
   },
+  {
+    location: "Console",
+    route: "/console",
+  },
 ];
