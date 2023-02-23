@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   Box,
   Button,
@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 
+import { updateToastState } from "../../../redux/slices/navigationSlice";
 import { updateCart } from "../../../redux/slices/productSlice";
 import { ProductType } from "../../../types/productTypes";
 import useAppNavigation from "../../../hooks/useAppNavigation";
@@ -21,17 +22,10 @@ export type Props = {
   isOpen: boolean;
   handleClose: () => void;
   product: ProductType | undefined;
-  setAddedProductCount: (num: number) => void;
 };
 
-const ProductModal = ({
-  isOpen,
-  handleClose,
-  product,
-  setAddedProductCount,
-}: Props) => {
+const ProductModal = ({ isOpen, handleClose, product }: Props) => {
   const [quantity, setQuantity] = useState<number>(1);
-  const quantityValuesArr = [Array.from({ length: 10 }, (_, i) => i + 1)];
   const appNavigate = useAppNavigation();
 
   const handleChange = (event: SelectChangeEvent) => {
@@ -42,8 +36,13 @@ const ProductModal = ({
 
   const handleAddToCart = () => {
     product && dispatch(updateCart({ count: quantity, product: product }));
+    dispatch(
+      updateToastState({
+        severity: "success",
+        children: `${quantity} product${quantity > 1 ? "s" : ""} added to cart`,
+      })
+    );
     handleClose();
-    setAddedProductCount(quantity);
   };
 
   const handleCheckout = () => {

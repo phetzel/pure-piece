@@ -1,17 +1,69 @@
 import React, { useState } from "react";
 import { Box, Button, TextField, Typography } from "@mui/material";
+import { useDispatch } from "react-redux";
 
 import CommonModal from "../../common/CommonModal/CommonModal";
+import {
+  toggleLoading,
+  updateToastState,
+} from "../../../redux/slices/navigationSlice";
+import { addSubscription } from "../../../services/subscriptionServices";
+import { isValidEmail } from "../../../util/utilFunctions";
 
 export type Props = {
   isOpen: boolean;
   handleClose: () => void;
 };
+
 const SubscribeModal = ({ isOpen, handleClose }: Props) => {
   const [email, setEmail] = useState<string>("");
+  const [isFormDisabled, setIsFormDisabled] = useState<boolean>(false);
+  const [formErr, setFormErr] = useState<string>("");
+
+  const dispatch = useDispatch();
 
   const handleSubscribe = () => {
-    console.log(email);
+    setFormErr("");
+
+    const isValidForm = handleValidate();
+    if (isValidForm) {
+      setIsFormDisabled(true);
+      dispatch(toggleLoading(true));
+
+      addSubscription({
+        email: email,
+      })
+        .then((res) => {
+          setIsFormDisabled(false);
+          dispatch(toggleLoading(false));
+
+          if (res) {
+            dispatch(
+              updateToastState({
+                severity: "success",
+                children: "Subscribed to emailing list",
+              })
+            );
+            handleClose();
+          } else {
+            setFormErr("Unsuccessful subscription request");
+          }
+        })
+        .catch((err) => {
+          setIsFormDisabled(false);
+          dispatch(toggleLoading(false));
+          setFormErr("Unsuccessful subscription request");
+        });
+    }
+  };
+
+  const handleValidate = () => {
+    if (!email || !isValidEmail(email)) {
+      setFormErr("Enter valid email");
+      return false;
+    }
+
+    return true;
   };
 
   return (
@@ -30,7 +82,14 @@ const SubscribeModal = ({ isOpen, handleClose }: Props) => {
           name="email"
           autoComplete="email"
           autoFocus
+          onChange={(e) => setEmail(e.target.value)}
         />
+
+        {formErr && (
+          <Typography variant="body2" color="error">
+            {formErr}
+          </Typography>
+        )}
         <Button
           variant="contained"
           color="primary"
@@ -38,6 +97,7 @@ const SubscribeModal = ({ isOpen, handleClose }: Props) => {
             fontSize: "12px",
           }}
           onClick={handleSubscribe}
+          disabled={isFormDisabled}
         >
           Subscribe
         </Button>

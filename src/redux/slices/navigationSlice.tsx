@@ -4,6 +4,7 @@ import {
   DrawerAnchorType,
   NavigationStateType,
   LocationType,
+  ToastType,
 } from "../../types/navigationTypes";
 
 const initialNavigationState: NavigationStateType = {
@@ -19,6 +20,9 @@ const initialNavigationState: NavigationStateType = {
   },
   tabState: {
     activeTab: "Home",
+  },
+  toastState: {
+    toast: null,
   },
 };
 
@@ -41,6 +45,9 @@ export const navigationSlice = createSlice({
     toggleDashboardScroll: (state, action: PayloadAction<boolean>) => {
       state.scrollState.isScrollActive = action.payload;
     },
+    updateToastState: (state, action: PayloadAction<ToastType | null>) => {
+      state.toastState.toast = action.payload;
+    },
     default: (state) => {
       return state;
     },
@@ -51,6 +58,7 @@ export const {
   openDrawer,
   closeDrawer,
   setActiveTab,
+  updateToastState,
   toggleLoading,
   toggleDashboardScroll,
 } = navigationSlice.actions;

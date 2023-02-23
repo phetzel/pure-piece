@@ -1,7 +1,7 @@
 import React from "react";
 import { Avatar, Badge, Box, Grid, Typography } from "@mui/material";
 
-import { EndorsementType } from "../../../types/aboutTypes";
+import { EndorsementType } from "../../types/aboutTypes";
 
 export type Props = {
   endorsement: EndorsementType;

@@ -3,7 +3,7 @@ import { Box, Grid, Snackbar, Typography } from "@mui/material";
 
 // constants
 import { PRODUCTS } from "../../constants/productConstants";
-import ProductCard from "../../components/common/ProductCard/ProductCard";
+import ProductCard from "../../components/ProductCard/ProductCard";
 import ProductModal from "../../components/Modals/ProductModal/ProductModal";
 import dashboardStyles from "./styles/dashboardStyles";
 import { ProductType } from "../../types/productTypes";
@@ -20,15 +20,6 @@ const DashboardProducts = ({}: Props) => {
         isOpen={focusedProduct ? true : false}
         handleClose={() => setFocusedProduct(undefined)}
         product={focusedProduct}
-        setAddedProductCount={setAddedProductCount}
-      />
-      <Snackbar
-        open={addedProductCount > 0 ? true : false}
-        onClose={() => setAddedProductCount(0)}
-        message={`${addedProductCount} product${
-          addedProductCount > 1 ? "s" : ""
-        } added to cart`}
-        key={"productSnackbar"}
       />
 
       <Grid item xs={12}>

@@ -1,7 +1,9 @@
+import { AlertProps } from "@mui/material/Alert";
+
 export type DrawerAnchorType = "left" | "right";
 export type TabType = "Home" | "Products" | "About" | "Contact";
 export type LocationType = TabType | "Checkout" | "Admin" | "Console";
-
+export type ToastType = Pick<AlertProps, "children" | "severity">;
 export interface MenuItemType {
   id: number;
   icon: JSX.Element;
@@ -32,9 +34,14 @@ interface TabStateType {
   activeTab: LocationType;
 }
 
+interface ToastStateType {
+  toast: ToastType | null;
+}
+
 export interface NavigationStateType {
   drawerState: DrawerStateType;
   loadState: LoadStateType;
   scrollState: ScrollStateType;
   tabState: TabStateType;
+  toastState: ToastStateType;
 }

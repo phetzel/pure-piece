@@ -11,8 +11,6 @@ const LoadingSpinner = ({}: Props) => {
     (state: RootState) => state.navigation.loadState
   );
 
-  console.log(loadState.isLoading);
-
   return (
     <Backdrop
       sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}

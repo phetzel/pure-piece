@@ -52,10 +52,8 @@ const Admin = ({}: Props) => {
             dispatch(adminLoggedIn(res.data));
             appNavigate("Console");
           } else if (typeof res === "string") {
-            console.log("typeof res === 'string'");
             setFormErr(res);
           } else {
-            console.log("else");
             setFormErr("Unsuccessful login request");
           }
         })

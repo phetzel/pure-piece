@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Divider, Grid, Typography } from "@mui/material";
 
-import EndorsementCard from "../../components/common/EndorsementCard/EndorsementCard";
+import EndorsementCard from "../../components/EndorsementCard/EndorsementCard";
 import ryan from "../../assets/images/ryan.png";
 import about from "../../assets/images/about.jpg";
 import { ENDORSEMENTS } from "../../constants/aboutConstants";
