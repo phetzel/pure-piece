@@ -3,8 +3,9 @@ import { useDispatch } from "react-redux";
 import { Box, Button, Container, Tab, Tabs, Typography } from "@mui/material";
 
 import { adminLoggedOut } from "../../redux/slices/adminSlice";
-import GridWrapper from "../../components/common/GridWrapper/GridWrapper";
+import GridWrapper from "../../components/Wrappers/GridWrapper/GridWrapper";
 import ConsoleEmail from "./ConsoleEmail";
+import ConsoleProduct from "./ConsoleProduct";
 
 interface Props {}
 
@@ -19,6 +20,8 @@ const Console = ({}: Props) => {
 
   const renderTabContent = () => {
     switch (selectedTab) {
+      case 0:
+        return <ConsoleProduct />;
       case 1:
         return <ConsoleEmail />;
       default:

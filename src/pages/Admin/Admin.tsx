@@ -17,7 +17,7 @@ import { adminLoggedIn } from "../../redux/slices/adminSlice";
 import { handleLogin } from "../../services/userServices";
 import { isValidEmail } from "../../util/utilFunctions";
 import useAppNavigation from "../../hooks/useAppNavigation";
-import GridWrapper from "../../components/common/GridWrapper/GridWrapper";
+import GridWrapper from "../../components/Wrappers/GridWrapper/GridWrapper";
 import adminStyles from "./styles/adminStyles";
 
 interface Props {}

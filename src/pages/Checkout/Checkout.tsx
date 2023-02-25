@@ -3,13 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   Box,
   Container,
-  Toolbar,
   Paper,
   Stepper,
   Step,
   StepLabel,
   Button,
-  Link,
   Typography,
 } from "@mui/material";
 
@@ -17,7 +15,7 @@ import {
 import { RootState } from "../../redux/store";
 
 // components
-import GridWrapper from "../../components/common/GridWrapper/GridWrapper";
+import GridWrapper from "../../components/Wrappers/GridWrapper/GridWrapper";
 import CheckoutAddressForm from "./CheckoutAddressForm";
 import CheckoutPaymentForm from "./CheckoutPaymentForm";
 import CheckoutReview from "./CheckoutReview";

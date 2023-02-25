@@ -1,16 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  Box,
-  Button,
-  FormControl,
-  Grid,
-  InputLabel,
-  MenuItem,
-  Modal,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Button, TextField } from "@mui/material";
 
 import CommonModal from "../../common/CommonModal/CommonModal";
 
@@ -47,7 +37,7 @@ const ContactModal = ({ isOpen, handleClose }: Props) => {
           fullWidth
           id="contactSubject"
           label="Email Subject"
-          name="email"
+          name="emailubject"
         />
         <TextField
           margin="normal"

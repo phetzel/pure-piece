@@ -1,24 +1,24 @@
 import React, { useState } from "react";
 import { Box, Button, Container, Tab, Tabs, Typography } from "@mui/material";
 
-import ConsoelEmailForm from "./ConsoleEmailForm";
-import ConsoleEmailSubscriptions from "./ConsoleEmailSubscriptions";
+import ConsoleProductForm from "./ConsoleProductForm";
+import ConsoleProductList from "./ConsoleProductList";
 
 export type Props = {};
 
-const ConsoleEmail = ({}: Props) => {
-  const [emailTab, setEmailTab] = useState<number>(0);
+const ConsoleProduct = ({}: Props) => {
+  const [productTab, setProductTab] = useState<number>(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setEmailTab(newValue);
+    setProductTab(newValue);
   };
 
   const renderTabContent = () => {
-    switch (emailTab) {
+    switch (productTab) {
       case 0:
-        return <ConsoelEmailForm />;
+        return <ConsoleProductList />;
       case 1:
-        return <ConsoleEmailSubscriptions />;
+        return <ConsoleProductForm />;
       default:
         return <Typography>Select Tab</Typography>;
     }
@@ -28,12 +28,12 @@ const ConsoleEmail = ({}: Props) => {
     <Box>
       <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
         <Tabs
-          value={emailTab}
+          value={productTab}
           onChange={handleChange}
           aria-label="Admin Console Tabs"
         >
-          <Tab label="Send Newsletter" />
-          <Tab label="Subscription List" />
+          <Tab label="Product List" />
+          <Tab label="Add Product" />
         </Tabs>
       </Box>
 
@@ -42,4 +42,4 @@ const ConsoleEmail = ({}: Props) => {
   );
 };
 
-export default ConsoleEmail;
+export default ConsoleProduct;

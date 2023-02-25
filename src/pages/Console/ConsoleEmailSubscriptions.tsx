@@ -21,7 +21,7 @@ import {
 export type Props = {};
 
 const ConsoleEmailSubscriptions = ({}: Props) => {
-  const [sunscriptions, setSubscriptions] = useState<SubscriptionType[]>([]);
+  const [subscriptions, setSubscriptions] = useState<SubscriptionType[]>([]);
 
   const dispatch = useDispatch();
 
@@ -98,7 +98,7 @@ const ConsoleEmailSubscriptions = ({}: Props) => {
   return (
     <Box sx={{ height: 400, width: "100%" }}>
       <DataGrid
-        rows={sunscriptions}
+        rows={subscriptions}
         columns={columns}
         disableSelectionOnClick
         experimentalFeatures={{ newEditingApi: true }}

@@ -12,7 +12,7 @@ import DashboardAbout from "./DashboardAbout";
 import DashboardContact from "./DashboardContact";
 import DashboardProducts from "./DashboardProducts";
 import DashboardSplash from "./DashboardSplash";
-import GridWrapper from "../../components/common/GridWrapper/GridWrapper";
+import GridWrapper from "../../components/Wrappers/GridWrapper/GridWrapper";
 
 interface Props {}
 
