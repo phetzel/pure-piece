@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Grid } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 
 // redux
 import { RootState } from "../../redux/store";
@@ -53,14 +53,16 @@ const Dashboard = ({}: Props) => {
   };
 
   return (
-    <GridWrapper>
-      <Grid container>
-        <DashboardSplash />
-        <DashboardProducts />
-        <DashboardAbout />
-        <DashboardContact />
-      </Grid>
-    </GridWrapper>
+    <Box>
+      <DashboardSplash />
+      <GridWrapper>
+        <Grid container>
+          <DashboardProducts />
+          <DashboardAbout />
+          <DashboardContact />
+        </Grid>
+      </GridWrapper>
+    </Box>
   );
 };
 

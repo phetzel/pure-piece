@@ -1,6 +1,14 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Box, Button, Container, Tab, Tabs, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  Fab,
+  Tab,
+  Tabs,
+  Typography,
+} from "@mui/material";
 
 import { adminLoggedOut } from "../../redux/slices/adminSlice";
 import GridWrapper from "../../components/Wrappers/GridWrapper/GridWrapper";
@@ -32,7 +40,15 @@ const Console = ({}: Props) => {
   return (
     <GridWrapper>
       <Container component="main" maxWidth="lg">
-        <Button onClick={() => dispatch(adminLoggedOut(null))}>Log out</Button>
+        <Fab
+          variant="extended"
+          // color="secondary"
+          onClick={() => dispatch(adminLoggedOut(null))}
+          sx={{ position: "absolute", right: "50px" }}
+          size="small"
+        >
+          Log Out
+        </Fab>
 
         <Box sx={{ width: "100%" }}>
           <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
