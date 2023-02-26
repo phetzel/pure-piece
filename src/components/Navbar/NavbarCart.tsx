@@ -10,7 +10,6 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
-import TableContainer from "@mui/material/TableContainer";
 
 import { updateCart, emptyCart } from "../../redux/slices/productSlice";
 

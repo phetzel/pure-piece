@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Container, Grid, Link, Typography } from "@mui/material";
+import { Container, Grid, Link, Typography } from "@mui/material";
 import InstagramIcon from "@mui/icons-material/Instagram";
 
 // constants

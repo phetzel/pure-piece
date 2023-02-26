@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Box,
-  Grid,
-  List,
-  ListItem,
-  ListItemText,
-  Typography,
-} from "@mui/material";
+import { Box, List, ListItem, ListItemText, Typography } from "@mui/material";
 
 // types
 import { CartItem } from "../../types/productTypes";

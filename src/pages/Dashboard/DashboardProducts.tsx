@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Container, Grid, Snackbar, Typography } from "@mui/material";
+import { Container, Grid } from "@mui/material";
 
 import CommonTitle from "../../components/common/CommonTitle/CommonTitle";
 import { PRODUCTS } from "../../constants/productConstants";

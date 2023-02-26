@@ -1,10 +1,8 @@
 import React from "react";
-import { Box, Button, Container, Grid, Typography } from "@mui/material";
-import { useDispatch, useSelector } from "react-redux";
+import { Box, Button, Grid, Typography } from "@mui/material";
 
 import dashboardStyles from "./styles/dashboardStyles";
 import logoDark from "../../assets/images/logoDark.png";
-import highFive from "../../assets/images/highFive.png";
 // hooks
 import useAppNavigation from "../../hooks/useAppNavigation";
 
