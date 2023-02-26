@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
@@ -13,7 +12,7 @@ import AuthRoute from "./components/AuthRoute/AuthRoute";
 import Header from "./components/Header/Header";
 import LoadingSpinner from "./components/LoadingSpinner/LoadingSpinner";
 import Navbar from "./components/Navbar/Navbar";
-import Footer from "./components/Footer/Footer";
+// import Footer from "./components/Footer/Footer";
 import Toast from "./components/Toast/Toast";
 
 // Pages

@@ -1,4 +1,4 @@
-export default {
+const adminStyles = {
   loginContainer: {
     marginTop: 8,
     display: "flex",
@@ -6,3 +6,5 @@ export default {
     alignItems: "center",
   },
 };
+
+export default adminStyles;

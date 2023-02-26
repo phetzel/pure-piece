@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Box, Button, Divider, Drawer, Typography } from "@mui/material";
+import React from "react";
+import { Box, Divider, Drawer, Typography } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 
 // redux
@@ -22,9 +22,6 @@ const Navbar = ({}: Props) => {
   );
   const dispatch = useDispatch();
 
-  const handleClose = (side: "left" | "right") => {
-    dispatch(closeDrawer(side));
-  };
   return (
     <div>
       {(["left", "right"] as const).map((item) => (

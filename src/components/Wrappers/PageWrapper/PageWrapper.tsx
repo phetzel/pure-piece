@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Grid } from "@mui/material";
+import { Container } from "@mui/material";
 
 interface Props {
   children: JSX.Element;

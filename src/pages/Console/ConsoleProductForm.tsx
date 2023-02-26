@@ -14,9 +14,11 @@ export type Props = {};
 
 const ConsoleProductForm = ({}: Props) => {
   const [name, setName] = useState<string>("");
-  const [active, setActive] = useState<boolean>(true);
-  const [price, setPrice] = useState<number>(0);
+  // const [active, setActive] = useState<boolean>(true);
+  // const [price, setPrice] = useState<number>(0);
   const [description, setDescription] = useState<string>("");
+  console.log(name);
+  console.log(description);
 
   const handleAddProduct = () => {};
 

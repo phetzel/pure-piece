@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { Box, Button, TextField } from "@mui/material";
 
 import CommonModal from "../../common/CommonModal/CommonModal";
@@ -10,12 +9,13 @@ export type Props = {
 };
 
 const ContactModal = ({ isOpen, handleClose }: Props) => {
-  const [email, setEmail] = useState<string>("");
-  const [subject, setSubject] = useState<string>("");
+  // const [email, setEmail] = useState<string>("");
+  // const [subject, setSubject] = useState<string>("");
   const [message, setMessage] = useState<string>("");
 
   const handleContact = () => {
     console.log(message);
+    setMessage("message");
   };
 
   return (

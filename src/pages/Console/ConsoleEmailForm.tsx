@@ -13,6 +13,8 @@ export type Props = {};
 const ConsoleEmailForm = ({}: Props) => {
   const [subject, setSubject] = useState<string>("");
   const [message, setMessage] = useState<string>("");
+  console.log("subject", subject);
+  console.log("message", message);
 
   const handleSendEmail = () => {};
 

@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { AppBar, Box, Button, Container, Toolbar } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import MenuIcon from "@mui/icons-material/Menu";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import useTheme from "@mui/material/styles/useTheme";
 
 // redux
 import { RootState } from "../../redux/store";
@@ -22,7 +21,6 @@ interface Props {}
 const Header = ({}: Props) => {
   const appNavigate = useAppNavigation();
   const dispatch = useDispatch();
-  const theme = useTheme();
 
   const tabState = useSelector((state: RootState) => state.navigation.tabState);
   const cartState = useSelector((state: RootState) => state.product.cartState);

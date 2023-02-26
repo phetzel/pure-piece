@@ -1,18 +1,15 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 // redux
-import { openDrawer } from "../redux/slices/navigationSlice";
+// import { openDrawer } from "../redux/slices/navigationSlice";
 import {
   setActiveTab,
   toggleDashboardScroll,
 } from "../redux/slices/navigationSlice";
 //  constants
-import {
-  NAV_MENU_ITEMS,
-  LOCATION_ITEMS,
-} from "../constants/navigationConstants";
+import { LOCATION_ITEMS } from "../constants/navigationConstants";
 // types
 import { LocationItemType, LocationType } from "../types/navigationTypes";
 

@@ -3,7 +3,7 @@ import React from "react";
 import { Box, TableCell, TableRow } from "@mui/material";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
-import DeleteIcon from "@mui/icons-material/Delete";
+// import DeleteIcon from "@mui/icons-material/Delete";
 
 import { CartItem } from "../../types/productTypes";
 import CommonIconButton from "../common/CommonIconButton/CommonIconButton";

@@ -1,8 +1,8 @@
 import { ProductType } from "../types/productTypes";
 
-import packages from "../assets/images/packages.png";
+// import packages from "../assets/images/packages.png";
 import beefLiver from "../assets/images/beefLiver.jpg";
-import treats from "../assets/images/treats.png";
+// import treats from "../assets/images/treats.png";
 
 export const PRODUCTS: ProductType[] = [
   {
