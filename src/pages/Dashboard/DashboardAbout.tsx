@@ -1,8 +1,9 @@
 import React from "react";
-import { Box, Divider, Grid, Typography } from "@mui/material";
+import { Box, Container, Divider, Grid, Typography } from "@mui/material";
 
 import EndorsementCard from "../../components/EndorsementCard/EndorsementCard";
-import ryan from "../../assets/images/ryan.png";
+import CommonTitle from "../../components/common/CommonTitle/CommonTitle";
+import CommonSubtitle from "../../components/common/CommonSubtitle/CommonSubtitle";
 import about from "../../assets/images/about.jpg";
 import { ENDORSEMENTS } from "../../constants/aboutConstants";
 import dashboardStyles from "./styles/dashboardStyles";
@@ -10,58 +11,24 @@ interface Props {}
 
 const DashboardAbout = ({}: Props) => {
   return (
-    <Grid item xs={12} sx={dashboardStyles.section} id="dashboardAbout">
+    <Container sx={dashboardStyles.section} id="dashboardAbout">
+      {/* title */}
+      <CommonTitle title={"About us"} subTitle={"Our philosophy"} />
+
       {/* About us */}
       <Grid container spacing={1}>
-        <Grid item xs={12}>
-          <Typography variant="h3" sx={{ textAlign: "center" }}>
-            About us
-          </Typography>
-        </Grid>
-
-        <Grid item xs={12}>
-          <Typography variant="h5">Our philosophy</Typography>
-        </Grid>
-        <Grid
-          item
-          xs={12}
-          md={6}
-          sx={{
-            justifyContent: "center",
-            display: "flex",
-            height: "500px",
-          }}
-        >
+        {/* image */}
+        <Grid item xs={12} md={6} sx={dashboardStyles.aboutImageContainer}>
           <Box
             component="img"
             alt="ryan"
             src={about}
-            sx={{
-              objectFit: "cover",
-              height: "100%",
-              maxWidth: "100%",
-            }}
+            sx={dashboardStyles.aboutImage}
           />
         </Grid>
-        <Grid
-          item
-          xs={12}
-          md={6}
-          sx={{
-            alignItems: "center",
-            justifyContent: "center",
-            display: "flex",
-          }}
-        >
-          <Typography
-            variant="body2"
-            sx={{
-              textAlign: "center",
-              marginLeft: "70px",
-              marginRight: "70px",
-              lineHeight: "1.5rem",
-            }}
-          >
+
+        <Grid item xs={12} md={6} sx={dashboardStyles.aboutTextContainer}>
+          <Typography variant="body2" sx={dashboardStyles.aboutText}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
             viverra ex ligula, ac facilisis tellus faucibus vitae. Aenean sit
             amet imperdiet risus. Nulla interdum tellus lectus, id congue lectus
@@ -79,19 +46,17 @@ const DashboardAbout = ({}: Props) => {
         </Grid>
       </Grid>
 
-      <Divider
-        variant="middle"
-        sx={{ marginTop: "40px", marginBottom: "40px" }}
-      />
+      {/* divider */}
+      <Divider variant="middle" sx={dashboardStyles.divider} />
 
       {/* endorsements */}
-      <Typography variant="h5">What others are saying</Typography>
+      <CommonSubtitle subTitle={"What others are saying"} />
       {ENDORSEMENTS.map((endorsement, idx) => (
         <Box key={idx}>
           <EndorsementCard endorsement={endorsement} />
         </Box>
       ))}
-    </Grid>
+    </Container>
   );
 };
 

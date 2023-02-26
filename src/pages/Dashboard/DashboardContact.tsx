@@ -17,7 +17,7 @@ const DashboardContact = ({}: Props) => {
     useState<boolean>(false);
 
   return (
-    <Grid item xs={12} sx={dashboardStyles.section} id="dashboardContact">
+    <Container id="dashboardContact">
       {/* modals */}
       <ContactModal
         isOpen={isContactModalOpen ? true : false}
@@ -28,13 +28,12 @@ const DashboardContact = ({}: Props) => {
         handleClose={() => setIsSubscribeModalOpen(false)}
       />
 
-      <Grid container spacing={1}>
-        <Grid item xs={12}>
-          <Typography variant="h3" sx={{ textAlign: "center" }}>
-            Contact
-          </Typography>
-        </Grid>
-
+      <Grid
+        container
+        spacing={1}
+        bgcolor="black.main"
+        sx={dashboardStyles.contactContainer}
+      >
         <Grid
           item
           xs={12}
@@ -46,8 +45,9 @@ const DashboardContact = ({}: Props) => {
           }}
         >
           <Typography
-            variant="body1"
+            variant="h6"
             sx={{ marginBottom: "15px", textAlign: "center" }}
+            color="white"
           >
             Contact Us
           </Typography>
@@ -58,6 +58,7 @@ const DashboardContact = ({}: Props) => {
               alignSelf: "center",
             }}
             onClick={() => setIsContactModalOpen(true)}
+            color="secondary"
           >
             Email: example@gmail.com
           </Link>
@@ -86,6 +87,7 @@ const DashboardContact = ({}: Props) => {
               alignSelf: "center",
             }}
             onClick={() => setIsSubscribeModalOpen(true)}
+            color="secondary"
           >
             Subscribe
           </Link>
@@ -111,7 +113,7 @@ const DashboardContact = ({}: Props) => {
             sx={{
               alignSelf: "center",
             }}
-            iconColor="black"
+            iconColor="secondary"
             onClick={() =>
               window.open("http://www.instagram.com/purepiecetreats", "_blank")
             }
@@ -120,7 +122,7 @@ const DashboardContact = ({}: Props) => {
           </CommonIconButton>
         </Grid>
       </Grid>
-    </Grid>
+    </Container>
   );
 };
 

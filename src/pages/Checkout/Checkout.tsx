@@ -15,7 +15,7 @@ import {
 import { RootState } from "../../redux/store";
 
 // components
-import GridWrapper from "../../components/Wrappers/GridWrapper/GridWrapper";
+import PageWrapper from "../../components/Wrappers/PageWrapper/PageWrapper";
 import CheckoutAddressForm from "./CheckoutAddressForm";
 import CheckoutPaymentForm from "./CheckoutPaymentForm";
 import CheckoutReview from "./CheckoutReview";
@@ -51,7 +51,7 @@ const Checkout = ({}: Props) => {
   };
 
   return (
-    <GridWrapper>
+    <PageWrapper>
       <Container
         component="main"
         maxWidth="sm"
@@ -114,7 +114,7 @@ const Checkout = ({}: Props) => {
           )}
         </Paper>
       </Container>
-    </GridWrapper>
+    </PageWrapper>
   );
 };
 

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Box, Grid, Snackbar, Typography } from "@mui/material";
+import { Box, Container, Grid, Snackbar, Typography } from "@mui/material";
 
-// constants
+import CommonTitle from "../../components/common/CommonTitle/CommonTitle";
 import { PRODUCTS } from "../../constants/productConstants";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import ProductModal from "../../components/Modals/ProductModal/ProductModal";
@@ -15,42 +15,41 @@ const DashboardProducts = ({}: Props) => {
   const [addedProductCount, setAddedProductCount] = useState<number>(0);
 
   return (
-    <Box sx={dashboardStyles.section} id="dashboardProduct">
+    <Container sx={dashboardStyles.section} id="dashboardProduct">
+      {/* product modal */}
       <ProductModal
         isOpen={focusedProduct ? true : false}
         handleClose={() => setFocusedProduct(undefined)}
         product={focusedProduct}
       />
 
-      <Grid item xs={12}>
-        <Typography variant="h3" sx={{ textAlign: "center" }}>
-          Products
-        </Typography>
-        <Typography variant="body1" sx={{ marginBottom: "15px" }}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec posuere
-          ligula ut consequat fringilla. Vivamus cursus pulvinar sapien et
-          malesuada. Ut vel dui nec orci.
-        </Typography>
+      {/* title */}
+      <CommonTitle
+        title={"Products"}
+        subTitle={
+          "Single ingredient snack for training and rewarding your loyal companion."
+        }
+      />
 
-        <Grid container spacing={2}>
-          {PRODUCTS.map((product, idx) => (
-            <Grid
-              item
-              key={product.id}
-              xs={12}
-              sm={6}
-              md={4}
-              sx={{ display: "flex", justifyContent: "center" }}
-            >
-              <ProductCard
-                product={product}
-                onClick={() => setFocusedProduct(product)}
-              />
-            </Grid>
-          ))}
-        </Grid>
+      {/* product list */}
+      <Grid container spacing={2}>
+        {PRODUCTS.map((product) => (
+          <Grid
+            item
+            key={product.id}
+            xs={12}
+            sm={6}
+            md={4}
+            sx={{ display: "flex", justifyContent: "center" }}
+          >
+            <ProductCard
+              product={product}
+              onClick={() => setFocusedProduct(product)}
+            />
+          </Grid>
+        ))}
       </Grid>
-    </Box>
+    </Container>
   );
 };
 

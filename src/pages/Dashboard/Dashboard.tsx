@@ -12,7 +12,7 @@ import DashboardAbout from "./DashboardAbout";
 import DashboardContact from "./DashboardContact";
 import DashboardProducts from "./DashboardProducts";
 import DashboardSplash from "./DashboardSplash";
-import GridWrapper from "../../components/Wrappers/GridWrapper/GridWrapper";
+import PageWrapper from "../../components/Wrappers/PageWrapper/PageWrapper";
 
 interface Props {}
 
@@ -54,14 +54,14 @@ const Dashboard = ({}: Props) => {
 
   return (
     <Box>
-      <DashboardSplash />
-      <GridWrapper>
+      <PageWrapper>
         <Grid container>
+          <DashboardSplash />
           <DashboardProducts />
           <DashboardAbout />
           <DashboardContact />
         </Grid>
-      </GridWrapper>
+      </PageWrapper>
     </Box>
   );
 };

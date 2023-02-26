@@ -17,7 +17,7 @@ import { adminLoggedIn } from "../../redux/slices/adminSlice";
 import { handleLogin } from "../../services/userServices";
 import { isValidEmail } from "../../util/utilFunctions";
 import useAppNavigation from "../../hooks/useAppNavigation";
-import GridWrapper from "../../components/Wrappers/GridWrapper/GridWrapper";
+import PageWrapper from "../../components/Wrappers/PageWrapper/PageWrapper";
 import adminStyles from "./styles/adminStyles";
 
 interface Props {}
@@ -78,7 +78,7 @@ const Admin = ({}: Props) => {
   };
 
   return (
-    <GridWrapper>
+    <PageWrapper>
       <Container component="main" maxWidth="xs">
         <Box sx={adminStyles.loginContainer}>
           <Avatar sx={{ m: 1, bgcolor: "primary.main" }}>
@@ -138,7 +138,7 @@ const Admin = ({}: Props) => {
           </Box>
         </Box>
       </Container>
-    </GridWrapper>
+    </PageWrapper>
   );
 };
 

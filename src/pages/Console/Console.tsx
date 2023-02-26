@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 
 import { adminLoggedOut } from "../../redux/slices/adminSlice";
-import GridWrapper from "../../components/Wrappers/GridWrapper/GridWrapper";
+import PageWrapper from "../../components/Wrappers/PageWrapper/PageWrapper";
 import ConsoleEmail from "./ConsoleEmail";
 import ConsoleProduct from "./ConsoleProduct";
 
@@ -38,7 +38,7 @@ const Console = ({}: Props) => {
   };
 
   return (
-    <GridWrapper>
+    <PageWrapper>
       <Container component="main" maxWidth="lg">
         <Fab
           variant="extended"
@@ -64,7 +64,7 @@ const Console = ({}: Props) => {
           <Box>{renderTabContent()}</Box>
         </Box>
       </Container>
-    </GridWrapper>
+    </PageWrapper>
   );
 };
 
