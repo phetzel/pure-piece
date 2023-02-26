@@ -59,9 +59,9 @@ const Dashboard = ({}: Props) => {
           <DashboardSplash />
           <DashboardProducts />
           <DashboardAbout />
-          <DashboardContact />
         </Grid>
       </PageWrapper>
+      <DashboardContact />
     </Box>
   );
 };

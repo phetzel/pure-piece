@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Grid, Link, Typography } from "@mui/material";
+import { Box, Grid, Link, Typography } from "@mui/material";
 import InstagramIcon from "@mui/icons-material/Instagram";
 
 // constants
@@ -8,6 +8,8 @@ import dashboardStyles from "./styles/dashboardStyles";
 import CommonIconButton from "../../components/common/CommonIconButton/CommonIconButton";
 import ContactModal from "../../components/Modals/ContactModal/ContactModal";
 import SubscribeModal from "../../components/Modals/SubscribeModal/SubscribeModal";
+// image
+import logoLight from "../../assets/images/logoLight.png";
 
 interface Props {}
 
@@ -17,7 +19,7 @@ const DashboardContact = ({}: Props) => {
     useState<boolean>(false);
 
   return (
-    <Container id="dashboardContact">
+    <Box id="dashboardContact" component="footer">
       {/* modals */}
       <ContactModal
         isOpen={isContactModalOpen ? true : false}
@@ -37,7 +39,29 @@ const DashboardContact = ({}: Props) => {
         <Grid
           item
           xs={12}
-          sm={4}
+          sm={3}
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <Box
+            component="img"
+            alt={"Logo"}
+            src={logoLight}
+            sx={{
+              // objectFit: "cover",
+              height: "auto",
+              width: "100px",
+              marginTop: "10px",
+              marginBottom: "10px",
+            }}
+          />
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          sm={3}
           sx={{
             display: "flex",
             flexDirection: "column",
@@ -47,12 +71,12 @@ const DashboardContact = ({}: Props) => {
           <Typography
             variant="h6"
             sx={{ marginBottom: "15px", textAlign: "center" }}
-            color="white"
+            color="text.white"
           >
             Contact Us
           </Typography>
           <Link
-            variant="body2"
+            variant="body1"
             sx={{
               marginBottom: "15px",
               alignSelf: "center",
@@ -66,7 +90,7 @@ const DashboardContact = ({}: Props) => {
         <Grid
           item
           xs={12}
-          sm={4}
+          sm={3}
           sx={{
             display: "flex",
             flexDirection: "column",
@@ -74,14 +98,15 @@ const DashboardContact = ({}: Props) => {
           }}
         >
           <Typography
-            variant="body1"
+            variant="h6"
             sx={{ marginBottom: "15px", textAlign: "center" }}
+            color="white"
           >
             Stay in touch
           </Typography>
 
           <Link
-            variant="body2"
+            variant="body1"
             sx={{
               marginBottom: "15px",
               alignSelf: "center",
@@ -95,7 +120,7 @@ const DashboardContact = ({}: Props) => {
         <Grid
           item
           xs={12}
-          sm={4}
+          sm={3}
           sx={{
             display: "flex",
             flexDirection: "column",
@@ -103,8 +128,9 @@ const DashboardContact = ({}: Props) => {
           }}
         >
           <Typography
-            variant="body1"
+            variant="h6"
             sx={{ marginBottom: "15px", textAlign: "center" }}
+            color="white"
           >
             Follow Us
           </Typography>
@@ -122,7 +148,7 @@ const DashboardContact = ({}: Props) => {
           </CommonIconButton>
         </Grid>
       </Grid>
-    </Container>
+    </Box>
   );
 };
 
