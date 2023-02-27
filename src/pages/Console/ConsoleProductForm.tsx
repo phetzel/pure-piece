@@ -1,26 +1,54 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import {
   Box,
   Button,
   Checkbox,
   Container,
+  FilledInput,
+  FormControl,
   FormControlLabel,
+  InputAdornment,
+  InputLabel,
+  OutlinedInput,
   Paper,
   TextField,
   Typography,
 } from "@mui/material";
 
+import {
+  toggleLoading,
+  // updateToastState,
+} from "../../redux/slices/navigationSlice";
+
+import { addProduct } from "../../services/productServices";
+
 export type Props = {};
 
 const ConsoleProductForm = ({}: Props) => {
   const [name, setName] = useState<string>("");
-  // const [active, setActive] = useState<boolean>(true);
-  // const [price, setPrice] = useState<number>(0);
+  const [isActive, setIsActive] = useState<boolean>(true);
+  const [price, setPrice] = useState<number>(0);
+  const [image, setImage] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   console.log(name);
   console.log(description);
 
-  const handleAddProduct = () => {};
+  const dispatch = useDispatch();
+
+  const handleAddProduct = () => {
+    // dispatch(toggleLoading(true));
+
+    addProduct({
+      active: isActive,
+      name: name,
+      description: description,
+      price: price,
+      image: image,
+    })
+      .then((res) => console.log("handleAddProduct res", res))
+      .catch((err) => console.log("handleAddProduct err", err));
+  };
 
   return (
     <Box>
@@ -48,13 +76,44 @@ const ConsoleProductForm = ({}: Props) => {
               setName(event.target.value);
             }}
           />
-          <FormControlLabel
-            control={<Checkbox defaultChecked />}
-            label="Active"
-            //   onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-            //     setActive(event.target.value);
-            //   }}
-          />
+
+          <Box sx={{ display: "flex", alignItems: "center" }}>
+            <input
+              type="file"
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                setImage(event.target.value);
+              }}
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  defaultChecked
+                  onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                    setIsActive(event.target.checked);
+                  }}
+                />
+              }
+              label="Active"
+            />
+            <FormControl sx={{ m: 1 }} variant="filled">
+              <InputLabel htmlFor="filled-adornment-amount">Amount</InputLabel>
+              <FilledInput
+                id="filled-adornment-amount"
+                startAdornment={
+                  <InputAdornment position="start">$</InputAdornment>
+                }
+                onChange={(
+                  event: React.ChangeEvent<
+                    HTMLInputElement | HTMLTextAreaElement
+                  >
+                ) => {
+                  setPrice(+event.target.value);
+                }}
+                inputProps={{ type: "number" }}
+              />
+            </FormControl>
+          </Box>
+
           <TextField
             required
             id="productDescription"
@@ -74,6 +133,7 @@ const ConsoleProductForm = ({}: Props) => {
             color="primary"
             sx={{
               fontSize: "12px",
+              marginTop: "20px",
             }}
             onClick={handleAddProduct}
           >

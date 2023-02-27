@@ -5,3 +5,8 @@ export const isValidEmail = (email: string): boolean => {
 
   return regex.test(email);
 };
+
+// format cents into dollars
+export const formatPrice = (cents: number) => {
+  return (cents / 100).toFixed(2);
+};

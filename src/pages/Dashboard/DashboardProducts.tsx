@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Grid } from "@mui/material";
 
 import CommonTitle from "../../components/common/CommonTitle/CommonTitle";
@@ -7,12 +7,17 @@ import ProductCard from "../../components/ProductCard/ProductCard";
 import ProductModal from "../../components/Modals/ProductModal/ProductModal";
 import dashboardStyles from "./styles/dashboardStyles";
 import { ProductType } from "../../types/productTypes";
+import { getProducts } from "../../services/productServices";
 
 interface Props {}
 
 const DashboardProducts = ({}: Props) => {
   const [focusedProduct, setFocusedProduct] = useState<ProductType>();
   const [addedProductCount, setAddedProductCount] = useState<number>(0);
+
+  useEffect(() => {
+    getProducts({ isActiveOnly: true });
+  }, []);
 
   return (
     <Container sx={dashboardStyles.section} id="dashboardProduct">

@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Box } from "@mui/material";
-import { DataGrid, GridColDef, GridRowModel } from "@mui/x-data-grid";
+import {
+  DataGrid,
+  GridValueFormatterParams,
+  GridColDef,
+  GridRowModel,
+} from "@mui/x-data-grid";
 import CheckIcon from "@mui/icons-material/Check";
 import CloseIcon from "@mui/icons-material/Close";
 
@@ -9,7 +14,9 @@ import {
   toggleLoading,
   updateToastState,
 } from "../../redux/slices/navigationSlice";
-import { getProducts } from "../../services/productServices";
+import { UpdateProductInputType } from "../../types/productTypes";
+import { getProducts, updateProduct } from "../../services/productServices";
+import { formatPrice } from "../../util/utilFunctions";
 
 export type Props = {};
 
@@ -27,7 +34,7 @@ const ConsoleProductList = ({}: Props) => {
     setProducts([]);
     dispatch(toggleLoading(true));
 
-    getProducts()
+    getProducts({ isActiveOnly: false })
       .then((res) => {
         if (typeof res != "string") {
           setProducts(res);
@@ -40,22 +47,41 @@ const ConsoleProductList = ({}: Props) => {
       });
   };
 
-  const handleUpdateEnabled = async (newRow: GridRowModel) => {
-    // const updateParams: UpdateSubscriptionInput = {
-    //   id: newRow.id,
-    //   field: "enabled",
-    //   newValue: newRow.enabled,
-    // };
-    // const subscription = await updateSubscription(updateParams);
+  const handleUpdateEnabled = async (
+    newRow: GridRowModel,
+    oldRow: GridRowModel
+  ) => {
+    let updateObj: UpdateProductInputType | null = null;
+    const newKeys = Object.keys(newRow);
 
-    // dispatch(
-    //   updateToastState({
-    //     children: "Subscription successfully updated",
-    //     severity: "success",
-    //   })
-    // );
+    for (let i = 0; i < newKeys.length; i++) {
+      const objectKey = newKeys[i];
+      console.log("objectKey", objectKey);
+      if (newRow[objectKey] !== oldRow[objectKey]) {
+        updateObj = {
+          id: newRow.id,
+          field: objectKey,
+          value: newRow[objectKey],
+        };
 
-    return newRow;
+        break;
+      }
+    }
+
+    if (updateObj) {
+      const product = await updateProduct(updateObj);
+
+      dispatch(
+        updateToastState({
+          children: "Product successfully updated",
+          severity: "success",
+        })
+      );
+
+      return product;
+    } else {
+      return newRow;
+    }
   };
 
   const handleProcessRowUpdateError = React.useCallback((error: Error) => {
@@ -63,11 +89,10 @@ const ConsoleProductList = ({}: Props) => {
   }, []);
 
   const columns: GridColDef[] = [
-    { field: "id", headerName: "ID", width: 50 },
     {
       field: "name",
       headerName: "Name",
-      width: 100,
+      width: 150,
       editable: true,
     },
     {
@@ -86,7 +111,7 @@ const ConsoleProductList = ({}: Props) => {
     },
     {
       field: "price",
-      headerName: "Price",
+      headerName: "Price ($)",
       type: "number",
       width: 100,
       editable: true,
@@ -97,6 +122,7 @@ const ConsoleProductList = ({}: Props) => {
       width: 500,
       editable: true,
     },
+    { field: "id", headerName: "ID", width: 50 },
   ];
 
   return (
