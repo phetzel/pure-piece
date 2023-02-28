@@ -4,7 +4,6 @@ import { Container, Grid } from "@mui/material";
 
 import { toggleLoading } from "../../redux/slices/navigationSlice";
 import CommonTitle from "../../components/common/CommonTitle/CommonTitle";
-import { PRODUCTS } from "../../constants/productConstants";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import ProductModal from "../../components/Modals/ProductModal/ProductModal";
 import dashboardStyles from "./styles/dashboardStyles";

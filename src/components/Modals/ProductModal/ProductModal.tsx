@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Box,
   Button,
@@ -11,12 +11,18 @@ import {
 } from "@mui/material";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 
+// redux
+import { RootState } from "../../../redux/store";
+
 import { updateToastState } from "../../../redux/slices/navigationSlice";
 import { updateCart } from "../../../redux/slices/productSlice";
-import { ProductType } from "../../../types/productTypes";
+import { ProductType, CartItem } from "../../../types/productTypes";
 import useAppNavigation from "../../../hooks/useAppNavigation";
 
 import CommonModal from "../../common/CommonModal/CommonModal";
+
+import { addCheckout } from "../../../services/paymentServices";
+import { formatCheckoutItems } from "../../../util/utilFunctions";
 
 export type Props = {
   isOpen: boolean;
@@ -26,7 +32,8 @@ export type Props = {
 
 const ProductModal = ({ isOpen, handleClose, product }: Props) => {
   const [quantity, setQuantity] = useState<number>(1);
-  const appNavigate = useAppNavigation();
+  // const appNavigate = useAppNavigation();
+  const cartState = useSelector((state: RootState) => state.product.cartState);
 
   const handleChange = (event: SelectChangeEvent) => {
     setQuantity(+event.target.value);
@@ -45,10 +52,33 @@ const ProductModal = ({ isOpen, handleClose, product }: Props) => {
     handleClose();
   };
 
-  const handleCheckout = () => {
+  const handleCheckout = async () => {
     handleAddToCart();
-    handleClose();
-    appNavigate("Checkout");
+    // handleClose();
+    // appNavigate("Checkout");
+    if (product) {
+      let items: CartItem[] = [];
+      const itemIds = cartState.map((i) => i.priceId);
+
+      if (itemIds.includes(product.priceId)) {
+        cartState.map((item) => {
+          if (item.priceId === product.priceId) {
+            const newItem = {
+              ...item,
+              count: item.count + quantity,
+            };
+            items.push(newItem);
+          } else {
+            items.push(item);
+          }
+        });
+      } else {
+        items = [...items, { ...product, count: quantity }];
+      }
+      let formattedItems = formatCheckoutItems(items);
+
+      addCheckout(formattedItems);
+    }
   };
 
   return (

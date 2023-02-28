@@ -1,3 +1,4 @@
+import { CartItem } from "../types/productTypes";
 // validations
 export const isValidEmail = (email: string): boolean => {
   const regex: RegExp =
@@ -7,6 +8,11 @@ export const isValidEmail = (email: string): boolean => {
 };
 
 // format cents into dollars
-export const formatPrice = (cents: number) => {
-  return (cents / 100).toFixed(2);
+export const formatCheckoutItems = (cart: CartItem[]) => {
+  console.log("formatCheckoutItems cart", cart);
+  const formattedItems = cart.map((item) => {
+    return { price: item.priceId, quantity: item.count };
+  });
+  console.log("formatCheckoutItems formattedItems", formattedItems);
+  return formattedItems;
 };

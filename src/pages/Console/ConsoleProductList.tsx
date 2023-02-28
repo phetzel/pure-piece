@@ -16,7 +16,6 @@ import {
 } from "../../redux/slices/navigationSlice";
 import { UpdateProductInputType } from "../../types/productTypes";
 import { getProducts, updateProduct } from "../../services/productServices";
-import { formatPrice } from "../../util/utilFunctions";
 
 export type Props = {};
 

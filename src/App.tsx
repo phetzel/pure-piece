@@ -21,6 +21,8 @@ import Checkout from "./pages/Checkout/Checkout";
 import Console from "./pages/Console/Console";
 import Dashboard from "./pages/Dashboard/Dashboard";
 
+import Payment from "./pages/Payment/Payment";
+
 // styles
 import { globalTheme } from "./util/globalTheme";
 
@@ -39,7 +41,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="admin" element={<Admin />} />
-            <Route path="checkout" element={<Checkout />} />
+            {/* <Route path="checkout" element={<Checkout />} /> */}
+            <Route path="checkout" element={<Payment />} />
             <Route
               path="console"
               element={

@@ -22,6 +22,9 @@ import NavbarCartItem from "./NavbarCartItem";
 // hooks
 import useAppNavigation from "../../hooks/useAppNavigation";
 
+import { addCheckout } from "../../services/paymentServices";
+import { formatCheckoutItems } from "../../util/utilFunctions";
+
 interface Props {
   handleClose: () => void;
 }
@@ -41,8 +44,10 @@ const NavbarCart = ({ handleClose }: Props) => {
   };
 
   const handleCheckout = () => {
-    handleClose();
-    appNavigate("Checkout");
+    // handleClose();
+    // appNavigate("Checkout");
+    let formattedItems = formatCheckoutItems(cartState);
+    addCheckout(formattedItems);
   };
 
   const handleShop = () => {
