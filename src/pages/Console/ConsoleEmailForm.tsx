@@ -56,6 +56,7 @@ const ConsoleEmailForm = ({}: Props) => {
             }}
             minRows={4}
             multiline
+            sx={{ my: 1 }}
           />
 
           <Button

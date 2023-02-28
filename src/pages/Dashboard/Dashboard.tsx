@@ -23,12 +23,29 @@ const Dashboard = ({}: Props) => {
     (state: RootState) => state.navigation.scrollState
   );
 
+  // navigation scrolling
   useEffect(() => {
     scrollState.isScrollActive &&
       tabState.activeTab &&
       handleScrollTo(tabState.activeTab);
     dispatch(toggleDashboardScroll(false));
   }, [scrollState.isScrollActive]);
+
+  // user scrolling
+  useEffect(() => {
+    // const onScroll = () => setOffset(window.pageYOffset);
+    // clean up code
+    window.addEventListener("scroll", handleUserScroll);
+
+    return () => window.removeEventListener("scroll", handleUserScroll);
+  }, []);
+
+  const handleUserScroll = () => {
+    // console.log("handleUserScroll");
+    if (!scrollState.isScrollActive) {
+      console.log("scrolling: ");
+    }
+  };
 
   const handleScrollTo = (target: LocationType) => {
     const targetIdObj = {

@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Modal, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 export type Props = {
   image: string;

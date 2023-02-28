@@ -69,6 +69,7 @@ const Header = ({}: Props) => {
               sx={{
                 display: { xs: "none", md: "flex" },
                 ml: 3,
+                alignItems: "center",
               }}
             >
               {filteredNavMenu.map((item) => (
@@ -78,6 +79,7 @@ const Header = ({}: Props) => {
                     tabState.activeTab === item.label ? "secondary" : "white"
                   }
                   onClick={() => appNavigate(item.label)}
+                  sx={{ height: 50 }}
                 >
                   {item.label}
                 </Button>

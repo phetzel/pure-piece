@@ -17,7 +17,7 @@ import { RootState } from "../../../redux/store";
 import { updateToastState } from "../../../redux/slices/navigationSlice";
 import { updateCart } from "../../../redux/slices/productSlice";
 import { ProductType, CartItem } from "../../../types/productTypes";
-import useAppNavigation from "../../../hooks/useAppNavigation";
+// import useAppNavigation from "../../../hooks/useAppNavigation";
 
 import CommonModal from "../../common/CommonModal/CommonModal";
 
@@ -61,7 +61,7 @@ const ProductModal = ({ isOpen, handleClose, product }: Props) => {
       const itemIds = cartState.map((i) => i.priceId);
 
       if (itemIds.includes(product.priceId)) {
-        cartState.map((item) => {
+        cartState.forEach((item) => {
           if (item.priceId === product.priceId) {
             const newItem = {
               ...item,

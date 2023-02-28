@@ -69,8 +69,8 @@ const DashboardContact = ({}: Props) => {
           }}
         >
           <Typography
-            variant="h6"
-            sx={{ marginBottom: "15px", textAlign: "center" }}
+            variant="h4"
+            sx={{ marginBottom: "15px", textAlign: "center", fontSize: "18px" }}
             color="text.white"
           >
             Contact Us
@@ -98,9 +98,8 @@ const DashboardContact = ({}: Props) => {
           }}
         >
           <Typography
-            variant="h6"
-            sx={{ marginBottom: "15px", textAlign: "center" }}
-            color="white"
+            variant="h4"
+            sx={{ marginBottom: "15px", textAlign: "center", fontSize: "18px" }}
           >
             Stay in touch
           </Typography>
@@ -128,9 +127,8 @@ const DashboardContact = ({}: Props) => {
           }}
         >
           <Typography
-            variant="h6"
-            sx={{ marginBottom: "15px", textAlign: "center" }}
-            color="white"
+            variant="h4"
+            sx={{ marginBottom: "15px", textAlign: "center", fontSize: "18px" }}
           >
             Follow Us
           </Typography>
