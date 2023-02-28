@@ -7,23 +7,18 @@ import beefLiver from "../assets/images/beefLiver.jpg";
 export const PRODUCTS: ProductType[] = [
   {
     id: 0,
+    active: true,
     name: "Chicken Liver Treats",
     description: "Freeze dried raw chicken liver.",
     price: 10,
-    imageUrl: beefLiver,
+    images: [beefLiver],
   },
   {
     id: 1,
+    active: true,
     name: "Cow Liver Treats",
     description: "Freeze dried raw cow liver.",
     price: 20,
-    imageUrl: beefLiver,
+    images: [beefLiver],
   },
-  // {
-  //   id: 2,
-  //   name: "A trey of Liver",
-  //   description: "Its a lot of liver. Don;t judge me.",
-  //   price: 9.99,
-  //   imageUrl: treats,
-  // },
 ];

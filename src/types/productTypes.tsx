@@ -1,9 +1,10 @@
 export interface ProductType {
+  active: boolean;
   id: number;
   name: string;
   description: string;
   price: number;
-  imageUrl: string;
+  images: string[];
 }
 
 // services

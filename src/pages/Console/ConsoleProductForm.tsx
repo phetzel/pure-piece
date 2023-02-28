@@ -31,8 +31,6 @@ const ConsoleProductForm = ({}: Props) => {
   const [price, setPrice] = useState<number>(0);
   const [image, setImage] = useState<string>("");
   const [description, setDescription] = useState<string>("");
-  console.log(name);
-  console.log(description);
 
   const dispatch = useDispatch();
 

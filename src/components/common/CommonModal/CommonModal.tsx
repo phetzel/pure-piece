@@ -1,6 +1,8 @@
 import React from "react";
 import { Box, Modal, Typography } from "@mui/material";
 
+import productModalStyles from "../CommonModal/styles/commonModalStyles";
+
 export type Props = {
   children: JSX.Element;
   handleClose: () => void;
@@ -9,18 +11,6 @@ export type Props = {
 };
 
 const CommonModal = ({ children, handleClose, isOpen, title }: Props) => {
-  const style = {
-    position: "absolute" as "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 500,
-    bgcolor: "background.paper",
-    border: "2px solid #000",
-    boxShadow: 24,
-    p: 4,
-  };
-
   return (
     <Modal
       open={isOpen}
@@ -28,7 +18,7 @@ const CommonModal = ({ children, handleClose, isOpen, title }: Props) => {
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
-      <Box sx={style}>
+      <Box sx={productModalStyles.modal}>
         {title && (
           <Typography variant="h5" color="black">
             {title}

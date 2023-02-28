@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 
 import { ProductType } from "../../types/productTypes";
+import productCardStyles from "./styles/productCardStyles";
 
 interface Props {
   product: ProductType;
@@ -16,12 +17,12 @@ interface Props {
 
 const ProductCard = ({ onClick, product }: Props) => {
   return (
-    <Card onClick={onClick} sx={{ paddingTop: "16px", width: "300px" }}>
-      <CardActionArea>
+    <Card onClick={onClick} sx={productCardStyles.cardContainer}>
+      <CardActionArea sx={productCardStyles.cardAction}>
         <CardMedia
           component="img"
           height="280"
-          image={product.imageUrl}
+          image={product.images[0]}
           alt={product.name}
           sx={{ objectFit: "contain" }}
         />
@@ -33,9 +34,6 @@ const ProductCard = ({ onClick, product }: Props) => {
             color="text.primary"
           >
             {product.name}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {product.description}
           </Typography>
         </CardContent>
       </CardActionArea>
