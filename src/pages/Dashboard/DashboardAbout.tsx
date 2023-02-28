@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Container, Divider, Grid, Typography } from "@mui/material";
 
 import EndorsementCard from "../../components/EndorsementCard/EndorsementCard";
-import CommonTitle from "../../components/common/CommonTitle/CommonTitle";
+// import CommonTitle from "../../components/common/CommonTitle/CommonTitle";
 import CommonSubtitle from "../../components/common/CommonSubtitle/CommonSubtitle";
 import CommonDivider from "../../components/common/CommonDivider/CommonDivider";
 import about from "../../assets/images/about.jpg";

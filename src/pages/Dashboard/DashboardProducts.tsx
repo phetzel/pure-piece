@@ -18,7 +18,7 @@ interface Props {}
 const DashboardProducts = ({}: Props) => {
   const [products, setProducts] = useState<ProductType[]>([]);
   const [focusedProduct, setFocusedProduct] = useState<ProductType>();
-  const [addedProductCount, setAddedProductCount] = useState<number>(0);
+  // const [addedProductCount, setAddedProductCount] = useState<number>(0);
 
   const dispatch = useDispatch();
 
