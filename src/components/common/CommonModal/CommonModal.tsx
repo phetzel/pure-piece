@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Modal, Typography } from "@mui/material";
+import { Box, Grid, Modal, Typography } from "@mui/material";
 
 import productModalStyles from "../CommonModal/styles/commonModalStyles";
 

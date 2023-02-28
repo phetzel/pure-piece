@@ -46,6 +46,7 @@ const Dashboard = ({}: Props) => {
       if (section) {
         const scrollTop =
           section.getBoundingClientRect().top + window.pageYOffset - 75;
+        // section.getBoundingClientRect().top + window.pageYOffset - 180;
 
         window.scrollTo({ top: scrollTop, behavior: "smooth" });
       }
@@ -54,13 +55,13 @@ const Dashboard = ({}: Props) => {
 
   return (
     <Box>
-      <PageWrapper>
-        <Grid container>
-          <DashboardSplash />
-          <DashboardProducts />
-          <DashboardAbout />
-        </Grid>
-      </PageWrapper>
+      {/* <PageWrapper> */}
+      <Grid container>
+        <DashboardSplash />
+        <DashboardProducts />
+        <DashboardAbout />
+      </Grid>
+      {/* </PageWrapper> */}
       <DashboardContact />
     </Box>
   );

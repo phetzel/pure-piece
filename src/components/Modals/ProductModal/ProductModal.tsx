@@ -87,6 +87,7 @@ const ProductModal = ({ isOpen, handleClose, product }: Props) => {
         <Grid
           item
           xs={12}
+          md={6}
           sx={{
             display: "flex",
             flexDirection: "column",
@@ -115,11 +116,11 @@ const ProductModal = ({ isOpen, handleClose, product }: Props) => {
           </Typography>
         </Grid>
 
-        <Grid item xs={12}>
+        <Grid item xs={12} md={6}>
           <Box
             sx={{
               display: "flex",
-              flexDirection: { sm: "column", md: "row" },
+              flexDirection: "column",
             }}
           >
             <Box
