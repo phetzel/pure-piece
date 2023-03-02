@@ -13,17 +13,39 @@ import DashboardContact from "./DashboardContact";
 import DashboardProducts from "./DashboardProducts";
 import DashboardSplash from "./DashboardSplash";
 import PageWrapper from "../../components/Wrappers/PageWrapper/PageWrapper";
+import { getProducts } from "../../services/productServices";
+import { toggleLoading } from "../../redux/slices/navigationSlice";
+import { ProductType } from "../../types/productTypes";
 
 interface Props {}
 
 const Dashboard = ({}: Props) => {
-  const [isLoaded, setIsLoaded] = useState<boolean>(false);
+  const [products, setProducts] = useState<ProductType[]>([]);
+  const [isInitLoaded, setIsInitLoaded] = useState<boolean>(false);
 
   const dispatch = useDispatch();
   const tabState = useSelector((state: RootState) => state.navigation.tabState);
   const scrollState = useSelector(
     (state: RootState) => state.navigation.scrollState
   );
+
+  // get products
+  useEffect(() => {
+    dispatch(toggleLoading(true));
+
+    getProducts({ isActiveOnly: true })
+      .then((res) => {
+        if (typeof res != "string") {
+          setProducts(res);
+        }
+        dispatch(toggleLoading(false));
+        setIsInitLoaded(true);
+      })
+      .catch((err) => {
+        dispatch(toggleLoading(false));
+        setIsInitLoaded(true);
+      });
+  }, []);
 
   // navigation scrolling
   useEffect(() => {
@@ -33,21 +55,20 @@ const Dashboard = ({}: Props) => {
     dispatch(toggleDashboardScroll(false));
   }, [scrollState.isScrollActive]);
 
-  // user scrolling
-  useEffect(() => {
-    // const onScroll = () => setOffset(window.pageYOffset);
-    // clean up code
-    window.addEventListener("scroll", handleUserScroll);
+  // // user scrolling
+  // useEffect(() => {
+  //   window.removeEventListener("scroll", handleUserScroll);
+  //   window.addEventListener("scroll", handleUserScroll);
 
-    return () => window.removeEventListener("scroll", handleUserScroll);
-  }, []);
+  //   return () => window.removeEventListener("scroll", handleUserScroll);
+  // }, [scrollState.isScrollActive]);
 
-  const handleUserScroll = () => {
-    // console.log("handleUserScroll");
-    if (!scrollState.isScrollActive) {
-      console.log("scrolling: ");
-    }
-  };
+  // const handleUserScroll = () => {
+  //   console.log(scrollState.isScrollActive);
+  //   if (!scrollState.isScrollActive) {
+  //     console.log("scrolling: ");
+  //   }
+  // };
 
   const handleScrollTo = (target: LocationType) => {
     const targetIdObj = {
@@ -65,7 +86,6 @@ const Dashboard = ({}: Props) => {
       if (section) {
         const scrollTop =
           section.getBoundingClientRect().top + window.pageYOffset - 75;
-        // section.getBoundingClientRect().top + window.pageYOffset - 180;
 
         window.scrollTo({ top: scrollTop, behavior: "smooth" });
       }
@@ -74,14 +94,15 @@ const Dashboard = ({}: Props) => {
 
   return (
     <Box>
-      {/* <PageWrapper> */}
-      <Grid container>
-        <DashboardSplash />
-        <DashboardProducts />
-        <DashboardAbout />
-      </Grid>
-      {/* </PageWrapper> */}
-      <DashboardContact />
+      <DashboardSplash isInitLoaded={isInitLoaded} />
+
+      {isInitLoaded && (
+        <Box>
+          <DashboardProducts products={products} />
+          <DashboardAbout />
+          <DashboardContact />
+        </Box>
+      )}
     </Box>
   );
 };

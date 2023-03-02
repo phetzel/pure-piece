@@ -7,9 +7,11 @@ import logoDark from "../../assets/images/logoDark.png";
 // hooks
 import useAppNavigation from "../../hooks/useAppNavigation";
 
-interface Props {}
+interface Props {
+  isInitLoaded: boolean;
+}
 
-const DashboardSplash = ({}: Props) => {
+const DashboardSplash = ({ isInitLoaded }: Props) => {
   const appNavigate = useAppNavigation();
 
   return (
@@ -17,7 +19,7 @@ const DashboardSplash = ({}: Props) => {
       <Grid container sx={dashboardStyles.splashInnerContainer}>
         {/* content */}
         <Grid item xs={12} md={6}>
-          <FadeIn delay={100} transitionDuration={1000}>
+          <FadeIn delay={100} transitionDuration={2000} visible={isInitLoaded}>
             <Box sx={dashboardStyles.splashContent}>
               <Box
                 component="img"

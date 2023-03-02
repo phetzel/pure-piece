@@ -13,32 +13,17 @@ import dashboardStyles from "./styles/dashboardStyles";
 import { ProductType } from "../../types/productTypes";
 import { getProducts } from "../../services/productServices";
 
-interface Props {}
+interface Props {
+  products: ProductType[];
+}
 
-const DashboardProducts = ({}: Props) => {
-  const [products, setProducts] = useState<ProductType[]>([]);
+const DashboardProducts = ({ products }: Props) => {
   const [focusedProduct, setFocusedProduct] = useState<ProductType>();
-  // const [addedProductCount, setAddedProductCount] = useState<number>(0);
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    getProducts({ isActiveOnly: true })
-      .then((res) => {
-        if (typeof res != "string") {
-          setProducts(res);
-        }
-        dispatch(toggleLoading(false));
-      })
-      .catch((err) => {
-        dispatch(toggleLoading(false));
-        console.log(err);
-      });
-  }, []);
 
   return (
     <Box sx={{ width: "100%" }} id="dashboardProduct">
       <CommonDivider image={treats2} title={"Products"} />
+
       <Container sx={dashboardStyles.section}>
         {/* product modal */}
         <ProductModal
@@ -48,12 +33,6 @@ const DashboardProducts = ({}: Props) => {
         />
 
         {/* title */}
-        {/* <CommonTitle
-          title={"Products"}
-          subTitle={
-            "Single ingredient snack for training and rewarding your loyal companion."
-          }
-        /> */}
         <CommonSubtitle subTitle="Single ingredient snack for training and rewarding your loyal companion." />
 
         {/* product list */}
