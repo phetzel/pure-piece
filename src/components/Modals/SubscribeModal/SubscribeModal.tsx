@@ -7,7 +7,7 @@ import {
   toggleLoading,
   updateToastState,
 } from "../../../redux/slices/navigationSlice";
-import { addSubscription } from "../../../services/subscriptionServices";
+import { addSubscription } from "../../../services/emailServices";
 import { isValidEmail } from "../../../util/utilFunctions";
 
 export type Props = {
@@ -37,7 +37,9 @@ const SubscribeModal = ({ isOpen, handleClose }: Props) => {
           setIsFormDisabled(false);
           dispatch(toggleLoading(false));
 
-          if (res) {
+          if (typeof res === "string") {
+            setFormErr(res);
+          } else if (res) {
             dispatch(
               updateToastState({
                 severity: "success",
@@ -52,7 +54,12 @@ const SubscribeModal = ({ isOpen, handleClose }: Props) => {
         .catch((err) => {
           setIsFormDisabled(false);
           dispatch(toggleLoading(false));
-          setFormErr("Unsuccessful subscription request");
+
+          if (typeof err === "string") {
+            setFormErr(err);
+          } else {
+            setFormErr("Unsuccessful subscription request");
+          }
         });
     }
   };

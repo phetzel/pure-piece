@@ -19,6 +19,7 @@ import Admin from "./pages/Admin/Admin";
 // import Checkout from "./pages/Checkout/Checkout";
 import Console from "./pages/Console/Console";
 import Dashboard from "./pages/Dashboard/Dashboard";
+import Unsubscribe from "./pages/Unsubscribe/Unsubscribe";
 
 // styles
 import { globalTheme } from "./util/globalTheme";
@@ -37,9 +38,9 @@ function App() {
 
           <Routes>
             <Route path="/" element={<Dashboard />} />
-            <Route path="admin" element={<Admin />} />
+            <Route path="unsubscribe" element={<Unsubscribe />} />
             {/* <Route path="checkout" element={<Checkout />} /> */}
-
+            <Route path="admin" element={<Admin />} />
             <Route
               path="console"
               element={

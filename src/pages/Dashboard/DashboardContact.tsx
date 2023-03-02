@@ -84,7 +84,7 @@ const DashboardContact = ({}: Props) => {
             onClick={() => setIsContactModalOpen(true)}
             color="secondary"
           >
-            Email: example@gmail.com
+            Email: purepiecetreats@gmail.com
           </Link>
         </Grid>
         <Grid

@@ -12,11 +12,11 @@ import {
 import {
   getSubscriptions,
   updateSubscription,
-} from "../../services/subscriptionServices";
+} from "../../services/emailServices";
 import {
   SubscriptionType,
   UpdateSubscriptionInput,
-} from "../../types/subscriptionTypes";
+} from "../../types/emailTypes";
 import consoleStyles from "./styles/consoleStyles";
 
 export type Props = {};
