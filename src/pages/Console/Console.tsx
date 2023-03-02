@@ -6,6 +6,7 @@ import { adminLoggedOut } from "../../redux/slices/adminSlice";
 import PageWrapper from "../../components/Wrappers/PageWrapper/PageWrapper";
 import ConsoleEmail from "./ConsoleEmail";
 import ConsoleProduct from "./ConsoleProduct";
+import consoleStyles from "./styles/consoleStyles";
 
 interface Props {}
 
@@ -36,14 +37,14 @@ const Console = ({}: Props) => {
           variant="extended"
           // color="secondary"
           onClick={() => dispatch(adminLoggedOut(null))}
-          sx={{ position: "absolute", right: "50px" }}
+          sx={consoleStyles.logoutButton}
           size="small"
         >
           Log Out
         </Fab>
 
         <Box sx={{ width: "100%" }}>
-          <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+          <Box sx={consoleStyles.tabPicker}>
             <Tabs
               value={selectedTab}
               onChange={handleChange}

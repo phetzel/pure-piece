@@ -22,6 +22,7 @@ import {
 } from "../../redux/slices/navigationSlice";
 
 import { addProduct } from "../../services/productServices";
+import consoleStyles from "./styles/consoleStyles";
 
 export type Props = {};
 
@@ -56,10 +57,7 @@ const ConsoleProductForm = ({}: Props) => {
         sx={{ mb: 4 }}
         id="checkoutPage"
       >
-        <Paper
-          variant="outlined"
-          sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
-        >
+        <Paper variant="outlined" sx={consoleStyles.formContainer}>
           <Typography component="h1" variant="h6" color="black" align="center">
             Add a new product
           </Typography>
@@ -129,10 +127,7 @@ const ConsoleProductForm = ({}: Props) => {
           <Button
             variant="contained"
             color="primary"
-            sx={{
-              fontSize: "12px",
-              marginTop: "20px",
-            }}
+            sx={consoleStyles.formButton}
             onClick={handleAddProduct}
           >
             Add

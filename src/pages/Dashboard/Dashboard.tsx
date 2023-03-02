@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Box, Grid } from "@mui/material";
 
@@ -17,6 +17,8 @@ import PageWrapper from "../../components/Wrappers/PageWrapper/PageWrapper";
 interface Props {}
 
 const Dashboard = ({}: Props) => {
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
+
   const dispatch = useDispatch();
   const tabState = useSelector((state: RootState) => state.navigation.tabState);
   const scrollState = useSelector(

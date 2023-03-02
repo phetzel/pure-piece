@@ -3,6 +3,7 @@ import { Box, Tab, Tabs, Typography } from "@mui/material";
 
 import ConsoleProductForm from "./ConsoleProductForm";
 import ConsoleProductList from "./ConsoleProductList";
+import consoleStyles from "./styles/consoleStyles";
 
 export type Props = {};
 
@@ -26,7 +27,7 @@ const ConsoleProduct = ({}: Props) => {
 
   return (
     <Box>
-      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+      <Box sx={consoleStyles.tabPicker}>
         <Tabs
           value={productTab}
           onChange={handleChange}

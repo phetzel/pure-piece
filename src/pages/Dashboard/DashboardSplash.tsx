@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Button, Grid, Typography } from "@mui/material";
+import FadeIn from "react-fade-in";
 
 import dashboardStyles from "./styles/dashboardStyles";
 import logoDark from "../../assets/images/logoDark.png";
@@ -16,20 +17,25 @@ const DashboardSplash = ({}: Props) => {
       <Grid container sx={dashboardStyles.splashInnerContainer}>
         {/* content */}
         <Grid item xs={12} md={6}>
-          <Box sx={dashboardStyles.splashContent}>
-            <Box
-              component="img"
-              alt={"Logo"}
-              src={logoDark}
-              sx={dashboardStyles.splashContentLogo}
-            />
-            <Typography variant="h5" color="black">
-              Human Grade Dog Food
-            </Typography>
-            <Button variant="contained" onClick={() => appNavigate("Products")}>
-              Shop Now
-            </Button>
-          </Box>
+          <FadeIn delay={100} transitionDuration={1000}>
+            <Box sx={dashboardStyles.splashContent}>
+              <Box
+                component="img"
+                alt={"Logo"}
+                src={logoDark}
+                sx={dashboardStyles.splashContentLogo}
+              />
+              <Typography variant="h5" color="black">
+                Human Grade Dog Food
+              </Typography>
+              <Button
+                variant="contained"
+                onClick={() => appNavigate("Products")}
+              >
+                Shop Now
+              </Button>
+            </Box>
+          </FadeIn>
         </Grid>
 
         {/* splash image */}

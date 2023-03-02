@@ -17,6 +17,7 @@ import {
   SubscriptionType,
   UpdateSubscriptionInput,
 } from "../../types/subscriptionTypes";
+import consoleStyles from "./styles/consoleStyles";
 
 export type Props = {};
 
@@ -96,7 +97,7 @@ const ConsoleEmailSubscriptions = ({}: Props) => {
   ];
 
   return (
-    <Box sx={{ height: 400, width: "100%" }}>
+    <Box sx={consoleStyles.table}>
       <DataGrid
         rows={subscriptions}
         columns={columns}

@@ -8,13 +8,13 @@ import {
   Typography,
 } from "@mui/material";
 
+import consoleStyles from "./styles/consoleStyles";
+
 export type Props = {};
 
 const ConsoleEmailForm = ({}: Props) => {
   const [subject, setSubject] = useState<string>("");
   const [message, setMessage] = useState<string>("");
-  console.log("subject", subject);
-  console.log("message", message);
 
   const handleSendEmail = () => {};
 
@@ -26,10 +26,7 @@ const ConsoleEmailForm = ({}: Props) => {
         sx={{ mb: 4 }}
         id="checkoutPage"
       >
-        <Paper
-          variant="outlined"
-          sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
-        >
+        <Paper variant="outlined" sx={consoleStyles.formContainer}>
           <Typography component="h1" variant="h6" color="black" align="center">
             Send a new email
           </Typography>
@@ -56,15 +53,13 @@ const ConsoleEmailForm = ({}: Props) => {
             }}
             minRows={4}
             multiline
-            sx={{ my: 1 }}
+            sx={{ mt: 1 }}
           />
 
           <Button
             variant="contained"
             color="primary"
-            sx={{
-              fontSize: "12px",
-            }}
+            sx={consoleStyles.formButton}
             onClick={handleSendEmail}
           >
             Send

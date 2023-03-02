@@ -12,16 +12,13 @@ import AuthRoute from "./components/AuthRoute/AuthRoute";
 import Header from "./components/Header/Header";
 import LoadingSpinner from "./components/LoadingSpinner/LoadingSpinner";
 import Navbar from "./components/Navbar/Navbar";
-// import Footer from "./components/Footer/Footer";
 import Toast from "./components/Toast/Toast";
 
 // Pages
 import Admin from "./pages/Admin/Admin";
-import Checkout from "./pages/Checkout/Checkout";
+// import Checkout from "./pages/Checkout/Checkout";
 import Console from "./pages/Console/Console";
 import Dashboard from "./pages/Dashboard/Dashboard";
-
-// import Payment from "./pages/Payment/Payment";
 
 // styles
 import { globalTheme } from "./util/globalTheme";
@@ -41,8 +38,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="admin" element={<Admin />} />
-            <Route path="checkout" element={<Checkout />} />
-            {/* <Route path="checkout" element={<Payment />} /> */}
+            {/* <Route path="checkout" element={<Checkout />} /> */}
+
             <Route
               path="console"
               element={
@@ -52,8 +49,6 @@ function App() {
               }
             />
           </Routes>
-
-          {/* <Footer /> */}
         </ThemeProvider>
       </Provider>
     </div>

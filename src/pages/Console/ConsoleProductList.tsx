@@ -16,6 +16,7 @@ import {
 } from "../../redux/slices/navigationSlice";
 import { UpdateProductInputType } from "../../types/productTypes";
 import { getProducts, updateProduct } from "../../services/productServices";
+import consoleStyles from "./styles/consoleStyles";
 
 export type Props = {};
 
@@ -125,7 +126,7 @@ const ConsoleProductList = ({}: Props) => {
   ];
 
   return (
-    <Box sx={{ height: 400, width: "100%" }}>
+    <Box sx={consoleStyles.table}>
       <DataGrid
         rows={products}
         columns={columns}

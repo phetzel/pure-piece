@@ -3,6 +3,7 @@ import { Box, Tab, Tabs, Typography } from "@mui/material";
 
 import ConsoelEmailForm from "./ConsoleEmailForm";
 import ConsoleEmailSubscriptions from "./ConsoleEmailSubscriptions";
+import consoleStyles from "./styles/consoleStyles";
 
 export type Props = {};
 
@@ -26,7 +27,7 @@ const ConsoleEmail = ({}: Props) => {
 
   return (
     <Box>
-      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+      <Box sx={consoleStyles.tabPicker}>
         <Tabs
           value={emailTab}
           onChange={handleChange}
