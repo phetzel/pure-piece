@@ -11,10 +11,14 @@ import {
 // subscriptions
 export const getSubscriptions = (): Promise<SubscriptionType[] | string> => {
   const url = `${ROOT_URL}/api/v1/subscriptions`;
+  const headers = {
+    Authorization: localStorage.getItem("token"),
+  };
 
   return axios({
     method: "get",
     url: url,
+    headers: headers,
   }).then((res) => {
     if (res.status === 200) {
       return res.data;
@@ -70,11 +74,15 @@ export const updateSubscription = ({
       [field]: newValue,
     },
   };
+  const headers = {
+    Authorization: localStorage.getItem("token"),
+  };
 
   return axios({
     method: "put",
     url: url,
     data: data,
+    headers: headers,
   })
     .then((res) => {
       if (res.status === 200) {
@@ -122,11 +130,15 @@ export const addNewsletter = ({ subject, message }: EmailType) => {
       message: message,
     },
   };
+  const headers = {
+    Authorization: localStorage.getItem("token"),
+  };
 
   return axios({
     method: "post",
     url: url,
     data: data,
+    headers: headers,
   })
     .then((res) => {
       if (res.status === 200) {

@@ -49,6 +49,7 @@ const Admin = ({}: Props) => {
           dispatch(toggleLoading(false));
 
           if (res.code === 200) {
+            console.log("user", res.data);
             dispatch(adminLoggedIn(res.data));
             appNavigate("Console");
           } else if (typeof res === "string") {

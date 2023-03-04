@@ -8,7 +8,6 @@ export const addCheckout = (
     quantity: number;
   }[]
 ) => {
-  console.log("addCheckout items", items);
   const url = `${ROOT_URL}/api/v1/checkout`;
   const data = {
     checkout: {

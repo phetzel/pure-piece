@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Box, Container, Fab, Tab, Tabs, Typography } from "@mui/material";
 
+import useAppNavigation from "../../hooks/useAppNavigation";
+import { handleLogout } from "../../services/userServices";
 import { adminLoggedOut } from "../../redux/slices/adminSlice";
 import PageWrapper from "../../components/Wrappers/PageWrapper/PageWrapper";
 import ConsoleEmail from "./ConsoleEmail";
@@ -14,9 +16,17 @@ const Console = ({}: Props) => {
   const [selectedTab, setSelectedTab] = useState<number>(0);
 
   const dispatch = useDispatch();
+  const appNavigate = useAppNavigation();
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setSelectedTab(newValue);
+  };
+
+  const handleAdminLogout = () => {
+    handleLogout().then((res) => {
+      dispatch(adminLoggedOut(null));
+      appNavigate("Admin");
+    });
   };
 
   const renderTabContent = () => {
@@ -36,7 +46,7 @@ const Console = ({}: Props) => {
         <Fab
           variant="extended"
           // color="secondary"
-          onClick={() => dispatch(adminLoggedOut(null))}
+          onClick={handleAdminLogout}
           sx={consoleStyles.logoutButton}
           size="small"
         >
