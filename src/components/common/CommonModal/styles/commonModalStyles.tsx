@@ -8,8 +8,7 @@ const productModalStyles = {
     boxShadow: 24,
     borderRadius: 2,
     p: 4,
-    width: { sm: 300, md: 500 },
-    // minWidth: 300,
+    width: { xs: 300, md: 500 },
     maxHeight: "90vh",
   },
 };
