@@ -10,17 +10,22 @@ import { ENDORSEMENTS } from "../../constants/aboutConstants";
 import dashboardStyles from "./styles/dashboardStyles";
 import dog from "../../assets/images/dog.png";
 
-interface Props {}
+interface Props {
+  aboutRef: (node?: Element | null | undefined) => void;
+  isVisible: boolean;
+}
 
-const DashboardAbout = ({}: Props) => {
+const DashboardAbout = ({ aboutRef, isVisible }: Props) => {
   return (
-    <Box sx={{ width: "100%" }} id="dashboardAbout">
-      <CommonDivider image={dog} title={"About us"} />
-      <Container sx={dashboardStyles.section}>
-        {/* title */}
-        {/* <CommonTitle title={"About us"} subTitle={"Our philosophy"} /> */}
-        <CommonSubtitle subTitle="Our philosophy" />
+    <Box sx={{ width: "100%" }} id="dashboardAbout" ref={aboutRef}>
+      <CommonDivider
+        image={dog}
+        title={"About us"}
+        isVisible={isVisible}
+        subTitle="Our philosophy"
+      />
 
+      <Container sx={dashboardStyles.section} maxWidth={false}>
         {/* About us */}
         <Grid container spacing={1}>
           {/* image */}

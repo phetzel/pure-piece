@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Box } from "@mui/material";
+import { useInView } from "react-intersection-observer";
 
 // redux
 import { RootState } from "../../redux/store";
-import { toggleDashboardScroll } from "../../redux/slices/navigationSlice";
+import {
+  toggleDashboardScroll,
+  setActiveTab,
+} from "../../redux/slices/navigationSlice";
 // types
 import { LocationType } from "../../types/navigationTypes";
 // components
@@ -28,6 +32,32 @@ const Dashboard = ({}: Props) => {
   const scrollState = useSelector(
     (state: RootState) => state.navigation.scrollState
   );
+
+  const [splashRef, splashInView] = useInView({
+    threshold: 0.1,
+  });
+  const [productRef, productInView] = useInView({
+    threshold: 0.1,
+  });
+  const [aboutRef, aboutInView] = useInView({
+    threshold: 0.01,
+    rootMargin: "100px",
+  });
+  const [contactRef, contactInView] = useInView({
+    threshold: 0.1,
+  });
+
+  useEffect(() => {
+    if (contactInView) {
+      dispatch(setActiveTab("Contact"));
+    } else if (aboutInView) {
+      dispatch(setActiveTab("About"));
+    } else if (productInView) {
+      dispatch(setActiveTab("Products"));
+    } else {
+      dispatch(setActiveTab("Home"));
+    }
+  }, [splashInView, productInView, aboutInView, contactInView]);
 
   // get products
   useEffect(() => {
@@ -94,13 +124,20 @@ const Dashboard = ({}: Props) => {
 
   return (
     <Box>
-      <DashboardSplash isInitLoaded={isInitLoaded} />
+      <DashboardSplash isInitLoaded={isInitLoaded} splashRef={splashRef} />
 
       {isInitLoaded && (
         <Box>
-          <DashboardProducts products={products} />
-          <DashboardAbout />
-          <DashboardContact />
+          <DashboardProducts
+            products={products}
+            productRef={productRef}
+            isVisible={splashInView || productInView}
+          />
+          <DashboardAbout
+            aboutRef={aboutRef}
+            isVisible={aboutInView || contactInView}
+          />
+          <DashboardContact contactRef={contactRef} />
         </Box>
       )}
     </Box>

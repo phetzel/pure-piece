@@ -14,17 +14,26 @@ import { ProductType } from "../../types/productTypes";
 import { getProducts } from "../../services/productServices";
 
 interface Props {
+  isVisible: boolean;
   products: ProductType[];
+  productRef: (node?: Element | null | undefined) => void;
 }
 
-const DashboardProducts = ({ products }: Props) => {
+const DashboardProducts = ({ isVisible, products, productRef }: Props) => {
   const [focusedProduct, setFocusedProduct] = useState<ProductType>();
 
   return (
-    <Box sx={{ width: "100%" }} id="dashboardProduct">
-      <CommonDivider image={treats2} title={"Products"} />
+    <Box sx={{ width: "100%" }} id="dashboardProduct" ref={productRef}>
+      <CommonDivider
+        image={treats2}
+        title={"Products"}
+        isVisible={isVisible}
+        subTitle={
+          "Single ingredient snack for training and rewarding your loyal companion."
+        }
+      />
 
-      <Container sx={dashboardStyles.section}>
+      <Container sx={dashboardStyles.section} maxWidth={false}>
         {/* product modal */}
         <ProductModal
           isOpen={focusedProduct ? true : false}
@@ -33,7 +42,7 @@ const DashboardProducts = ({ products }: Props) => {
         />
 
         {/* title */}
-        <CommonSubtitle subTitle="Single ingredient snack for training and rewarding your loyal companion." />
+        {/* <CommonSubtitle subTitle="Single ingredient snack for training and rewarding your loyal companion." /> */}
 
         {/* product list */}
         <Grid container spacing={2}>

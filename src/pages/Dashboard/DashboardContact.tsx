@@ -11,15 +11,17 @@ import SubscribeModal from "../../components/Modals/SubscribeModal/SubscribeModa
 // image
 import logoLight from "../../assets/images/logoLight.png";
 
-interface Props {}
+interface Props {
+  contactRef: (node?: Element | null | undefined) => void;
+}
 
-const DashboardContact = ({}: Props) => {
+const DashboardContact = ({ contactRef }: Props) => {
   const [isContactModalOpen, setIsContactModalOpen] = useState<boolean>(false);
   const [isSubscribeModalOpen, setIsSubscribeModalOpen] =
     useState<boolean>(false);
 
   return (
-    <Box id="dashboardContact" component="footer">
+    <Box id="dashboardContact" component="footer" ref={contactRef}>
       {/* modals */}
       <ContactModal
         isOpen={isContactModalOpen ? true : false}

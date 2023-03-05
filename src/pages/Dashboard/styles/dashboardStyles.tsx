@@ -2,17 +2,22 @@ import highFive from "../../../assets/images/highFive.png";
 
 export default {
   section: {
-    paddingBottom: "75px",
+    py: 10,
+    backgroundColor: "#fff",
+    minHeight: "100vh",
   },
   divider: {
-    marginTop: "40px",
-    marginBottom: "40px",
+    paddingTop: "40px",
+    paddingBottom: "40px",
   },
   // splash
   splashOuterContainer: {
     height: "100vh",
     width: "100vw",
     overflow: "hidden",
+    backgroundColor: "#fff",
+    position: "relative",
+    zIndex: 5,
   },
   splashInnerContainer: {
     height: "100vh",

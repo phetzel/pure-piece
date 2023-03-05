@@ -9,13 +9,18 @@ import useAppNavigation from "../../hooks/useAppNavigation";
 
 interface Props {
   isInitLoaded: boolean;
+  splashRef: (node?: Element | null | undefined) => void;
 }
 
-const DashboardSplash = ({ isInitLoaded }: Props) => {
+const DashboardSplash = ({ isInitLoaded, splashRef }: Props) => {
   const appNavigate = useAppNavigation();
 
   return (
-    <Box sx={dashboardStyles.splashOuterContainer} id="dashboardSplash">
+    <Box
+      sx={dashboardStyles.splashOuterContainer}
+      id="dashboardSplash"
+      ref={splashRef}
+    >
       <Grid container sx={dashboardStyles.splashInnerContainer}>
         {/* content */}
         <Grid item xs={12} md={6}>
