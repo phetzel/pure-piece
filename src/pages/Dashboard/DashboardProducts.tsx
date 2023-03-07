@@ -41,9 +41,6 @@ const DashboardProducts = ({ isVisible, products, productRef }: Props) => {
           product={focusedProduct}
         />
 
-        {/* title */}
-        {/* <CommonSubtitle subTitle="Single ingredient snack for training and rewarding your loyal companion." /> */}
-
         {/* product list */}
         <Grid container spacing={2}>
           {products.map((product) => (
