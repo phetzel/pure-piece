@@ -23,11 +23,12 @@ const useAppNavigation = () => {
     );
 
     if (targetItem) {
-      navigate(targetItem.route);
-      dispatch(setActiveTab(targetItem.location));
-
       if (targetItem.route === "/") {
         dispatch(toggleDashboardScroll(true));
+        navigate(targetItem.route, { state: { section: targetItem.location } });
+      } else {
+        dispatch(setActiveTab(targetItem.location));
+        navigate(targetItem.route);
       }
     }
   };

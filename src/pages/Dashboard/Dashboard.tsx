@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Box } from "@mui/material";
 import { useInView } from "react-intersection-observer";
@@ -16,7 +17,6 @@ import DashboardAbout from "./DashboardAbout";
 import DashboardContact from "./DashboardContact";
 import DashboardProducts from "./DashboardProducts";
 import DashboardSplash from "./DashboardSplash";
-import PageWrapper from "../../components/Wrappers/PageWrapper/PageWrapper";
 import { getProducts } from "../../services/productServices";
 import { toggleLoading } from "../../redux/slices/navigationSlice";
 import { ProductType } from "../../types/productTypes";
@@ -27,12 +27,14 @@ const Dashboard = ({}: Props) => {
   const [products, setProducts] = useState<ProductType[]>([]);
   const [isInitLoaded, setIsInitLoaded] = useState<boolean>(false);
 
+  const location = useLocation();
+
   const dispatch = useDispatch();
-  const tabState = useSelector((state: RootState) => state.navigation.tabState);
   const scrollState = useSelector(
     (state: RootState) => state.navigation.scrollState
   );
 
+  // track what content is in view
   const [splashRef, splashInView] = useInView({
     threshold: 0.1,
   });
@@ -47,6 +49,7 @@ const Dashboard = ({}: Props) => {
     threshold: 0.1,
   });
 
+  // update active tab
   useEffect(() => {
     if (contactInView) {
       dispatch(setActiveTab("Contact"));
@@ -77,28 +80,14 @@ const Dashboard = ({}: Props) => {
       });
   }, []);
 
-  // navigation scrolling
+  // scrolling via navigation links
   useEffect(() => {
     scrollState.isScrollActive &&
-      tabState.activeTab &&
-      handleScrollTo(tabState.activeTab);
+      location.state &&
+      handleScrollTo(location.state.section);
+
     dispatch(toggleDashboardScroll(false));
   }, [scrollState.isScrollActive]);
-
-  // // user scrolling
-  // useEffect(() => {
-  //   window.removeEventListener("scroll", handleUserScroll);
-  //   window.addEventListener("scroll", handleUserScroll);
-
-  //   return () => window.removeEventListener("scroll", handleUserScroll);
-  // }, [scrollState.isScrollActive]);
-
-  // const handleUserScroll = () => {
-  //   console.log(scrollState.isScrollActive);
-  //   if (!scrollState.isScrollActive) {
-  //     console.log("scrolling: ");
-  //   }
-  // };
 
   const handleScrollTo = (target: LocationType) => {
     const targetIdObj = {
