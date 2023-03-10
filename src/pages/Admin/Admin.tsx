@@ -49,7 +49,6 @@ const Admin = ({}: Props) => {
           dispatch(toggleLoading(false));
 
           if (res.code === 200) {
-            console.log("user", res.data);
             dispatch(adminLoggedIn(res.data));
             appNavigate("Console");
           } else if (typeof res === "string") {
@@ -88,12 +87,7 @@ const Admin = ({}: Props) => {
           <Typography component="h1" variant="h5">
             Admin Sign in
           </Typography>
-          <Box
-            component="form"
-            onSubmit={() => console.log("submit")}
-            noValidate
-            sx={{ mt: 1 }}
-          >
+          <Box component="form" noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
               required

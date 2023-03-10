@@ -20,7 +20,6 @@ export const addCheckout = (
     url: url,
     data: data,
   }).then((res) => {
-    console.log("res", res);
     if (res.status === 200) {
       window.location = res.data.redirect_url;
       return res.data;

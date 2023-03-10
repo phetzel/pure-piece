@@ -22,7 +22,6 @@ export type Props = {};
 
 const ConsoleProductList = ({}: Props) => {
   const [products, setProducts] = useState<any[]>([]);
-  console.log(products);
 
   const dispatch = useDispatch();
 
@@ -43,7 +42,6 @@ const ConsoleProductList = ({}: Props) => {
       })
       .catch((err) => {
         dispatch(toggleLoading(false));
-        console.log(err);
       });
   };
 
@@ -56,7 +54,7 @@ const ConsoleProductList = ({}: Props) => {
 
     for (let i = 0; i < newKeys.length; i++) {
       const objectKey = newKeys[i];
-      console.log("objectKey", objectKey);
+
       if (newRow[objectKey] !== oldRow[objectKey]) {
         updateObj = {
           id: newRow.id,

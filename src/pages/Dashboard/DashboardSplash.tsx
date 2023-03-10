@@ -24,7 +24,7 @@ const DashboardSplash = ({ isInitLoaded, splashRef }: Props) => {
       <Grid container sx={dashboardStyles.splashInnerContainer}>
         {/* content */}
         <Grid item xs={12} md={6}>
-          <FadeIn delay={100} transitionDuration={2000} visible={isInitLoaded}>
+          <FadeIn delay={100} transitionDuration={1500} visible={isInitLoaded}>
             <Box sx={dashboardStyles.splashContent}>
               <Box
                 component="img"

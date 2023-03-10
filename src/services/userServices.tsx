@@ -29,14 +29,12 @@ export const handleLogin = ({
           localStorage.setItem("token", `${headers.authorization}`);
         }
 
-        console.log("res.data.status;", res.data.status);
         return res.data.status;
       } else {
         return "Unsuccessful login request";
       }
     })
     .catch((err) => {
-      console.log("err.;", err);
       if (err.response && err.response.data) {
         return err.response.data;
       } else {
@@ -82,7 +80,6 @@ export const getCurrentUser = () => {
   })
     .then((res) => {
       if (res.status === 200) {
-        console.log("res", res);
         return res.data;
       } else {
         return "Unsuccessful login request";

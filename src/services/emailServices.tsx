@@ -49,12 +49,10 @@ export const addSubscription = ({
       if (res.status === 200) {
         return true;
       } else {
-        console.log("res", res);
         return false;
       }
     })
     .catch((err) => {
-      console.log("err", err);
       if (err.response && err.response.data && err.response.data.data) {
         return err.response.data.data[0];
       } else {

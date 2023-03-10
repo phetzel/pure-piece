@@ -14,7 +14,6 @@ export const getProducts = ({ isActiveOnly }: GetProductInputType) => {
     method: "get",
     url: url,
   }).then((res) => {
-    console.log("res", res);
     if (res.status === 200) {
       return res.data;
     } else {
@@ -46,7 +45,6 @@ export const addProduct = ({
     url: url,
     data: data,
   }).then((res) => {
-    console.log("res", res);
     if (res.status === 200) {
       return res.data;
     } else {
@@ -70,7 +68,6 @@ export const updateProduct = ({ id, field, value }: UpdateProductInputType) => {
     url: url,
     data: data,
   }).then((res) => {
-    console.log("res", res);
     if (res.status === 200) {
       return res.data;
     } else {

@@ -9,10 +9,9 @@ export const isValidEmail = (email: string): boolean => {
 
 // format cents into dollars
 export const formatCheckoutItems = (cart: CartItem[]) => {
-  console.log("formatCheckoutItems cart", cart);
   const formattedItems = cart.map((item) => {
     return { price: item.priceId, quantity: item.count };
   });
-  console.log("formatCheckoutItems formattedItems", formattedItems);
+
   return formattedItems;
 };

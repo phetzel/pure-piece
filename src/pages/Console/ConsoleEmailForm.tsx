@@ -35,12 +35,10 @@ const ConsoleEmailForm = ({}: Props) => {
       message: message,
     })
       .then((res) => {
-        console.log(res);
         dispatch(toggleLoading(false));
         setIsDisabled(false);
       })
       .catch((err) => {
-        console.log(err);
         dispatch(toggleLoading(false));
         setIsDisabled(false);
       });
