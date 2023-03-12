@@ -7,8 +7,7 @@ export default {
     minHeight: "100vh",
   },
   divider: {
-    paddingTop: "40px",
-    paddingBottom: "40px",
+    my: 4,
   },
   // splash
   splashOuterContainer: {

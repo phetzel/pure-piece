@@ -6,7 +6,7 @@ import EndorsementCard from "../../components/EndorsementCard/EndorsementCard";
 import CommonSubtitle from "../../components/common/CommonSubtitle/CommonSubtitle";
 import CommonDivider from "../../components/common/CommonDivider/CommonDivider";
 import about from "../../assets/images/about.jpg";
-import { ENDORSEMENTS } from "../../constants/aboutConstants";
+import { ABOUT, ENDORSEMENTS } from "../../constants/aboutConstants";
 import dashboardStyles from "./styles/dashboardStyles";
 import dog from "../../assets/images/dog.png";
 
@@ -39,7 +39,7 @@ const DashboardAbout = ({ aboutRef, isVisible }: Props) => {
           </Grid>
 
           <Grid item xs={12} md={6} sx={dashboardStyles.aboutTextContainer}>
-            <Typography variant="body2" sx={dashboardStyles.aboutText}>
+            {/* <Typography variant="body2" sx={dashboardStyles.aboutText}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
               viverra ex ligula, ac facilisis tellus faucibus vitae. Aenean sit
               amet imperdiet risus. Nulla interdum tellus lectus, id congue
@@ -53,6 +53,9 @@ const DashboardAbout = ({ aboutRef, isVisible }: Props) => {
               magna, id consectetur elit auctor consequat. Duis ut lacus
               lacinia, fringilla metus quis, elementum metus. Nullam tincidunt
               interdum ipsum, auctor pulvinar odio eleifend sit amet.
+            </Typography> */}
+            <Typography variant="body2" sx={dashboardStyles.aboutText}>
+              {ABOUT}
             </Typography>
           </Grid>
         </Grid>

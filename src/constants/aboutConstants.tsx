@@ -1,15 +1,20 @@
 import { EndorsementType } from "../types/aboutTypes";
 import dgSmall from "../assets/images/dg-small.png";
 import pitbull from "../assets/images/pitbull.jpg";
+import endorsedog1 from "../assets/images/endorse-dog-1.png";
+import endorsePerson1 from "../assets/images/endorse-person-1.png";
+
+export const ABOUT: string =
+  "Pure piece treats sole objective is to provide a human grade organic product for our animals to enjoy.  I noticed that none of the products in stores were organic and most comparable products weren’t produced on the United States.  I knew I could make high quality local, organic and affordable treats.";
 
 export const ENDORSEMENTS: EndorsementType[] = [
   {
     petName: "Lassie",
-    petImage: dgSmall,
-    userName: "Remy",
-    userImage: "https://mui.com/static/images/avatar/1.jpg",
+    petImage: endorsedog1,
+    userName: "Danielle",
+    userImage: endorsePerson1,
     review:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at maximus urna. Curabitur dignissim arcu eget sagittis finibus. Vivamus sit amet lectus elementum, porttitor ligula fringilla, feugiat urna. Pellentesque non risus velit. Duis vel rhoncus mi, et sollicitudin dolor. Proin vel leo et urna iaculis maximus. Integer finibus neque in vehicula dapibus.",
+      "Pure piece treats are perfect for my pup’s sensitive stomach. Not only are they simple and healthy but they taste amazing and are hands down her favorite treat!",
   },
   {
     petName: "Spot",
