@@ -73,7 +73,7 @@ const ProductModal = ({ isOpen, handleClose, product }: Props) => {
           }
         });
       } else {
-        items = [...items, { ...product, count: quantity }];
+        items = [...cartState, { ...product, count: quantity }];
       }
       let formattedItems = formatCheckoutItems(items);
 
