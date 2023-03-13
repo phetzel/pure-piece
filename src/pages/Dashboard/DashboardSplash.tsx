@@ -4,6 +4,7 @@ import FadeIn from "react-fade-in";
 
 import dashboardStyles from "./styles/dashboardStyles";
 import logoDark from "../../assets/images/logoDark.png";
+import highFive from "../../assets/images/high-five.png";
 // hooks
 import useAppNavigation from "../../hooks/useAppNavigation";
 
@@ -21,9 +22,10 @@ const DashboardSplash = ({ isInitLoaded, splashRef }: Props) => {
       id="dashboardSplash"
       ref={splashRef}
     >
-      <Grid container sx={dashboardStyles.splashInnerContainer}>
+      <Box sx={dashboardStyles.splashInnerContainer}>
         {/* content */}
-        <Grid item xs={12} md={6}>
+        {/* <Box> */}
+        <Box sx={dashboardStyles.splashContentContainer}>
           <FadeIn delay={100} transitionDuration={1500} visible={isInitLoaded}>
             <Box sx={dashboardStyles.splashContent}>
               <Box
@@ -43,13 +45,20 @@ const DashboardSplash = ({ isInitLoaded, splashRef }: Props) => {
               </Button>
             </Box>
           </FadeIn>
-        </Grid>
+        </Box>
+        {/* </Box> */}
 
         {/* splash image */}
-        <Grid item xs={12} md={6} sx={dashboardStyles.splashImageContainer}>
-          <Box component="div" sx={dashboardStyles.splashImage} />
-        </Grid>
-      </Grid>
+        <Box sx={dashboardStyles.splashImageContainer}>
+          {/* <Box component="div" sx={dashboardStyles.splashImage} /> */}
+          <Box
+            component="img"
+            alt={"Logo"}
+            src={highFive}
+            sx={dashboardStyles.splashImage}
+          />
+        </Box>
+      </Box>
     </Box>
   );
 };

@@ -1,4 +1,4 @@
-import highFive from "../../../assets/images/highFive.png";
+import highFive from "../../../assets/images/high-five.png";
 
 export default {
   section: {
@@ -25,13 +25,24 @@ export default {
     top: 0,
     left: 0,
     right: 0,
+    display: "flex",
+    justifyContent: "flex-end",
+  },
+  splashContentContainer: {
+    alignItems: "center",
+    display: "flex",
+    justifyContent: "center",
+    backgroundColor: { xs: "rgba(255, 255, 255, .7)", md: "none" },
+    position: { xs: "absolute", md: "static" },
+    left: 0,
+    height: "100%",
+    width: "100%",
   },
   splashContent: {
     alignItems: "center",
     display: "flex",
     justifyContent: "center",
     flexDirection: "column",
-    marginTop: "130px",
   },
   splashContentLogo: {
     objectFit: "cover",
@@ -41,17 +52,16 @@ export default {
     marginBottom: "10px",
   },
   splashImageContainer: {
-    justifyContent: "flex-end",
-    display: { xs: "none", md: "flex" },
+    display: "block",
+    height: "100vh",
     paddingTop: "80px",
   },
   splashImage: {
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
-    backgroundImage: `url(${highFive})`,
     height: "100%",
-    width: "100%",
+    // width: "auto",
   },
   // about
   aboutImageContainer: {
