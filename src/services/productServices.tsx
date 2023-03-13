@@ -39,11 +39,15 @@ export const addProduct = ({
       image: image,
     },
   };
+  const headers = {
+    Authorization: localStorage.getItem("token"),
+  };
 
   return axios({
     method: "post",
     url: url,
     data: data,
+    headers: headers,
   }).then((res) => {
     if (res.status === 200) {
       return res.data;
@@ -62,11 +66,15 @@ export const updateProduct = ({ id, field, value }: UpdateProductInputType) => {
       value: value,
     },
   };
+  const headers = {
+    Authorization: localStorage.getItem("token"),
+  };
 
   return axios({
     method: "put",
     url: url,
     data: data,
+    headers: headers,
   }).then((res) => {
     if (res.status === 200) {
       return res.data;
