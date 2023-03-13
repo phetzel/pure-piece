@@ -11,7 +11,10 @@ import {
 
 import consoleStyles from "./styles/consoleStyles";
 import { addNewsletter } from "../../services/emailServices";
-import { toggleLoading } from "../../redux/slices/navigationSlice";
+import {
+  toggleLoading,
+  updateToastState,
+} from "../../redux/slices/navigationSlice";
 
 export type Props = {};
 
@@ -26,34 +29,58 @@ const ConsoleEmailForm = ({}: Props) => {
   const handleSendEmail = () => {
     const isValid = handleValidation();
 
-    dispatch(toggleLoading(true));
-    setError("");
-    setIsDisabled(true);
+    if (isValid) {
+      dispatch(toggleLoading(true));
+      setError("");
+      setIsDisabled(true);
 
-    addNewsletter({
-      subject: subject,
-      message: message,
-    })
-      .then((res) => {
-        dispatch(toggleLoading(false));
-        setIsDisabled(false);
+      addNewsletter({
+        subject: subject,
+        message: message,
       })
-      .catch((err) => {
-        dispatch(toggleLoading(false));
-        setIsDisabled(false);
-      });
+        .then((res) => {
+          handleSubmitSuccess();
+          dispatch(toggleLoading(false));
+          setIsDisabled(false);
+        })
+        .catch((err) => {
+          dispatch(toggleLoading(false));
+          setIsDisabled(false);
+        });
+    }
   };
 
   const handleValidation = (): boolean => {
     if (!subject) {
-      setError("Please enter a valid subject");
+      dispatch(
+        updateToastState({
+          children: "Please enter a valid subject",
+          severity: "error",
+        })
+      );
       return false;
     } else if (!message) {
-      setError("Please enter a valid message");
+      dispatch(
+        updateToastState({
+          children: "Please enter a valid message",
+          severity: "error",
+        })
+      );
       return false;
     }
 
     return true;
+  };
+
+  const handleSubmitSuccess = () => {
+    dispatch(
+      updateToastState({
+        children: "Newsletter Sent",
+        severity: "success",
+      })
+    );
+    setSubject("");
+    setMessage("");
   };
 
   return (
@@ -78,6 +105,7 @@ const ConsoleEmailForm = ({}: Props) => {
             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
               setSubject(event.target.value);
             }}
+            value={subject}
           />
 
           <TextField
@@ -92,6 +120,7 @@ const ConsoleEmailForm = ({}: Props) => {
             minRows={4}
             multiline
             sx={{ mt: 1 }}
+            value={message}
           />
 
           <Button
