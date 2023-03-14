@@ -1,8 +1,8 @@
 import { EndorsementType } from "../types/aboutTypes";
-import dgSmall from "../assets/images/dg-small.png";
-import pitbull from "../assets/images/pitbull.jpg";
 import endorsedog1 from "../assets/images/endorse-dog-1.png";
 import endorsePerson1 from "../assets/images/endorse-person-1.png";
+import endorsedog2 from "../assets/images/endorse-dog-2.jpg";
+import endorsePerson2 from "../assets/images/endorse-person-2.jpg";
 
 export const ABOUT: string =
   "Pure piece treats sole objective is to provide a human grade organic product for our animals to enjoy.  I noticed that none of the products in stores were organic and most comparable products weren’t produced on the United States.  I knew I could make high quality local, organic and affordable treats.";
@@ -18,10 +18,10 @@ export const ENDORSEMENTS: EndorsementType[] = [
   },
   {
     petName: "Spot",
-    petImage: pitbull,
-    userName: "Cindy",
-    userImage: "https://mui.com/static/images/avatar/3.jpg",
+    petImage: endorsedog2,
+    userName: "Robin",
+    userImage: endorsePerson2,
     review:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sed neque in dolor placerat consequat nec eget dui. Praesent ut interdum orci. Vivamus fermentum nibh eu fringilla pharetra. Nam in iaculis lorem, vitae mollis enim. Maecenas elementum egestas viverra. Nullam commodo, augue in gravida ultrices, mauris est feugiat risus, eu mattis orci dolor eu justo.",
+      "Pure Pieces are like caring an extremely high reward treat like bacon or sardines, but not as messy! My dogs recall is 110% when he knows I have the treats. They don’t crumble, but can be broken up by hand for smaller chompers. They’re extremely nutritious. My dogs coat is healthier feeling and looking when he’s getting the Pure Pieces. And I love supporting small businesses. No brainer, they’re best treats ever!",
   },
 ];
