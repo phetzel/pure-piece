@@ -23,8 +23,6 @@ const DashboardSplash = ({ isInitLoaded, splashRef }: Props) => {
       ref={splashRef}
     >
       <Box sx={dashboardStyles.splashInnerContainer}>
-        {/* content */}
-        {/* <Box> */}
         <Box sx={dashboardStyles.splashContentContainer}>
           <FadeIn delay={100} transitionDuration={1500} visible={isInitLoaded}>
             <Box sx={dashboardStyles.splashContent}>
@@ -46,11 +44,9 @@ const DashboardSplash = ({ isInitLoaded, splashRef }: Props) => {
             </Box>
           </FadeIn>
         </Box>
-        {/* </Box> */}
 
         {/* splash image */}
         <Box sx={dashboardStyles.splashImageContainer}>
-          {/* <Box component="div" sx={dashboardStyles.splashImage} /> */}
           <Box
             component="img"
             alt={"Logo"}

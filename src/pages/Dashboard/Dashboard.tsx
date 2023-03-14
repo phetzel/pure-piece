@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Box } from "@mui/material";
 import { useInView } from "react-intersection-observer";
@@ -9,6 +9,7 @@ import { RootState } from "../../redux/store";
 import {
   toggleDashboardScroll,
   setActiveTab,
+  updateToastState,
 } from "../../redux/slices/navigationSlice";
 // types
 import { LocationType } from "../../types/navigationTypes";
@@ -28,6 +29,7 @@ const Dashboard = ({}: Props) => {
   const [isInitLoaded, setIsInitLoaded] = useState<boolean>(false);
 
   const location = useLocation();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const dispatch = useDispatch();
   const scrollState = useSelector(
@@ -39,7 +41,7 @@ const Dashboard = ({}: Props) => {
     threshold: 0.1,
   });
   const [productRef, productInView] = useInView({
-    threshold: 0.1,
+    threshold: 0.01,
   });
   const [aboutRef, aboutInView] = useInView({
     threshold: 0.01,
@@ -48,6 +50,21 @@ const Dashboard = ({}: Props) => {
   const [contactRef, contactInView] = useInView({
     threshold: 0.1,
   });
+
+  // check if redirect from stripe checkout
+  useEffect(() => {
+    const checkoutUrlParam = searchParams.get("checkout");
+
+    if (checkoutUrlParam === "1") {
+      dispatch(
+        updateToastState({
+          severity: "success",
+          children: "Thank you for your purchase",
+        })
+      );
+      setSearchParams();
+    }
+  }, []);
 
   // update active tab
   useEffect(() => {
