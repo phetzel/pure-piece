@@ -43,4 +43,4 @@ This will start the project on http://localhost:3000.
 
 ## API
 
-The dog treat website is connected to a Ruby on Rails API backend. You can find the API repository at https://github.com/phetzel/pure-piece-rails
+The dog treat website is connected to a Ruby on Rails API backend. You can find the API repository at https://github.com/phetzel/pure-piece-rails.
