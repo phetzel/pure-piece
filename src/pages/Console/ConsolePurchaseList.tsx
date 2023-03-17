@@ -10,16 +10,13 @@ import {
   updateToastState,
 } from "../../redux/slices/navigationSlice";
 import { getPurchases } from "../../services/paymentServices";
-import {
-  SubscriptionType,
-  UpdateSubscriptionInput,
-} from "../../types/emailTypes";
+import { GetPaymentsType } from "../../types/paymentTypes";
 import consoleStyles from "./styles/consoleStyles";
 
 export type Props = {};
 
-const ConsoleEmailSubscriptions = ({}: Props) => {
-  const [purchases, setPurchases] = useState<SubscriptionType[]>([]);
+const ConsolePurchaseList = ({}: Props) => {
+  const [purchases, setPurchases] = useState<GetPaymentsType[]>([]);
 
   const dispatch = useDispatch();
 
@@ -32,29 +29,15 @@ const ConsoleEmailSubscriptions = ({}: Props) => {
     dispatch(toggleLoading(true));
 
     getPurchases().then((res) => {
-      //   if (typeof res != "string") {
-      //     setPurchases(res);
-      //   }
+      if (typeof res != "string") {
+        setPurchases(res);
+      }
 
       dispatch(toggleLoading(false));
     });
   };
 
   const handleUpdateEnabled = async (newRow: GridRowModel) => {
-    const updateParams: UpdateSubscriptionInput = {
-      id: newRow.id,
-      field: "enabled",
-      newValue: newRow.enabled,
-    };
-    // const subscription = await updateSubscription(updateParams);
-
-    dispatch(
-      updateToastState({
-        children: "Subscription successfully updated",
-        severity: "success",
-      })
-    );
-
     // return subscription;
     return newRow;
   };
@@ -66,14 +49,21 @@ const ConsoleEmailSubscriptions = ({}: Props) => {
   const columns: GridColDef[] = [
     { field: "id", headerName: "ID", width: 90 },
     {
-      field: "email",
-      headerName: "Email",
+      field: "stripe_id",
+      headerName: "Stripe id",
       width: 150,
       editable: false,
     },
     {
-      field: "enabled",
-      headerName: "Email Enabled",
+      field: "email",
+      headerName: "Email",
+      type: "boolean",
+      width: 150,
+      editable: false,
+    },
+    {
+      field: "fulfilled",
+      headerName: "Product Shipped?",
       type: "boolean",
       width: 150,
       editable: true,
@@ -84,13 +74,6 @@ const ConsoleEmailSubscriptions = ({}: Props) => {
           <CloseIcon color="primary" />
         );
       },
-    },
-    {
-      field: "subscribed",
-      headerName: "Email Subscribed",
-      type: "boolean",
-      width: 150,
-      editable: false,
     },
   ];
 
@@ -108,4 +91,4 @@ const ConsoleEmailSubscriptions = ({}: Props) => {
   );
 };
 
-export default ConsoleEmailSubscriptions;
+export default ConsolePurchaseList;

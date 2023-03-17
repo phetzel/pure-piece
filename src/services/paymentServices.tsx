@@ -1,7 +1,7 @@
 import axios from "axios";
 
 import { ROOT_URL } from "./config";
-import { PaymentType } from "../types/paymentTypes";
+import { PaymentType, GetPaymentsType } from "../types/paymentTypes";
 
 export const addCheckout = (
   items: {
@@ -31,7 +31,7 @@ export const addCheckout = (
   });
 };
 
-export const getPurchases = () => {
+export const getPurchases = (): Promise<GetPaymentsType[] | string> => {
   const url = `${ROOT_URL}/api/v1/purchase`;
 
   const headers = {
@@ -43,6 +43,10 @@ export const getPurchases = () => {
     url: url,
     headers: headers,
   }).then((res) => {
-    console.log("getPurchases", res);
+    if (res.status === 200) {
+      return res.data;
+    } else {
+      return "Unsuccessful get subscriptions request";
+    }
   });
 };
