@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { Box } from "@mui/material";
+import { Box, Link } from "@mui/material";
 import { DataGrid, GridColDef, GridRowModel } from "@mui/x-data-grid";
 import CheckIcon from "@mui/icons-material/Check";
 import CloseIcon from "@mui/icons-material/Close";
@@ -53,6 +53,10 @@ const ConsolePurchaseList = ({}: Props) => {
       headerName: "Stripe id",
       width: 150,
       editable: false,
+      renderCell: (params) => {
+        console.log(params);
+        return <Link>Link</Link>;
+      },
     },
     {
       field: "email",
