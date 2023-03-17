@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Grid, Modal, Typography } from "@mui/material";
 
-import productModalStyles from "../CommonModal/styles/commonModalStyles";
+import commonModalStyles from "../CommonModal/styles/commonModalStyles";
 
 export type Props = {
   children: JSX.Element;
@@ -18,7 +18,7 @@ const CommonModal = ({ children, handleClose, isOpen, title }: Props) => {
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
-      <Box sx={productModalStyles.modal}>
+      <Box sx={commonModalStyles.modal}>
         {title && (
           <Typography variant="h5" color="black">
             {title}

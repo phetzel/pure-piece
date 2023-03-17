@@ -9,6 +9,7 @@ import {
 } from "../../../redux/slices/navigationSlice";
 import { addSubscription } from "../../../services/emailServices";
 import { isValidEmail } from "../../../util/utilFunctions";
+import subscribeModalStyles from "./styles/subscribeModalStyles";
 
 export type Props = {
   isOpen: boolean;
@@ -100,9 +101,7 @@ const SubscribeModal = ({ isOpen, handleClose }: Props) => {
         <Button
           variant="contained"
           color="primary"
-          sx={{
-            fontSize: "12px",
-          }}
+          sx={subscribeModalStyles.button}
           onClick={handleSubscribe}
           disabled={isFormDisabled}
         >

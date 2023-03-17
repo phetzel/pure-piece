@@ -9,6 +9,7 @@ import {
 } from "../../../redux/slices/navigationSlice";
 import { addContact } from "../../../services/emailServices";
 import { isValidEmail } from "../../../util/utilFunctions";
+import contactStyles from "./styles/contactStyles";
 
 export type Props = {
   isOpen: boolean;
@@ -118,9 +119,7 @@ const ContactModal = ({ isOpen, handleClose }: Props) => {
         <Button
           variant="contained"
           color="primary"
-          sx={{
-            fontSize: "12px",
-          }}
+          sx={contactStyles.button}
           onClick={handleContact}
           disabled={isFormDisabled}
         >

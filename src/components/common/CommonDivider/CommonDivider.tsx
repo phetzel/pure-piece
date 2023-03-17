@@ -1,6 +1,8 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
 
+import dividerStyles from "./styles/dividerStyles";
+
 export type Props = {
   image: string;
   isVisible: boolean;
@@ -9,14 +11,12 @@ export type Props = {
 };
 
 const CommonDivider = ({ image, isVisible, title, subTitle }: Props) => {
-  const pallaraxStyle = {
-    height: "90vh",
-  };
+  const imageZIndex = isVisible ? -1 : -2;
   return (
-    <Box sx={pallaraxStyle}>
+    <Box sx={dividerStyles.pallarax}>
       <Box
         component="img"
-        alt={"Logo"}
+        alt={"background"}
         src={image}
         sx={{
           objectFit: "cover",
@@ -28,33 +28,15 @@ const CommonDivider = ({ image, isVisible, title, subTitle }: Props) => {
           zIndex: isVisible ? -1 : -2,
         }}
       />
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-around",
-          height: "100%",
-          textAlign: "center",
-        }}
-      >
-        <Box sx={{ position: "sticky", top: 80, paddingBottom: "25px" }}>
-          <Typography
-            variant="h2"
-            color="secondary"
-            sx={{ fontWeight: "bold" }}
-          >
+      <Box sx={dividerStyles.textContainer}>
+        <Box sx={dividerStyles.headerContainer}>
+          <Typography variant="h2" color="secondary" sx={dividerStyles.header}>
             {title}
           </Typography>
         </Box>
 
-        <Box
-          sx={{
-            position: "sticky",
-            top: 140,
-            paddingBottom: "10px",
-          }}
-        >
-          <Typography variant="h6" color="#fff" sx={{ fontWeight: "bold" }}>
+        <Box sx={dividerStyles.subheaderContainer}>
+          <Typography variant="h6" color="#fff" sx={dividerStyles.header}>
             {subTitle}
           </Typography>
         </Box>

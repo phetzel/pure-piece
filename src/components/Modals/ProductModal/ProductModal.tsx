@@ -11,18 +11,14 @@ import {
 } from "@mui/material";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 
-// redux
 import { RootState } from "../../../redux/store";
-
 import { updateToastState } from "../../../redux/slices/navigationSlice";
 import { updateCart } from "../../../redux/slices/productSlice";
 import { ProductType, CartItem } from "../../../types/productTypes";
-// import useAppNavigation from "../../../hooks/useAppNavigation";
-
 import CommonModal from "../../common/CommonModal/CommonModal";
-
 import { addCheckout } from "../../../services/paymentServices";
 import { formatCheckoutItems } from "../../../util/utilFunctions";
+import productModalStyles from "./styles/productModalStyles";
 
 export type Props = {
   isOpen: boolean;
@@ -53,9 +49,8 @@ const ProductModal = ({ isOpen, handleClose, product }: Props) => {
   };
 
   const handleCheckout = async () => {
-    handleAddToCart();
-    // handleClose();
-    // appNavigate("Checkout");
+    // handleAddToCart();
+
     if (product) {
       let items: CartItem[] = [];
       const itemIds = cartState.map((i) => i.priceId);
@@ -83,34 +78,21 @@ const ProductModal = ({ isOpen, handleClose, product }: Props) => {
 
   return (
     <CommonModal isOpen={isOpen} handleClose={handleClose}>
-      <Grid container columnSpacing={2} sx={{ overflow: "scroll" }}>
-        <Grid
-          item
-          xs={12}
-          md={6}
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-          }}
-        >
+      <Grid container columnSpacing={2} sx={productModalStyles.container}>
+        <Grid item xs={12} md={6} sx={productModalStyles.imageContainer}>
           {product?.images[0] && (
             <Box
               component="img"
               alt={product?.name}
               src={product?.images[0]}
-              sx={{
-                objectFit: "cover",
-                height: "300px",
-                maxWidth: "100%",
-              }}
+              sx={productModalStyles.image}
             />
           )}
           <Typography
             id="modal-modal-title"
             variant="h6"
             component="h2"
-            sx={{ textAlign: "center" }}
+            sx={productModalStyles.productName}
           >
             {product?.name}
           </Typography>
@@ -123,20 +105,15 @@ const ProductModal = ({ isOpen, handleClose, product }: Props) => {
               flexDirection: "column",
             }}
           >
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <Typography
-                variant="body1"
-                sx={{ fontSize: "18px", marginTop: "15px" }}
-              >
+            <Box sx={productModalStyles.quantityContainer}>
+              <Typography variant="body1" sx={productModalStyles.quantityText}>
                 ${product?.price} *
               </Typography>
-              <FormControl variant="standard" sx={{ m: 1, minWidth: 70 }}>
+
+              <FormControl
+                variant="standard"
+                sx={productModalStyles.quantitySelector}
+              >
                 <InputLabel id="productQuantityLabel">Quantity</InputLabel>
                 <Select
                   labelId="productQuantityLabel"
@@ -157,28 +134,16 @@ const ProductModal = ({ isOpen, handleClose, product }: Props) => {
                   <MenuItem value={10}>10</MenuItem>
                 </Select>
               </FormControl>
-              <Typography
-                variant="body1"
-                sx={{ fontSize: "18px", marginTop: "15px" }}
-              >
+
+              <Typography variant="body1" sx={productModalStyles.quantityText}>
                 = {product?.price ? `$${product.price * quantity}` : ""}
               </Typography>
             </Box>
 
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
+            <Box sx={productModalStyles.buttonContainer}>
               <Button
                 variant="outlined"
-                sx={{
-                  fontSize: "12px",
-                  marginRight: "10px",
-                  height: "50%",
-                }}
+                sx={productModalStyles.cartButton}
                 color="info"
                 onClick={handleAddToCart}
               >
@@ -187,10 +152,7 @@ const ProductModal = ({ isOpen, handleClose, product }: Props) => {
               <Button
                 variant="contained"
                 color="primary"
-                sx={{
-                  fontSize: "12px",
-                  height: "50%",
-                }}
+                sx={productModalStyles.buyButton}
                 onClick={handleCheckout}
               >
                 Buy Now

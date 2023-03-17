@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Typography } from "@mui/material";
 
 import CommonSubtitle from "../CommonSubtitle/CommonSubtitle";
+import commonTitleStyles from "./styles/commonTitleStyles";
 
 export type Props = {
   subTitle?: string;
@@ -11,7 +12,7 @@ export type Props = {
 const CommonTitle = ({ subTitle, title }: Props) => {
   return (
     <Box>
-      <Typography variant="h3" sx={{ textAlign: "center" }} color="primary">
+      <Typography variant="h3" sx={commonTitleStyles.title} color="primary">
         {title}
       </Typography>
       {subTitle && <CommonSubtitle subTitle={subTitle} />}

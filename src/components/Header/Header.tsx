@@ -15,6 +15,7 @@ import CommonIconButton from "../common/CommonIconButton/CommonIconButton";
 import useAppNavigation from "../../hooks/useAppNavigation";
 // asstes
 import logoLight from "../../assets/images/logoLight.png";
+import headerStyles from "./styles/headerStyle";
 
 interface Props {}
 
@@ -37,41 +38,24 @@ const Header = ({}: Props) => {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           {/* dropdown */}
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+          <Box sx={headerStyles.dropdown}>
             <CommonIconButton onClick={() => dispatch(openDrawer("left"))}>
               <MenuIcon />
             </CommonIconButton>
           </Box>
 
-          {/* Title / Logo */}
-          <Box
-            sx={{
-              flexGrow: 1,
-              display: { xs: "flex" },
-            }}
-          >
+          <Box sx={headerStyles.contentContainer}>
+            {/* Title / Logo */}
             <Box
               component="img"
               alt={"Logo"}
               src={logoLight}
-              sx={{
-                objectFit: "cover",
-                height: "60px",
-                maxWidth: "100%",
-                marginTop: "10px",
-                marginBottom: "10px",
-                cursor: "pointer",
-              }}
+              sx={headerStyles.logo}
               onClick={() => appNavigate("Home")}
             />
 
-            <Box
-              sx={{
-                display: { xs: "none", md: "flex" },
-                ml: 3,
-                alignItems: "center",
-              }}
-            >
+            {/* nav list */}
+            <Box sx={headerStyles.listContainer}>
               {filteredNavMenu.map((item) => (
                 <Button
                   key={item.id.toString()}
@@ -79,7 +63,7 @@ const Header = ({}: Props) => {
                     tabState.activeTab === item.label ? "secondary" : "white"
                   }
                   onClick={() => appNavigate(item.label)}
-                  sx={{ height: 50 }}
+                  sx={headerStyles.listItem}
                 >
                   {item.label}
                 </Button>

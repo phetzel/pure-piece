@@ -1,4 +1,4 @@
-const productModalStyles = {
+const commonModalStyles = {
   modal: {
     position: "absolute" as "absolute",
     top: "50%",
@@ -13,4 +13,4 @@ const productModalStyles = {
   },
 };
 
-export default productModalStyles;
+export default commonModalStyles;
