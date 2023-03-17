@@ -8,6 +8,7 @@ import { adminLoggedOut } from "../../redux/slices/adminSlice";
 import PageWrapper from "../../components/Wrappers/PageWrapper/PageWrapper";
 import ConsoleEmail from "./ConsoleEmail";
 import ConsoleProduct from "./ConsoleProduct";
+import ConsolePurchase from "./ConsolePurchase";
 import consoleStyles from "./styles/consoleStyles";
 
 interface Props {}
@@ -35,6 +36,8 @@ const Console = ({}: Props) => {
         return <ConsoleProduct />;
       case 1:
         return <ConsoleEmail />;
+      case 2:
+        return <ConsolePurchase />;
       default:
         return <Typography>Select Tab</Typography>;
     }
@@ -60,7 +63,8 @@ const Console = ({}: Props) => {
               aria-label="Admin Console Tabs"
             >
               <Tab label="Products" />
-              <Tab label="Email" />
+              <Tab label="Emails" />
+              <Tab label="Purchases" />
             </Tabs>
           </Box>
           <Box>{renderTabContent()}</Box>

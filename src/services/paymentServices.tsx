@@ -30,3 +30,19 @@ export const addCheckout = (
     }
   });
 };
+
+export const getPurchases = () => {
+  const url = `${ROOT_URL}/api/v1/purchase`;
+
+  const headers = {
+    Authorization: localStorage.getItem("token"),
+  };
+
+  return axios({
+    method: "get",
+    url: url,
+    headers: headers,
+  }).then((res) => {
+    console.log("getPurchases", res);
+  });
+};
