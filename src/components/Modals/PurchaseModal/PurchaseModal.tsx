@@ -14,18 +14,31 @@ const PurchaseModal = ({ isOpen, handleClose, purchase }: Props) => {
   const { name, address } = shipping;
   return (
     <CommonModal isOpen={isOpen} handleClose={handleClose} title={"Puchase"}>
-      <Box>
-        <Typography>Shipping</Typography>
-        <Typography>Name:</Typography>
-        <Typography>{name ? name : ""}</Typography>
-        <Typography>Address:</Typography>
-        <Typography>{address.line1 ? address.line1 : ""}</Typography>
-        <Typography>{address.line2 ? address.line2 : ""}</Typography>
-        <Typography>{address.city ? address.city : ""}</Typography>
-        <Typography>{address.state ? address.state : ""}</Typography>
-        <Typography>
-          {address.postal_code ? address.postal_code : ""}
-        </Typography>
+      <Box sx={{ display: "flex" }}>
+        <Box>
+          <Typography>Shipping</Typography>
+          <Typography>Name:</Typography>
+          <Typography>{name ? name : ""}</Typography>
+          <Typography>Address:</Typography>
+          <Typography>{address.line1 ? address.line1 : ""}</Typography>
+          <Typography>{address.line2 ? address.line2 : ""}</Typography>
+          <Typography>
+            {address.city ? address.city : ""}{" "}
+            {address.state ? address.state : ""}{" "}
+            {address.postal_code ? address.postal_code : ""}
+          </Typography>
+        </Box>
+        <Box>
+          <Typography>Products</Typography>
+          {items.map((i) => (
+            <Box>
+              <Typography>Quantity:</Typography>
+              <Typography>{i.quantity}</Typography>
+              <Typography>Product:</Typography>
+              <Typography>{i.description}</Typography>
+            </Box>
+          ))}
+        </Box>
       </Box>
     </CommonModal>
   );

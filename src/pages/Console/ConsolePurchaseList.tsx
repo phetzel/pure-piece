@@ -70,7 +70,7 @@ const ConsolePurchaseList = ({}: Props) => {
     {
       field: "stripe_id",
       headerName: "Stripe id",
-      width: 150,
+      width: 200,
       editable: false,
       renderCell: (params) => {
         return (
@@ -83,7 +83,7 @@ const ConsolePurchaseList = ({}: Props) => {
     {
       field: "email",
       headerName: "Email",
-      width: 150,
+      width: 200,
       editable: false,
     },
     {
