@@ -8,3 +8,11 @@ export interface GetPaymentsType {
   email: string;
   fulfilled: boolean;
 }
+
+export interface GetProductDetailsType {
+  stripe_id: string;
+  items: {
+    description: string;
+    quantity: number;
+  }[];
+}

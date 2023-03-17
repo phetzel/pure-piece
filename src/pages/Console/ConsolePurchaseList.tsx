@@ -105,6 +105,11 @@ const ConsolePurchaseList = ({}: Props) => {
         experimentalFeatures={{ newEditingApi: true }}
         processRowUpdate={handleUpdateEnabled}
         onProcessRowUpdateError={handleProcessRowUpdateError}
+        filterModel={{
+          items: [
+            { columnField: "fulfilled", operatorValue: "is", value: "false" },
+          ],
+        }}
       />
     </Box>
   );

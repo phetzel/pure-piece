@@ -1,7 +1,11 @@
 import axios from "axios";
 
 import { ROOT_URL } from "./config";
-import { PaymentType, GetPaymentsType } from "../types/paymentTypes";
+import {
+  PaymentType,
+  GetPaymentsType,
+  GetProductDetailsType,
+} from "../types/paymentTypes";
 
 export const addCheckout = (
   items: {
@@ -51,7 +55,9 @@ export const getPurchases = (): Promise<GetPaymentsType[] | string> => {
   });
 };
 
-export const getPurchase = (stripeId: string) => {
+export const getPurchase = (
+  stripeId: string
+): Promise<GetProductDetailsType | string> => {
   const url = `${ROOT_URL}/api/v1/purchase/${stripeId}`;
 
   const headers = {
