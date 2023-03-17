@@ -10,14 +10,19 @@ import {
   updateToastState,
 } from "../../redux/slices/navigationSlice";
 import { getPurchases, getPurchase } from "../../services/paymentServices";
-import { GetPaymentsType } from "../../types/paymentTypes";
+import {
+  GetPaymentsType,
+  GetProductDetailsType,
+} from "../../types/paymentTypes";
+import PurchaseModal from "../../components/Modals/PurchaseModal/PurchaseModal";
 import consoleStyles from "./styles/consoleStyles";
 
 export type Props = {};
 
 const ConsolePurchaseList = ({}: Props) => {
   const [purchases, setPurchases] = useState<GetPaymentsType[]>([]);
-  const [focusedPurchase, setFocusedPurchase] = useState<GetPaymentsType>();
+  const [focusedPurchase, setFocusedPurchase] =
+    useState<GetProductDetailsType | null>(null);
 
   const dispatch = useDispatch();
 
@@ -44,6 +49,7 @@ const ConsolePurchaseList = ({}: Props) => {
     getPurchase(stripeId).then((res) => {
       console.log("res", res);
       if (typeof res != "string") {
+        setFocusedPurchase(res);
       }
 
       dispatch(toggleLoading(false));
@@ -98,6 +104,13 @@ const ConsolePurchaseList = ({}: Props) => {
 
   return (
     <Box sx={consoleStyles.table}>
+      {focusedPurchase && (
+        <PurchaseModal
+          purchase={focusedPurchase}
+          isOpen={focusedPurchase ? true : false}
+          handleClose={() => setFocusedPurchase(null)}
+        />
+      )}
       <DataGrid
         rows={purchases}
         columns={columns}
