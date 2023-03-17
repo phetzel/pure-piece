@@ -9,7 +9,7 @@ import {
   toggleLoading,
   updateToastState,
 } from "../../redux/slices/navigationSlice";
-import { getPurchases } from "../../services/paymentServices";
+import { getPurchases, getPurchase } from "../../services/paymentServices";
 import { GetPaymentsType } from "../../types/paymentTypes";
 import consoleStyles from "./styles/consoleStyles";
 
@@ -17,6 +17,7 @@ export type Props = {};
 
 const ConsolePurchaseList = ({}: Props) => {
   const [purchases, setPurchases] = useState<GetPaymentsType[]>([]);
+  const [focusedPurchase, setFocusedPurchase] = useState<GetPaymentsType>();
 
   const dispatch = useDispatch();
 
@@ -31,6 +32,18 @@ const ConsolePurchaseList = ({}: Props) => {
     getPurchases().then((res) => {
       if (typeof res != "string") {
         setPurchases(res);
+      }
+
+      dispatch(toggleLoading(false));
+    });
+  };
+
+  const handleFocusPurchase = (stripeId: string) => {
+    dispatch(toggleLoading(true));
+
+    getPurchase(stripeId).then((res) => {
+      console.log("res", res);
+      if (typeof res != "string") {
       }
 
       dispatch(toggleLoading(false));
@@ -54,8 +67,11 @@ const ConsolePurchaseList = ({}: Props) => {
       width: 150,
       editable: false,
       renderCell: (params) => {
-        console.log(params);
-        return <Link>Link</Link>;
+        return (
+          <Link onClick={() => handleFocusPurchase(params.value)}>
+            {params.value}
+          </Link>
+        );
       },
     },
     {
