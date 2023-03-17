@@ -57,7 +57,6 @@ const ConsolePurchaseList = ({}: Props) => {
     {
       field: "email",
       headerName: "Email",
-      type: "boolean",
       width: 150,
       editable: false,
     },

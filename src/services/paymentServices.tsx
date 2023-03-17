@@ -50,3 +50,24 @@ export const getPurchases = (): Promise<GetPaymentsType[] | string> => {
     }
   });
 };
+
+export const getPurchase = (stripeId: string) => {
+  const url = `${ROOT_URL}/api/v1/purchase/${stripeId}`;
+
+  const headers = {
+    Authorization: localStorage.getItem("token"),
+  };
+
+  return axios({
+    method: "get",
+    url: url,
+    headers: headers,
+  }).then((res) => {
+    console.log("getPurchase", res);
+    if (res.status === 200) {
+      return res.data;
+    } else {
+      return "Unsuccessful get subscriptions request";
+    }
+  });
+};
