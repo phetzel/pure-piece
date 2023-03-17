@@ -19,7 +19,7 @@ const ConsoleProduct = ({}: Props) => {
       case 0:
         return <ConsoleProductList />;
       case 1:
-        return <ConsoleProductForm />;
+        return <ConsoleProductForm setProductTab={() => setProductTab(0)} />;
       default:
         return <Typography>Select Tab</Typography>;
     }

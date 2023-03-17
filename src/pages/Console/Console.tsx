@@ -45,7 +45,6 @@ const Console = ({}: Props) => {
       <Container component="main" maxWidth="lg">
         <Fab
           variant="extended"
-          // color="secondary"
           onClick={handleAdminLogout}
           sx={consoleStyles.logoutButton}
           size="small"

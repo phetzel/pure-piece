@@ -4,10 +4,13 @@ import { ROOT_URL } from "./config";
 import {
   AddProductInputType,
   GetProductInputType,
+  ProductType,
   UpdateProductInputType,
 } from "../types/productTypes";
 
-export const getProducts = ({ isActiveOnly }: GetProductInputType) => {
+export const getProducts = ({
+  isActiveOnly,
+}: GetProductInputType): Promise<ProductType[] | string> => {
   const url = `${ROOT_URL}/api/v1/products?active=${isActiveOnly}`;
 
   return axios({
@@ -15,6 +18,7 @@ export const getProducts = ({ isActiveOnly }: GetProductInputType) => {
     url: url,
   }).then((res) => {
     if (res.status === 200) {
+      console.log("res", res);
       return res.data;
     } else {
       return "Unsuccessful get products request";
@@ -28,7 +32,7 @@ export const addProduct = ({
   description,
   price,
   image,
-}: AddProductInputType) => {
+}: AddProductInputType): Promise<ProductType | string> => {
   const url = `${ROOT_URL}/api/v1/products`;
   const data = {
     product: {
@@ -57,7 +61,11 @@ export const addProduct = ({
   });
 };
 
-export const updateProduct = ({ id, field, value }: UpdateProductInputType) => {
+export const updateProduct = ({
+  id,
+  field,
+  value,
+}: UpdateProductInputType): Promise<ProductType | string> => {
   const url = `${ROOT_URL}/api/v1/products/${id}`;
   const data = {
     product: {
@@ -77,6 +85,7 @@ export const updateProduct = ({ id, field, value }: UpdateProductInputType) => {
     headers: headers,
   }).then((res) => {
     if (res.status === 200) {
+      console.log("res", res);
       return res.data;
     } else {
       return "Unsuccessful add product request";

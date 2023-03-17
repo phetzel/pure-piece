@@ -120,7 +120,10 @@ export const unsubscribe = ({ hash }: { hash: string }): Promise<boolean> => {
 };
 
 // newsletter
-export const addNewsletter = ({ subject, message }: EmailType) => {
+export const addNewsletter = ({
+  subject,
+  message,
+}: EmailType): Promise<boolean> => {
   const url = `${ROOT_URL}/api/v1/newsletters`;
   const data = {
     newsletter: {
@@ -151,7 +154,11 @@ export const addNewsletter = ({ subject, message }: EmailType) => {
 };
 
 // contact
-export const addContact = ({ email, subject, message }: ContactEmailType) => {
+export const addContact = ({
+  email,
+  subject,
+  message,
+}: ContactEmailType): Promise<boolean> => {
   const url = `${ROOT_URL}/api/v1/contacts`;
   const data = {
     contact: {

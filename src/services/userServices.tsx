@@ -1,13 +1,15 @@
 import axios from "axios";
 import { ROOT_URL } from "./config";
 
+import { UserType } from "../types/adminTypes";
+
 export const handleLogin = ({
   email,
   password,
 }: {
   email: string;
   password: string;
-}): Promise<any> => {
+}): Promise<UserType | string> => {
   const url = `${ROOT_URL}/users/sign_in`;
   const data = {
     user: {
@@ -29,7 +31,7 @@ export const handleLogin = ({
           localStorage.setItem("token", `${headers.authorization}`);
         }
 
-        return res.data.status;
+        return res.data.status.data;
       } else {
         return "Unsuccessful login request";
       }
@@ -67,7 +69,7 @@ export const handleLogout = (): Promise<boolean> => {
     });
 };
 
-export const getCurrentUser = () => {
+export const getCurrentUser = (): Promise<UserType | string> => {
   const url = `${ROOT_URL}/api/v1/member_details`;
   const headers = {
     Authorization: localStorage.getItem("token"),
@@ -79,6 +81,7 @@ export const getCurrentUser = () => {
     headers: headers,
   })
     .then((res) => {
+      console.log("res", res);
       if (res.status === 200) {
         return res.data;
       } else {

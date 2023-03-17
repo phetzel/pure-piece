@@ -5,6 +5,8 @@ import { Navigate } from "react-router-dom";
 
 // services
 import { getCurrentUser } from "../../services/userServices";
+// types
+import { UserType } from "../../types/adminTypes";
 
 // redux
 import { adminLoggedIn } from "../../redux/slices/adminSlice";
@@ -30,7 +32,7 @@ const AuthRoute = ({ children }: Props) => {
   const handleFetchUser = async () => {
     const user = await getCurrentUser();
 
-    if (user) {
+    if (user && typeof user !== "string") {
       dispatch(adminLoggedIn(user));
     } else {
       setIsGettingUser(false);

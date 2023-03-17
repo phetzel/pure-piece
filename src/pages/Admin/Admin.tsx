@@ -48,8 +48,9 @@ const Admin = ({}: Props) => {
           setIsFormDisabled(false);
           dispatch(toggleLoading(false));
 
-          if (res.code === 200) {
-            dispatch(adminLoggedIn(res.data));
+          console.log("res", res);
+          if (res && typeof res != "string") {
+            dispatch(adminLoggedIn(res));
             appNavigate("Console");
           } else if (typeof res === "string") {
             setFormErr(res);

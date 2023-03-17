@@ -112,7 +112,7 @@ const ConsoleProductList = ({}: Props) => {
       headerName: "Price ($)",
       type: "number",
       width: 100,
-      editable: true,
+      editable: false,
     },
     {
       field: "description",

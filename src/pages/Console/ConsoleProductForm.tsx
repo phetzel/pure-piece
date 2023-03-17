@@ -24,9 +24,11 @@ import {
 import { addProduct } from "../../services/productServices";
 import consoleStyles from "./styles/consoleStyles";
 
-export type Props = {};
+export type Props = {
+  setProductTab: () => void;
+};
 
-const ConsoleProductForm = ({}: Props) => {
+const ConsoleProductForm = ({ setProductTab }: Props) => {
   const [name, setName] = useState<string>("");
   const [isActive, setIsActive] = useState<boolean>(true);
   const [price, setPrice] = useState<number>(0);
@@ -45,7 +47,9 @@ const ConsoleProductForm = ({}: Props) => {
       price: price,
       image: image,
     })
-      .then((res) => console.log("handleAddProduct res", res))
+      .then((res) => {
+        setProductTab();
+      })
       .catch((err) => console.log("handleAddProduct err", err));
   };
 
@@ -129,6 +133,7 @@ const ConsoleProductForm = ({}: Props) => {
             color="primary"
             sx={consoleStyles.formButton}
             onClick={handleAddProduct}
+            disabled // use stripe for now
           >
             Add
           </Button>
