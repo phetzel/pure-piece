@@ -84,7 +84,7 @@ export const updatePurchase = ({
   field,
   newValue,
 }: UpdatePurchaseInput): Promise<GetPaymentsType> => {
-  const url = `${ROOT_URL}/api/v1/subscriptions/${id}`;
+  const url = `${ROOT_URL}/api/v1/purchase/${id}`;
   const data = {
     purchase: {
       [field]: newValue,
