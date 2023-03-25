@@ -5,6 +5,7 @@ import {
   PaymentType,
   GetPaymentsType,
   GetProductDetailsType,
+  UpdatePurchaseInput,
 } from "../types/paymentTypes";
 
 export const addCheckout = (
@@ -76,4 +77,37 @@ export const getPurchase = (
       return "Unsuccessful get subscriptions request";
     }
   });
+};
+
+export const updatePurchase = ({
+  id,
+  field,
+  newValue,
+}: UpdatePurchaseInput): Promise<GetPaymentsType> => {
+  const url = `${ROOT_URL}/api/v1/subscriptions/${id}`;
+  const data = {
+    subscription: {
+      [field]: newValue,
+    },
+  };
+  const headers = {
+    Authorization: localStorage.getItem("token"),
+  };
+
+  return axios({
+    method: "put",
+    url: url,
+    data: data,
+    headers: headers,
+  })
+    .then((res) => {
+      if (res.status === 200) {
+        return res.data;
+      }
+    })
+    .catch((err) => {
+      if (err.response && err.response.data) {
+        return err.response.data.data;
+      }
+    });
 };

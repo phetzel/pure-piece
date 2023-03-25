@@ -14,28 +14,32 @@ const PurchaseModal = ({ isOpen, handleClose, purchase }: Props) => {
   const { name, address } = shipping;
   return (
     <CommonModal isOpen={isOpen} handleClose={handleClose} title={"Puchase"}>
-      <Box sx={{ display: "flex" }}>
-        <Box>
-          <Typography>Shipping</Typography>
-          <Typography>Name:</Typography>
+      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Box sx={{ alignText: "center" }}>
+          <Typography variant="subtitle1">Shipping</Typography>
+          <Typography variant="subtitle2">Name:</Typography>
           <Typography>{name ? name : ""}</Typography>
           <Typography>Address:</Typography>
-          <Typography>{address.line1 ? address.line1 : ""}</Typography>
-          <Typography>{address.line2 ? address.line2 : ""}</Typography>
-          <Typography>
+          <Typography variant="body2">
+            {address.line1 ? address.line1 : ""}
+          </Typography>
+          <Typography variant="body2">
+            {address.line2 ? address.line2 : ""}
+          </Typography>
+          <Typography variant="body2">
             {address.city ? address.city : ""}{" "}
             {address.state ? address.state : ""}{" "}
             {address.postal_code ? address.postal_code : ""}
           </Typography>
         </Box>
         <Box>
-          <Typography>Products</Typography>
+          <Typography variant="subtitle1">Products</Typography>
           {items.map((i) => (
             <Box>
-              <Typography>Quantity:</Typography>
-              <Typography>{i.quantity}</Typography>
-              <Typography>Product:</Typography>
-              <Typography>{i.description}</Typography>
+              <Typography variant="subtitle2">Quantity:</Typography>
+              <Typography variant="body2">{i.quantity}</Typography>
+              <Typography variant="subtitle2">Product:</Typography>
+              <Typography variant="body2">{i.description}</Typography>
             </Box>
           ))}
         </Box>
@@ -45,20 +49,3 @@ const PurchaseModal = ({ isOpen, handleClose, purchase }: Props) => {
 };
 
 export default PurchaseModal;
-
-// stripe_id: string;
-// items: {
-//   description: string;
-//   quantity: number;
-// }[];
-// shipping: {
-//   address: {
-//     city: string;
-//     country: string;
-//     line1: string;
-//     line2: string;
-//     postal_code: string;
-//     state: string;
-//   };
-//   name: string;
-// };

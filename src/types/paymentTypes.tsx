@@ -29,3 +29,9 @@ export interface GetProductDetailsType {
     name: string;
   };
 }
+
+export interface UpdatePurchaseInput {
+  id: number;
+  field: "fulfilled";
+  newValue: boolean;
+}
