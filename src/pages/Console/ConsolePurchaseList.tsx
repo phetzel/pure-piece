@@ -9,10 +9,15 @@ import {
   toggleLoading,
   updateToastState,
 } from "../../redux/slices/navigationSlice";
-import { getPurchases, getPurchase } from "../../services/paymentServices";
+import {
+  getPurchases,
+  getPurchase,
+  updatePurchase,
+} from "../../services/paymentServices";
 import {
   GetPaymentsType,
   GetProductDetailsType,
+  UpdatePurchaseInput,
 } from "../../types/paymentTypes";
 import PurchaseModal from "../../components/Modals/PurchaseModal/PurchaseModal";
 import consoleStyles from "./styles/consoleStyles";
@@ -57,8 +62,21 @@ const ConsolePurchaseList = ({}: Props) => {
   };
 
   const handleUpdateEnabled = async (newRow: GridRowModel) => {
-    // return subscription;
-    return newRow;
+    const updateParams: UpdatePurchaseInput = {
+      id: newRow.id,
+      field: "fulfilled",
+      newValue: newRow.fulfilled,
+    };
+    const purchase = await updatePurchase(updateParams);
+
+    dispatch(
+      updateToastState({
+        children: "Purchase successfully updated",
+        severity: "success",
+      })
+    );
+
+    return purchase;
   };
 
   const handleProcessRowUpdateError = React.useCallback((error: Error) => {
