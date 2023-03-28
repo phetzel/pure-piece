@@ -10,6 +10,7 @@ const commonModalStyles = {
     p: 4,
     width: { xs: 300, md: 500 },
     maxHeight: "90vh",
+    overflow: "scroll",
   },
 };
 
