@@ -26,6 +26,7 @@ const CommonDivider = ({ image, isVisible, title, subTitle }: Props) => {
           top: 0,
           bottom: 0,
           zIndex: isVisible ? -1 : -2,
+          backgroundColor: "#fff",
         }}
       />
       <Box sx={dividerStyles.textContainer}>

@@ -24,7 +24,10 @@ export const productSlice = createSlice({
           );
         }
       } else {
-        state.cartState.push({ ...product, count: count });
+        state.cartState.push({
+          ...product,
+          count: count,
+        });
       }
     },
     emptyCart: (state) => {
