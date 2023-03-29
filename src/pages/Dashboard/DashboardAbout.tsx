@@ -39,23 +39,36 @@ const DashboardAbout = ({ aboutRef, isVisible }: Props) => {
           </Grid>
 
           <Grid item xs={12} md={6} sx={dashboardStyles.aboutTextContainer}>
-            {/* <Typography variant="body2" sx={dashboardStyles.aboutText}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-              viverra ex ligula, ac facilisis tellus faucibus vitae. Aenean sit
-              amet imperdiet risus. Nulla interdum tellus lectus, id congue
-              lectus interdum vitae. Aliquam luctus mattis libero et iaculis.
-              Phasellus vulputate aliquam nunc eget suscipit. Aliquam efficitur,
-              urna et sodales sodales, justo velit porttitor lacus, vel
-              condimentum massa risus vitae dui. Integer nibh massa, condimentum
-              quis neque vel, vehicula porttitor ex. Pellentesque a ligula
-              consequat, pulvinar enim vitae, molestie mauris. Sed nulla arcu,
-              aliquam ut placerat non, molestie eget quam. Sed dapibus aliquam
-              magna, id consectetur elit auctor consequat. Duis ut lacus
-              lacinia, fringilla metus quis, elementum metus. Nullam tincidunt
-              interdum ipsum, auctor pulvinar odio eleifend sit amet.
-            </Typography> */}
             <Typography variant="body2" sx={dashboardStyles.aboutText}>
-              {ABOUT}
+              {/* {ABOUT} */}
+              “A dog is the only thing on earth that loves you more than he
+              loves himself.”
+            </Typography>
+
+            <Typography variant="body1" sx={dashboardStyles.aboutText}>
+              I love that sentiment. And it started me thinking about what we
+              feed the animals we love so much.
+            </Typography>
+
+            <Typography variant="body1" sx={dashboardStyles.aboutText}>
+              I noticed that none of the treats in stores were organic. And most
+              were not even produced in the United States. I knew I could source
+              local, organic ingredients and make high quality treats—that are
+              also affordable.
+            </Typography>
+
+            <Typography
+              variant="body1"
+              sx={dashboardStyles.aboutText}
+              component="div"
+            >
+              So I started{" "}
+              <Box fontWeight={700} display="inline">
+                Pure Piece Treats
+              </Box>
+              --with the sole objective of creating a human- grade, organic
+              product that dogs love. I hope you—and your loyal canine
+              companion—enjoy it.
             </Typography>
           </Grid>
         </Grid>

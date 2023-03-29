@@ -78,12 +78,14 @@ export default {
     alignItems: "center",
     justifyContent: "center",
     display: "flex",
+    flexDirection: "column",
   },
   aboutText: {
     textAlign: "center",
     marginLeft: "70px",
     marginRight: "70px",
     lineHeight: "1.5rem",
+    my: 1,
   },
   // contact
   contactContainer: {
